@@ -1,0 +1,8 @@
+[book]
+authors = ["TickPoints"]
+language = "zh_cn"
+src = "src"
+title = "算法学习"
+
+[output.html]
+mathjax-support = true
