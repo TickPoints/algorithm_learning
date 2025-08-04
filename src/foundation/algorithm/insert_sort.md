@@ -69,7 +69,7 @@ pub fn realize2_clone<T: Ord + Clone>(arr: &mut [T]) {
 ## 练习与回答
 1. 尝试将[实现1](#实现1)改为降序排列(满足 \\(a_1' \geq a_2' \geq \dots \geq a_n'\\) )。
 ### 实现3
-```
+```rs
 // 对应练习 1
 pub fn realize3<T: Ord>(arr: &mut [T]) {
     for i in 0..arr.len() - 1 {
@@ -81,5 +81,58 @@ pub fn realize3<T: Ord>(arr: &mut [T]) {
     }
 }
 ```
+**TIP**: 可以发现: 在插入排序中，只需修改比较条件即可改变排序方向
+
+所以我们也有[实现4](#实现4)这种可以设置排序规则的:
+### 实现4
+```rs
+// 实现以`compare`来控制排序规则的插入排序
+pub fn realize4<T, F>(arr: &mut [T], compare: F)
+where
+    F: Fn(&T, &T) -> bool,
+{
+    for i in 1..arr.len() {
+        let mut j = i;
+        while j > 0 && compare(&arr[j], &arr[j - 1]) {
+            arr.swap(j, j - 1);
+            j -= 1;
+        }
+    }
+}
+```
+上面这种比较，对于学习过其他语言的读者来说，应该不成问题。这个比较很显然的允许我们操作一些更特殊的类型，比如说结构体:
+```rs
+#[derive(Debug)]
+struct Person {
+    name: String,
+    age: u32,
+}
+
+fn main() {
+    // 创建可变的结构体数组
+    let mut people = vec![
+        Person { name: "Alice".to_string(), age: 30 },
+        Person { name: "Bob".to_string(), age: 25 },
+        Person { name: "Charlie".to_string(), age: 35 },
+    ];
+    
+    // 按年龄升序排序
+    realize4(&mut people, |a, b| a.age < b.age);
+    println!("按年龄排序: {:?}", people);
+    
+    // 按名字字典序排序
+    realize4(&mut people, |a, b| a.name < b.name);
+    println!("按名字排序: {:?}", people);
+}
+```
+我们再来看别的例题，继续深化学习:
+2. 考虑以下**查找问题**:
+输入: \\(n\\) 个数的数组 \\(<a_1, a_2, \dots, a_n>\\) 和一个值 \\(v\\)
+
+输出: 下标\\(i\\)使得\\(v = A[i]\\)，或者当\\(v\\)不在\\(A\\)出现时，返回特殊值\\(NIL\\)[^note2]
+
+> 观察来看，这道题目适合[`Option`](https://rustwiki.org/zh-CN/std/option/enum.Option.html)可以用`Option::None`来解决`NIL`。
 
 [^note1]: 本处"形式化语言"并非指是一种由严格定义的符号组成的字符串集合，而是描述一类算法对于 输入/输出 关系的控制，以自然语言化，较精准化，弱数学化提供算法行为。
+
+[^note2]: `NIL`是算法描述中表示“空”或“终止”的通用符号。并且与`NULL`等空指针中区分。在一些结构(如链表)，`NIL`是一类特殊哨兵值(后见)，在标准库实现中，NIL就有所存在。
