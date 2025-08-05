@@ -13,3 +13,8 @@ additional-css = ["./theme/catppuccin.css"]
 mathjax-support = true
 preferred-dark-theme = "mocha"
 default-theme = "latte"
+
+#[preprocessor.katex]
+## 使用katex
+#after = ["links"]
+# 目前不采用，因为最新版无法与mdbook匹配，并产生一定错误
