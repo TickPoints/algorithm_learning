@@ -5,9 +5,6 @@ src = "src"
 title = "算法学习"
 description = "为中文开发者提供的算法导论 Rust 实现(工作中...)"
 
-[rust]
-edition = "2024"
-
 [output.html]
 additional-css = ["./theme/catppuccin.css"]
 mathjax-support = true
