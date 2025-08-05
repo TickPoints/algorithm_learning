@@ -5,3 +5,4 @@
 # 基础部分
 - [算法基础](foundation/algorithm/README.md)
     - [插入排序](foundation/algorithm/insert_sort.md)
+    - [循环不变式](foundation/algorithm/loop_invariant.md)
