@@ -140,7 +140,7 @@ fn main() {
 ### 实现5
 ```rs
 pub fn realize5<T: PartialEq>(arr: &[T], v: T) -> Option<usize> {
-    for i in 0..arr.len() - 1 {
+    for i in 0..arr.len() {
         if v == arr[i] {
             return Some(i);
         }
