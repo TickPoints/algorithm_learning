@@ -1,6 +1,5 @@
 [book]
 authors = ["TickPoints"]
-language = "zh_cn"
 src = "src"
 title = "算法学习"
 description = "为中文开发者提供的算法导论 Rust 实现(工作中...)"
