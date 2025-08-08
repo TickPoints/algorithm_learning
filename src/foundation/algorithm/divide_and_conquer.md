@@ -104,8 +104,6 @@ new: 1 2 3 4 7 8
 在Rust我们做不到使用\\(\infty\\)，哪怕用[`Default::default`](https://rustwiki.org/zh-CN/std/default/trait.Default.html#tymethod.default)也会导致数据冲突(如数字`0`)，所以我们不采用**哨兵值**。如果你认为你的数据里不会产生`0`或`-1`这样的值，那加上哨兵值也是可取的。
 
 ## 练习与回答
-> 该章节仍在偏写，在 [Github仓库](https://github.com/TickPoints/algorithm_learning) 上提交PR以为本书贡献内容。
-
 1. 试给出归并排序的循环不变式并证明。
 ### 循环不变式
 > 在**MERGE**(辅助函数)过程的`while i < left.len() && j < right.len()`循环的每次迭代开始时，子数组 `A[p..k-1]`(即`arr`) 包含 `L[1..i-1]` 和 `R[1..j-1]` (即 `left` 和 `right`)中的 `k-p` 个最小元素，并且 `A[p..k-1]` 是有序的。进而，`L[i]` 和 `R[j]` 是各自数组中未被复制回 `A` 的最小元素。
