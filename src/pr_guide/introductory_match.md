@@ -1,2 +1,2 @@
 # 导论匹配
-> 该章节仍在偏写，在 [Github仓库](https://github.com/TickPoints/algorithm_learning) 上提交PR以为本书 [贡献内容](/pr_guide/pr_standard.md#文档补充)。
+> 该章节仍在偏写，在 [Github仓库](https://github.com/TickPoints/algorithm_learning) 上提交PR以为本书 [贡献内容](/pr_guide/pr_standard.md)。

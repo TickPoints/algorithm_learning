@@ -26,7 +26,7 @@
 #### 文档补充
 如果你在编写文档的过程中，认为编写周期过长(比方说准备长期的空文档)，那么可以先停下来，在合理的位置留下下面这个注:
 ```md
-> 该章节仍在偏写，在 [Github仓库](https://github.com/TickPoints/algorithm_learning) 上提交PR以为本书 [贡献内容](/pr_guide/pr_standard.md#文档补充)。
+> 该章节仍在偏写，在 [Github仓库](https://github.com/TickPoints/algorithm_learning) 上提交PR以为本书 [贡献内容](/pr_guide/pr_standard.md)。
 ```
 接着提交PR即可。
 
