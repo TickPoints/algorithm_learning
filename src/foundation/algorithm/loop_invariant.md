@@ -126,6 +126,7 @@ pub fn realize5<T: PartialEq>(arr: &[T], v: T) -> Option<usize> {
     - 此时 `i = arr.len() - 1`，且 `v` 不在 `arr[0..arr.len()]` 中。
     - 由于循环已经检查了所有元素，但 `v` 仍然未被找到，因此 `v` 不在整个数组中，返回 `None` 是正确的。
 
+---
 ## 练习与回答
 1. 考虑为上一期的[主问题实现](./insert_sort.md#实现1)，给出一个循环不变式并证明。
 ### 设计

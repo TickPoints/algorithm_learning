@@ -103,6 +103,7 @@ new: 1 2 3 4 7 8
 
 在Rust我们做不到使用\\(\infty\\)，哪怕用[`Default::default`](https://rustwiki.org/zh-CN/std/default/trait.Default.html#tymethod.default)也会导致数据冲突(如数字`0`)，所以我们不采用**哨兵值**。如果你认为你的数据里不会产生`0`或`-1`这样的值，那加上哨兵值也是可取的。
 
+---
 ## 练习与回答
 1. 试给出归并排序的循环不变式并证明。
 ### 循环不变式
