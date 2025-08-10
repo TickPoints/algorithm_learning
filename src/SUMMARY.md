@@ -8,6 +8,7 @@
     - [循环不变式](foundation/algorithm/loop_invariant.md)
     - [分析算法](foundation/algorithm/algorithm_analysis.md)
     - [分治法](foundation/algorithm/divide_and_conquer.md)
+    - [分治法分析](foundation/algorithm/dac_analysis.md)
 
 # 附录: 数学知识
 - [求和](appendices/summation/README.md)
