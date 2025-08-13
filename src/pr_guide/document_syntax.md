@@ -221,7 +221,30 @@ mdBook 在标准 CommonMark 规范之外有几个扩展:
 阅读Github的 [表格扩展规范](https://github.github.com/gfm/#tables-extension-)
 
 ## 数学公式
-> 该章节仍在编写，在 [Github仓库](https://github.com/TickPoints/algorithm_learning) 上提交PR以为本书 [贡献内容](/pr_guide/pr_standard.md)。
+我们采用[mdBook-KaTeX](https://crates.io/crates/mdbook-katex)渲染[LaTex](https://www.latex-project.org)数学表达式。而不使用[mdBook](https://github.com/rust-lang/mdBook)自带的[MathJax支持](https://rust-lang.github.io/mdBook/format/mathjax.html)以避免一些问题并增强体验。
+
+一般格式如下:
+```
+行内: $ f(x) = ax^2 + bx + c$
+
+全行:
+$$
+f(x) = x^2 \\
+x \in \R
+$$
+
+用`\$`而正常显示\$
+```
+### 渲染
+行内: $ f(x) = ax^2 + bx + c$
+
+全行:
+$$
+f(x) = x^2 \\
+x \in \R
+$$
+
+用`\$`而正常显示\$
 
 ## 注
 以上内容为编写文档时可能用到的所有语法，更多语法可参见其他地方(如Github文档)，上面有很多推荐，文档编写者应该尽量满足，同时严格的编写语法是必须满足的。
