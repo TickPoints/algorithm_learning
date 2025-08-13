@@ -60,6 +60,8 @@ $$
 \sum_{k=1}^{n} k = \frac{n(n+1)}{2} = \Theta(n ^ 2)
 $$
 
+> 该章节仍在编写，在 [Github仓库](https://github.com/TickPoints/algorithm_learning) 上提交PR以为本书 [贡献内容](/pr_guide/pr_standard.md)。
+
 [^note1]: 级数是**无穷数列**的和。即形如: $\sum_{i=1}^{\infty} a_i = a_1 + a_2 + \dots$
 
 [^note2]: **“等差级数”在无穷情形下通常不被视为严格定义的级数**，除非明确讨论其发散性。
