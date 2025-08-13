@@ -55,7 +55,7 @@ pub fn realize<T: Ord>(arr: &mut [T]) {
 }
 ```
 
-> **注**: 下面要使用求和知识，可参见 [附录](/appendices/summation/summation.md)。
+> **注**: 下面要使用求和知识，可参见 [附录](/appendices/operations/summation/summation.md)。
 
 每个代价在循环条件都有不同次数的消耗，通过数学分析可以得到:
 ```rs

@@ -11,8 +11,9 @@
     - [分治法分析](foundation/algorithm/dac_analysis.md)
 
 # 附录: 数学知识
-- [求和](appendices/summation/README.md)
-    - [求和意义和性质](appendices/summation/summation.md)
+- [连续数学中的运算工具](appendices/operations/README.md)
+    - [求和与求积](appendices/operations/summation/README.md)
+        - [求和意义和性质](appendices/operations/summation/summation.md)
 
 # 附录: 贡献指南
 - [PR贡献指南](pr_guide/README.md)
