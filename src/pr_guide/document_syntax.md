@@ -221,27 +221,7 @@ mdBook 在标准 CommonMark 规范之外有几个扩展:
 阅读Github的 [表格扩展规范](https://github.github.com/gfm/#tables-extension-)
 
 ## 数学公式
-本书启用了 mdBook 的 [MathJax](https://www.mathjax.org)
-> 注：MathJax 通常使用的分隔符目前还不支持。你不能当前使用`$$ ... $$`作为分隔符，而`\[ ... \]`分隔符需要额外的反斜杠才能工作。
-
-> 注意：当你在 MathJax 块中使用双反斜杠(例如在命令如`\begin{cases} \frac 1 2 \\ \frac 3 4 \end{cases}`中)时，你需要添加两个额外的反斜杠(例如，`\begin{cases} \frac 1 2 \\\\ \frac 3 4 \end{cases}`)。
-
-```md
-行内公式由 `\\(` 和 `\\)` 分隔。如: \\( \int x dx = \frac{x^2}{2} + C \\)。
-
-块状公式由 `\\[` 和 `\\]` 分隔。如:
-
-\\[
-\mu = \frac{1}{N} \sum_{i=0} x_i
-\\]
-```
-行内公式由 `\\(` 和 `\\)` 分隔。如: \\( \int x dx = \frac{x^2}{2} + C \\)。
-
-块状公式由 `\\[` 和 `\\]` 分隔。如:
-
-\\[
-\mu = \frac{1}{N} \sum_{i=0} x_i
-\\]
+> 该章节仍在编写，在 [Github仓库](https://github.com/TickPoints/algorithm_learning) 上提交PR以为本书 [贡献内容](/pr_guide/pr_standard.md)。
 
 ## 注
 以上内容为编写文档时可能用到的所有语法，更多语法可参见其他地方(如Github文档)，上面有很多推荐，文档编写者应该尽量满足，同时严格的编写语法是必须满足的。
