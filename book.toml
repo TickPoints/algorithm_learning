@@ -8,12 +8,11 @@ additional-css = ["./theme/catppuccin.css"]
 edit-url-template = "https://github.com/tickpoints/algorithm_learning/edit/main/{path}"
 git-repository-url = "https://github.com/tickpoints/algorithm_learning"
 git-repository-icon = "fa-github"
-mathjax-support = true
+#mathjax-support = true
 preferred-dark-theme = "mocha"
 default-theme = "latte"
 input-404 = "not-found.md"
 
-#[preprocessor.katex]
-## 使用katex
-#after = ["links"]
-# 目前不采用，因为最新版无法与mdbook匹配，并产生一定错误
+[preprocessor.katex]
+# 使用katex
+after = ["links"]
