@@ -107,6 +107,12 @@ fn power_fast(mut base: i64, mut exponent: u32) -> i64 {
     result
 }
 ```
+利用[`std`](https://rustwiki.org/zh-CN/std)中[`pow`](https://rustwiki.org/zh-CN/std/primitive.i64.html#method.pow)可以直接进行幂运算:
+```rs
+let base = 2;
+let exponent = 3;
+let result = base.pow(exponent); // 2^3 = 8
+```
 
 ## 对数
 **对数(Logarithm)** 是数学中用于简化乘除运算的一种函数，定义为**幂运算的逆运算**。具体来说，如果满足以下等式:
@@ -192,8 +198,83 @@ $$ \log_a a = 1 $$
 由 $ a^1 = a $，根据定义：  
 $$ \log_a a = 1 $$  
 **证毕**。
+
 对数将复杂的乘除、幂运算转化为加减乘除，是数学和科学中不可或缺的工具。
+### 在编程中使用
+其实在幂那里我们就已经知道了——由于计算机的二进制特性，利用位运算我们可以计算整数以$2$为底的对数:
+```rs
+pub fn log2_bitwise(n: u32) -> u32 {
+    // 下面省略数据校验
+    31 - n.leading_zeros()
+}
+```
+**位操作法** 的核心思想是**一个整数的二进制表示中，最高有效位(MSB)的位置即为其以2为底的对数**。`n.leading_zeros()` 返回`n`的二进制表示中前导零[^note3]的个数。`u32`的二进制长度是`32`，由于位置编号从`0`开始(范围是`0`~`31`)，所以最高有效位是`31 - leading_zeros`。对于其他底数，我们也可以使用**牛顿迭代法**:
+```rs
+pub fn log_newton(x: f64, base: f64, epsilon: f64) -> f64 {
+    // 下面省略数据校验
+    let mut y = (x.ln() / base.ln()).max(0.0); // 初始猜测
+    loop {
+        let next_y = y - (base.powf(y) - x) / (base.powf(y) * base.ln());
+        if (next_y - y).abs() < epsilon {
+            return next_y;
+        }
+        y = next_y;
+    }
+}
+```
+**牛顿迭代法** 是一种用于近似求解方程 $f(x)=0$ 的根的高效数值方法。其主要**通过切线逼近逐步修正解的近似值**。从一个初始猜测值$x_0$开始。用当前点$(x_n, f(x_n))$的切线（导数）更新$x_{n+1}$:
+$$x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}$$
+重复迭代，直到$|x_{n+1} - x_n|$小于预设精度$\epsilon$[^note4]。
+
+利用[`std`](https://rustwiki.org/zh-CN/std)中[相关方法](https://rustwiki.org/zh-CN/std/primitive.f64.html)可以直接进行对数运算:
+```rs
+// log
+let five = 5.0f32;
+// log5(5) - 1 == 0
+let abs_difference = (five.log(5.0) - 1.0).abs();
+
+// log2
+let two = 2.0f32;
+// log2(2) - 1 == 0
+let abs_difference = (two.log2() - 1.0).abs();
+
+// log10
+let ten = 10.0f64;
+// log10(10) - 1 == 0
+let abs_difference = (ten.log10() - 1.0).abs();
+
+// ln
+let one = 1.0_f64;
+// e^1
+let e = one.exp();
+// ln(e) - 1 == 0
+let abs_difference = (e.ln() - 1.0).abs();
+```
+
+## 练习与回答
+1. 试证明**一个整数的二进制表示中，最高有效位(MSB)的位置即为其以2为底的对数**。
+### 证明
+**命题**：对于正整数$n$，其二进制最高有效位的位置$k$满足:
+$$k = \lfloor \log_2 n \rfloor$$
+
+**证明**：
+
+设$n$的二进制表示为:
+$$n = b_k \cdot 2^k + b_{k-1} \cdot 2^{k-1} + \cdots + b_0 \cdot 2^0 \quad (b_k = 1)$$
+
+因为$b_k = 1$，所以:
+$$2^k \leq n \leq 2^{k+1} - 1 < 2^{k+1}$$
+
+对不等式取$\log_2$:
+$$k \leq \log_2 n < k + 1$$
+
+因此:
+$$k = \lfloor \log_2 n \rfloor$$
 
 [^note1]: 见 [集合](/appendices/discrete/set.md)。$\mathbb{N}^+$ 有时也用 $\mathbb{Z}^+$。
 
 [^note2]: $1101_2$中的$_2$表示二进制形式，同理$_{16}$是十六进制。
+
+[^note3]: **前导零(Leading Zeros)** 是指一个数的二进制表示中，从最高位开始连续出现的零，直到遇到第一个`1`为止。
+
+[^note4]: **$\epsilon$(epsilon)** 是希腊字母表的第5个字母。表示任意小的正数，用于量化“无限接近”的概念。计算机科学中向如上迭代算法中也可表示停止阈值，一般用常量(如`const EPS = 0.000001`)。
