@@ -86,7 +86,7 @@ fn power_fast(mut base: i64, mut exponent: u32) -> i64 {
     result
 }
 ```
-它采用分治法的策略，复杂度是$\Theta(\log n)$。其数学基础是对于输入规模$n$，如果它是偶数，那么$a ^ n = (a ^ 2)^{n/2}$，如果它是奇数，那么$a ^ n = a(a ^ 2)^{(n - 1)/2}$。快速幂算法实际上是在利用指数的二进制表示:
+它采用分治法的策略，时间复杂度是$\Theta(\log n)$。其数学基础是对于输入规模$n$，如果它是偶数，那么$a ^ n = (a ^ 2)^{n/2}$，如果它是奇数，那么$a ^ n = a(a ^ 2)^{(n - 1)/2}$。快速幂算法实际上是在利用指数的二进制表示:
 $$
 13 = 1101_2 = 8 + 4 + 1 = 2^3 + 2^2 + 2^0 \\
 3^{13} = 3^{(8+4+1)} = 3^8 × 3^4 × 3^1
@@ -109,7 +109,90 @@ fn power_fast(mut base: i64, mut exponent: u32) -> i64 {
 ```
 
 ## 对数
-> 该章节仍在编写，在 [Github仓库](https://github.com/TickPoints/algorithm_learning) 上提交PR以为本书 [贡献内容](/pr_guide/pr_standard.md)。
+**对数(Logarithm)** 是数学中用于简化乘除运算的一种函数，定义为**幂运算的逆运算**。具体来说，如果满足以下等式:
+$$
+a ^ b = N (a > 0, a \neq 1)
+$$
+那$b$就是以$a$为底$N$的对数，记作:
+$$
+b = \log_{a}{N}
+$$
+其中，$a$为底数($a > 1$)，$N$为真数($N > 0$)。在上面这两个式子中，我们可以得到对数与指数的关系:
+$$
+\log_{a}{N} = b \iff a ^ b = N
+$$
+我们常用几种特殊的对数:
+- $10$: **常用对数**。$\log_10$(可以简写为$\lg$)，用于科学计算和工程。
+- $\mathrm{e}$: **自然对数**。$\log_{\mathrm{e}}$(可以简写为$\ln$)，广泛用于微积分和自然科学。
+- $2$: **二进制对数**。$\log_2$(仅在计算机科学中，我们可以简写为$\log$)，常见于计算机科学和信息论。
+
+### 性质
+对数的运算有很多特殊的性质:
+#### 乘法性质
+**性质**：  
+$$ \log_a (MN) = \log_a M + \log_a N \quad (M, N > 0) $$
+
+**证明**：  
+设 $ x = \log_a M $，$ y = \log_a N $，则：  
+$$ a^x = M, \quad a^y = N $$  
+两式相乘：  
+$$ a^x \cdot a^y = MN \implies a^{x+y} = MN $$  
+取对数得：  
+$$ \log_a (MN) = x + y = \log_a M + \log_a N $$  
+**证毕**。
+
+#### 除法性质
+**性质**：  
+$$ \log_a \left( \frac{M}{N} \right) = \log_a M - \log_a N \quad (M, N > 0) $$
+
+**证明**：  
+设 $ x = \log_a M $，$ y = \log_a N $，则：  
+$$ a^x = M, \quad a^y = N $$  
+两式相除：  
+$$ \frac{a^x}{a^y} = \frac{M}{N} \implies a^{x-y} = \frac{M}{N} $$  
+取对数得：  
+$$ \log_a \left( \frac{M}{N} \right) = x - y = \log_a M - \log_a N $$  
+**证毕**。
+
+#### 幂运算性质
+**性质**：  
+$$ \log_a (M^k) = k \log_a M \quad (M > 0, \, k \in \mathbb{R}) $$
+
+**证明**：  
+设 $ x = \log_a M $，则：  
+$$ a^x = M \implies (a^x)^k = M^k \implies a^{kx} = M^k $$  
+取对数得：  
+$$ \log_a (M^k) = kx = k \log_a M $$  
+**证毕**。
+
+#### 换底公式
+**性质**：  
+$$ \log_a N = \frac{\log_b N}{\log_b a} \quad (a, b, N > 0, \, a, b \neq 1) $$
+
+**证明**：  
+设 $ x = \log_a N $，则：  
+$$ a^x = N \implies \log_b (a^x) = \log_b N \implies x \log_b a = \log_b N $$  
+解得：  
+$$ x = \frac{\log_b N}{\log_b a} $$  
+即：  
+$$ \log_a N = \frac{\log_b N}{\log_b a} $$  
+**证毕**。
+
+#### 特殊值性质
+**性质1**：  
+$$ \log_a 1 = 0 $$  
+**证明**：  
+由 $ a^0 = 1 $，根据定义：  
+$$ \log_a 1 = 0 $$  
+**证毕**。
+
+**性质2**：  
+$$ \log_a a = 1 $$  
+**证明**：  
+由 $ a^1 = a $，根据定义：  
+$$ \log_a a = 1 $$  
+**证毕**。
+对数将复杂的乘除、幂运算转化为加减乘除，是数学和科学中不可或缺的工具。
 
 [^note1]: 见 [集合](/appendices/discrete/set.md)。$\mathbb{N}^+$ 有时也用 $\mathbb{Z}^+$。
 
