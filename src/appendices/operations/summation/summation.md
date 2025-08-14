@@ -59,8 +59,31 @@ $$
 $$
 \sum_{k=1}^{n} k = \frac{n(n+1)}{2} = \Theta(n ^ 2)
 $$
-
 > 该章节仍在编写，在 [Github仓库](https://github.com/TickPoints/algorithm_learning) 上提交PR以为本书 [贡献内容](/pr_guide/pr_standard.md)。
+
+## 编程中使用
+```rs
+pub fn sigma_sum(start: i32, end: i32, f: impl Fn(i32) -> i32) -> i32 {
+    // 这里利用rayon还可以并行计算，对大数据很有用
+    (start..=end)   // 生成一个包含结束值(闭合)的迭代器
+        .map(f)     // 对迭代器每一个项获取求和数据
+        .sum()      // 完成求和
+}
+
+// example-test
+sigma_sum(1, 5, |x| x * x)  // 输出1 ^ 2 + 2 ^ 2 + 3 ^ 2 + 4 ^ 2 + 5 ^ 2的和
+```
+对于算术级数可以利用高斯求和，时间复杂度从\Theta(n)降低到\Theta(1):
+```rs
+pub fn gauss_sum(start: i64, end: i64) -> i64 {
+    // 先除后乘，防止中间溢出
+    if (start + end) % 2 == 0 {
+        (start + end) / 2 * (end - start + 1)
+    } else {
+        (end - start + 1) / 2 * (start + end)
+    }
+}
+```
 
 [^note1]: 级数是**无穷数列**的和。即形如: $\sum_{i=1}^{\infty} a_i = a_1 + a_2 + \dots$
 

@@ -57,7 +57,60 @@ $$
 a^\alpha = \lim_{n \to \infty} a^{r_n}
 $$
 这个方法的本质是通过有理数无限逼近一个无理数来进行。我们也可以通过指数函数来进行延拓，此处不再赘述。
+
+### 编程中使用
+一般来讲，我们将设计的幂算法只支持自然数。更广的作用域，在编程中通常不使用。接下来我们开始设计:
+
+从定义出发，我们不难想到只需要对一个基数进行循环`n`次，每次乘它自身，便可得到:
+```rs
+pub fn power_iter(base: i64, exponent: u32) -> i64 {
+    // 下面省略溢出检测
+    let mut result = 1;
+    for _ in 0..exponent {
+        result *= base;
+    }
+    result
+}
+```
+它的时间复杂度是$\Theta(n)$，对于较大的输入规模，这个算法可能并不特别好。我们还有一种名为**快速幂**的方法:
+```rs
+fn power_fast(mut base: i64, mut exponent: u32) -> i64 {
+    let mut result = 1;
+    while exponent > 0 {
+        if exponent % 2 == 1 {
+            result *= base;
+        }
+        base *= base;
+        exponent /= 2;
+    }
+    result
+}
+```
+它采用分治法的策略，复杂度是$\Theta(\log n)$。其数学基础是对于输入规模$n$，如果它是偶数，那么$a ^ n = (a ^ 2)^{n/2}$，如果它是奇数，那么$a ^ n = a(a ^ 2)^{(n - 1)/2}$。快速幂算法实际上是在利用指数的二进制表示:
+$$
+13 = 1101_2 = 8 + 4 + 1 = 2^3 + 2^2 + 2^0 \\
+3^{13} = 3^{(8+4+1)} = 3^8 × 3^4 × 3^1
+$$
+[^note2]
+
+所以完全可以用位运算:
+```rs
+fn power_fast(mut base: i64, mut exponent: u32) -> i64 {
+    let mut result = 1;
+    while exponent > 0 {
+        if exponent & 1 == 1 {  // 等价于 exponent % 2 == 1
+            result *= base;
+        }
+        base *= base;
+        exponent >>= 1;  // 等价于 exponent /= 2
+    }
+    result
+}
+```
+
 ## 对数
 > 该章节仍在编写，在 [Github仓库](https://github.com/TickPoints/algorithm_learning) 上提交PR以为本书 [贡献内容](/pr_guide/pr_standard.md)。
 
 [^note1]: 见 [集合](/appendices/discrete/set.md)。$\mathbb{N}^+$ 有时也用 $\mathbb{Z}^+$。
+
+[^note2]: $1101_2$中的$_2$表示二进制形式，同理$_{16}$是十六进制。
