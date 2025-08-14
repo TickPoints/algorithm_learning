@@ -11,7 +11,12 @@ git-repository-icon = "fa-github"
 preferred-dark-theme = "mocha"
 default-theme = "latte"
 input-404 = "not-found.md"
+additional-js = ["./additions/mermaid/mermaid.min.js", "./additions/mermaid/mermaid-init.js"]
 
 [preprocessor.katex]
 # 使用katex
 after = ["links"]
+
+[preprocessor.mermaid]
+# 使用mermaid
+command = "mdbook-mermaid"
