@@ -13,4 +13,8 @@
 本书以[MIT](https://choosealicense.com/licenses/mit/#)协议开源。
 ### `mdBook`相关
 #### 主题
-采用**Catppuccin**提供的[主题](https://github.com/catppuccin/mdBook?tab=readme-ov-file)，许可证同样是**MIT**。
+采用**Catppuccin**提供的[主题](https://github.com/catppuccin/mdBook)，许可证同样是**MIT**。
+#### mdbook-mermaid
+采用**Jan-Erik Rediger**提供的[mdbook-mermaid](https://github.com/badboy/mdbook-mermaid)插件，许可证是**MPL**。本书以**保留原 MPL 文件的版权声明和许可证文本**进行兼容。
+#### mdbook-katex
+采用**Lucas Zanini**提供的[mdbook-katex](https://github.com/lzanini/mdbook-katex)插件，许可证同样是**MIT**。
