@@ -73,27 +73,13 @@ fn merge<T: Ord + Clone>(arr: &mut [T], left: &[T], right: &[T]) {
 3 7 8
 ```
 它的变化过程是这样的:
-```text
-1.
-left: 2 4
-right: 3 7 8
-new: 1
-2.
-left: 4
-right: 3 7 8
-new: 1 2
-3.
-left: 4
-right: 7 8
-new: 1 2 3
-4.
-left: 
-right: 7 8
-new: 1 2 3 4
-5. (将剩下数组放入)
-left:
-right:
-new: 1 2 3 4 7 8
+```mermaid
+flowchart LR
+    step1["步骤1<br/>Left: 2 4<br/>Right: 3 7 8<br/>New: 1"] --> step2
+    step2["步骤2<br/>Left: 4<br/>Right: 3 7 8<br/>New: 1 2"] --> step3
+    step3["步骤3<br/>Left: 4<br/>Right: 7 8<br/>New: 1 2 3"] --> step4
+    step4["步骤4<br/>Left: <br/>Right: 7 8<br/>New: 1 2 3 4"] --> step5
+    step5["步骤5<br/>Left: <br/>Right: <br/>New: 1 2 3 4 7 8"]
 ```
 当然，这只是一种思维方式。实际的实现中，我们通常不改变左右数组，而是简单的通过一个索引来从中获取数据并模拟扔出数据的过程。这个过程需要遍历两个数组的所有元素，所以它是$\Theta(n)$[^note4]的。
 
