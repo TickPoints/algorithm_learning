@@ -186,27 +186,40 @@
 **加粗**
 
 ## 代码
-```
 通过在文本两侧添加反引号从而在单行中获取代码段，推荐为数字(如`1`)和小型代码片段(如`while`)添加。
 
-通过三个连续的反引号(```)来创造代码框，在首三个连续的反引号后添加如rs(Rust)，md(Markdown)，text来控制语言和渲染逻辑。
+通过三个连续的反引号(\`\`\`)来创造代码框，在首三个连续的反引号后添加如`rs(Rust)`，`md(Markdown)`，`text`来控制语言和渲染逻辑。
+~~~md
+```rs
+pub fn main() {
+    println!("Hello, World!");
+}
 ```
+
+上面在主函数(`main`)中，输出了`Hello, World!`
+~~~
 ### 渲染
-通过在文本两侧添加反引号从而在单行中获取代码段，推荐为数字(如`1`)和小型代码片段(如`while`)添加。
+```rs
+pub fn main() {
+    println!("Hello, World!");
+}
+```
 
-通过三个连续的反引号(```)来创造代码框，在首三个连续的反引号后添加如rs(Rust)，md(Markdown)，text来控制语言和渲染逻辑。
+上面在主函数(`main`)中，输出了`Hello, World!`
+### 注
+**"\`\`\`"只在一行的开头使用才有效**，另外使用`~~~`也可造成一样的效果。
 
-mdBook 在标准 CommonMark 规范之外有几个扩展:
-
-## 删除线
+## 扩展
+**mdBook 在标准 CommonMark 规范之外有几个扩展**，同时本书也在这个基础上添加了一些修改:
+### 删除线
 文本可以通过在每个侧面包裹两个波浪号来渲染:
 ```md
 你好，Rust~~世界~~!
 ```
-### 渲染
+#### 渲染
 你好，Rust~~世界~~!
 
-## 脚注
+### 脚注
 脚注会在文本中生成一个小编号的链接，点击后会将读者带到该项底部的脚注文本[^note1]。脚注标签的写法类似于链接引用，前面有一个尖角符号。
 ```
 脚注会在文本中生成一个小编号的链接，点击后会将读者带到该项底部的脚注文本[^note1]。脚注标签的写法类似于链接引用，前面有一个尖角符号。
@@ -214,13 +227,13 @@ mdBook 在标准 CommonMark 规范之外有几个扩展:
 [^note1]: 必须放在文档底部。
 ```
 
-### 注意
+#### 注意
 1. 推荐以`[^noteX]`的格式书写。
 
-## 表格
+### 表格
 阅读Github的 [表格扩展规范](https://github.github.com/gfm/#tables-extension-)
 
-## 数学公式
+### 数学公式
 我们采用[mdBook-KaTeX](https://crates.io/crates/mdbook-katex)渲染[LaTex](https://www.latex-project.org)数学表达式。而不使用[mdBook](https://github.com/rust-lang/mdBook)自带的[MathJax支持](https://rust-lang.github.io/mdBook/format/mathjax.html)以避免一些问题并增强体验。
 
 一般格式如下:
@@ -235,7 +248,7 @@ $$
 
 用`\$`而正常显示\$
 ```
-### 渲染
+#### 渲染
 行内: $ f(x) = ax^2 + bx + c$
 
 全行:
@@ -245,6 +258,28 @@ x \in \R
 $$
 
 用`\$`而正常显示\$
+
+### mermaid
+我们采用[mdbook-mermaid](https://crates.io/crates/mdbook-mermaid)来添加添加[mermaid.js](https://mermaid.js.org/#/)支持。使用Mermaid来渲染好的图表，帮助理解。
+
+一般格式类似于[跨行代码](#代码)，在代码框内采用Mermaid的格式:
+~~~md
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
+~~~
+#### 渲染
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
 
 ## 注
 以上内容为编写文档时可能用到的所有语法，更多语法可参见其他地方(如Github文档)，上面有很多推荐，文档编写者应该尽量满足，同时严格的编写语法是必须满足的。
