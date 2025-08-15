@@ -73,7 +73,7 @@ pub fn sigma_sum(start: i32, end: i32, f: impl Fn(i32) -> i32) -> i32 {
 // example-test
 sigma_sum(1, 5, |x| x * x)  // 输出1 ^ 2 + 2 ^ 2 + 3 ^ 2 + 4 ^ 2 + 5 ^ 2的和
 ```
-对于算术级数可以利用高斯求和，时间复杂度从\Theta(n)降低到\Theta(1):
+对于算术级数可以利用高斯求和，时间复杂度从$\Theta(n)$降低到$\Theta(1)$:
 ```rs
 pub fn gauss_sum(start: i64, end: i64) -> i64 {
     // 先除后乘，防止中间溢出
