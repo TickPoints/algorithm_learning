@@ -14,6 +14,7 @@
 - [连续数学中的运算工具](appendices/operations/README.md)
     - [求和与求积](appendices/operations/summation/README.md)
         - [求和意义和性质](appendices/operations/summation/summation.md)
+        - [求积意义和性质](appendices/operations/summation/product.md)
     - [幂与对数](appendices/operations/logarithm.md)
 - [离散数学相关](appendices/discrete/README.md)
     - [集合](appendices/discrete/set.md)
