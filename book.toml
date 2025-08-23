@@ -2,16 +2,17 @@
 title = "算法学习"
 authors = ["TickPoints"]
 description = "为中文开发者提供的算法导论 Rust 实现(工作中...)"
+language = "zh-CN"
 
 [output.html]
 additional-css = ["./additions/theme/catppuccin.css"]
+preferred-dark-theme = "mocha"
+default-theme = "latte"
+additional-js = ["./additions/mermaid/mermaid.min.js", "./additions/mermaid/mermaid-init.js"]
 edit-url-template = "https://github.com/tickpoints/algorithm_learning/edit/main/{path}"
 git-repository-url = "https://github.com/tickpoints/algorithm_learning"
 git-repository-icon = "fa-github"
-preferred-dark-theme = "mocha"
-default-theme = "latte"
 input-404 = "not-found.md"
-additional-js = ["./additions/mermaid/mermaid.min.js", "./additions/mermaid/mermaid-init.js"]
 
 [preprocessor.katex]
 # 使用katex
