@@ -36,7 +36,7 @@ c & \text{if } n = 1, \\
 2 T\left(\frac{n}{2}\right) + cn & \text{if } n > 1
 \end{cases}
 $$
-其中常量$c$代表求解规模为 $1$ 的问题所需的时间(等价于$\Theta(1)$)，以及在分解步骤与合并步骤处理每个数组元素所需的时间。然后我们用 **递归树** 来展示一下这个过程:
+其中常量 $c$ 代表求解规模为 $1$ 的问题所需的时间(等价于 $\Theta(1)$ )，以及在分解步骤与合并步骤处理每个数组元素所需的时间。然后我们用 **递归树** 来展示一下这个过程:
 
 ```mermaid
 graph TD
@@ -71,8 +71,40 @@ graph TD
 这个完整的递归树有$\log_2{n} + 1$层(分解层数和最后一层)，每一层贡献了$cn$的代价，总量为$cn \times (\log_2{n} + 1) = \Theta(n \log n)$。
 
 ## 练习与回答
-> 该章节仍在编写，在 [Github仓库](https://github.com/TickPoints/algorithm_learning) 上提交PR以为本书 [贡献内容](/pr_guide/pr_standard.md)。
+1. 使用数学归纳法证明：当$n$刚好是$2$的幂时，以下递归式的解是$T(n)=n \log n$。
+$$
+T(n) = 
+\begin{cases} 
+2 & \text{if } n = 2, \\
+2 T\left(\frac{n}{2}\right) + n & \text{if } n = 2 ^ k, k > 1
+\end{cases}
+$$
+### 证明
+数学归纳法是一种证明与自然数相关的命题的方法。
+
+首先我们要证明 **基例(Base Case)** [^note3]:
+
+由递归定义，得
+$$T(2) = 2$$
+代入解:
+$$T(2) = 2 log 2 = 2$$
+二者一致，故基例成立。
+
+然后我们证明 **归纳步骤(Inductive Step)**:
+
+对于 $n = 2 ^ k$，通过解有 $T(2 ^ k) = 2 ^ k \log 2 ^ k = k \times 2 ^ k$(归纳假设)。
+
+接着通过递归定义，假令 $n = 2 ^ {k + 1}$:
+$$T(2 ^ {k + 1}) = 2 T\left(\frac{2 ^ {k + 1}}{2}\right) + 2 ^ {k + 1} = 2 T(2 ^ k) + 2 ^ {k + 1}$$
+
+接着通过归纳假设变形:
+$$T(2 ^ {k + 1}) = (k + 1) 2 ^ {k +1}$$
+这与原有的归纳假设不冲突，因此归纳假设成立。
+
+从而证明了递归式的解为$T(n)=n \log n$。
 
 [^note1]: 关于对数相关知识，请参考[幂与对数](/appendices/operations/logarithm.md)。
 
 [^note2]: 因而，《算法导论》中也使用过$\lg$来代替$\log$。
+
+[^note3]: 在该证明中类似于我们之前的 **基线条件(Base Case)**。
