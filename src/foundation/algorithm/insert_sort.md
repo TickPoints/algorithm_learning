@@ -10,7 +10,7 @@ $n$ 个数的数组 $<a_1, a_2, \dots, a_n>$
 
 来看下面实现:
 ### 实现1
-```rs
+```rust
 pub fn realize<T: Ord>(arr: &mut [T]) {
     for i in 1..arr.len() {
         let mut j = i;
@@ -28,7 +28,7 @@ pub fn realize<T: Ord>(arr: &mut [T]) {
 
 在《算法导论》中，其实是不是通过[`swap`](https://rustwiki.org/zh-CN/std/primitive.slice.html#method.swap)，而是将操作值保存，直到最后再进行赋值，这样可以减少中间的连续交换导致的空间和时间损耗。代价是需要更高的数学水平，同时需要更多的`trait`(像接下来的实现)。
 ### 实现2
-```rs
+```rust
 pub fn realize2<T: Ord + Copy>(arr: &mut [T]) {
     for i in 1..arr.len() {
         // 保存当前元素的值
@@ -48,7 +48,7 @@ pub fn realize2<T: Ord + Copy>(arr: &mut [T]) {
 (**注**: 需要[`Copy`](https://rustwiki.org/zh-CN/std/marker/trait.Copy.html))
 
 也可以使用[`Clone`](https://rustwiki.org/zh-CN/std/clone/trait.Clone.html):
-```rs
+```rust
 pub fn realize2_clone<T: Ord + Clone>(arr: &mut [T]) {
     for i in 1..arr.len() {
         // 保存当前元素的值
@@ -69,7 +69,7 @@ pub fn realize2_clone<T: Ord + Clone>(arr: &mut [T]) {
 ## 练习与回答
 1. 尝试将[实现1](#实现1)改为降序排列(满足 $a_1' \geq a_2' \geq \dots \geq a_n'$ )。
 ### 实现3
-```rs
+```rust
 // 对应练习 1
 pub fn realize3<T: Ord>(arr: &mut [T]) {
     for i in 0..arr.len() - 1 {
@@ -85,7 +85,7 @@ pub fn realize3<T: Ord>(arr: &mut [T]) {
 
 所以我们也有[实现4](#实现4)这种可以设置排序规则的:
 ### 实现4
-```rs
+```rust
 // 实现以`compare`来控制排序规则的插入排序
 pub fn realize4<T, F>(arr: &mut [T], compare: F)
 where
@@ -101,11 +101,24 @@ where
 }
 ```
 上面这种比较，对于学习过其他语言的读者来说，应该不成问题。这个比较很显然的允许我们操作一些更特殊的类型，比如说结构体:
-```rs
+```rust
 #[derive(Debug)]
 struct Person {
     name: String,
     age: u32,
+}
+
+pub fn realize4<T, F>(arr: &mut [T], compare: F)
+where
+    F: Fn(&T, &T) -> bool,
+{
+    for i in 1..arr.len() {
+        let mut j = i;
+        while j > 0 && compare(&arr[j], &arr[j - 1]) {
+            arr.swap(j, j - 1);
+            j -= 1;
+        }
+    }
 }
 
 fn main() {
@@ -138,7 +151,7 @@ fn main() {
 > 观察来看，这道题目适合[`Option`](https://rustwiki.org/zh-CN/std/option/enum.Option.html)可以用`Option::None`来解决`NIL`。
 
 ### 实现5
-```rs
+```rust
 pub fn realize5<T: PartialEq>(arr: &[T], v: T) -> Option<usize> {
     for i in 0..arr.len() {
         if v == arr[i] {

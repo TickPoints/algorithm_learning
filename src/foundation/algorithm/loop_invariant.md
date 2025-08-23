@@ -19,7 +19,7 @@
 
 ## 解释
 上面的这些内容比较抽象，但我们以代码为例就可以看出它们在讲什么:
-```rs
+```rust
 // 典型: 数组求和
 fn sum(arr: &[usize]) -> usize {
     let mut total = 0;
@@ -91,7 +91,7 @@ fn sum(arr: &[usize]) -> usize {
 **循环不变式是算法正确性的重要工具，合理使用它可以提高代码的可读性和可靠性。**
 ## 深化
 我们以[上一期习题](./insert_sort.md#实现5)来尝试给出循环不变式并证明。
-```rs
+```rust
 pub fn realize5<T: PartialEq>(arr: &[T], v: T) -> Option<usize> {
     for i in 0..arr.len() {
         if v == arr[i] {

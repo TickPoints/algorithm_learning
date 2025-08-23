@@ -30,7 +30,7 @@
 - 理论基准：与图灵机等价，但更贴近编程实践。
 
 用**RAM模型**进行严格的算法分析是较难的，需要的数学技巧和工具很多。如:
-```rs
+```rust
 pub fn realize<T: Ord>(arr: &mut [T]) {
     for i in 1..arr.len() {
         let mut j = i;
@@ -43,7 +43,7 @@ pub fn realize<T: Ord>(arr: &mut [T]) {
 ```
 我们以 $c_i$ 表示每个操作的代价。
 
-```rs
+```rust
 pub fn realize<T: Ord>(arr: &mut [T]) {
     for i in 1..arr.len() {                     // 代价: c_1
         let mut j = i;                          // 代价: c_2
@@ -58,7 +58,7 @@ pub fn realize<T: Ord>(arr: &mut [T]) {
 > **注**: 下面要使用求和知识，可参见 [附录](/appendices/operations/summation/summation.md)。
 
 每个代价在循环条件都有不同次数的消耗，通过数学分析可以得到:
-```rs
+```rust
 // 先给定 n = arr.len()
 pub fn realize<T: Ord>(arr: &mut [T]) {
     for i in 1..arr.len() {                     // 次数: n - 1
@@ -130,7 +130,7 @@ $$
     3. 为什么只需要对前`n-1`个元素，而不是对所有`n`个元素运行？
     4. 用$\Theta$记号给出选择排序的最好情况与最坏情况运行时间。
 ### 1. Rust代码
-```rs
+```rust
 fn selection_sort(arr: &mut [i32]) {
     let n = arr.len();
     for i in 0..n - 1 { // 只需遍历前 n-1 个元素
