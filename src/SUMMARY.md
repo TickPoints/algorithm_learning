@@ -9,7 +9,7 @@
     - [分析算法](foundation/algorithm/algorithm_analysis.md)
     - [分治法](foundation/algorithm/divide_and_conquer.md)
     - [分治法分析](foundation/algorithm/dac_analysis.md)
-    - [利用归并分析](foundation/algorithm/merge_analysis.md)
+    - [思考与提高](foundation/algorithm/improve.md)
 
 # 附录: 数学知识
 - [连续数学中的运算工具](appendices/operations/README.md)
