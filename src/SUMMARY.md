@@ -9,6 +9,7 @@
     - [分析算法](foundation/algorithm/algorithm_analysis.md)
     - [分治法](foundation/algorithm/divide_and_conquer.md)
     - [分治法分析](foundation/algorithm/dac_analysis.md)
+    - [二分查找](foundation/algorithm/binary_search.md)
     - [思考与提高](foundation/algorithm/improve.md)
 
 # 附录: 数学知识

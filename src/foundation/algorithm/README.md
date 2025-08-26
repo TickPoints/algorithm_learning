@@ -6,4 +6,5 @@
 - [分析算法](./algorithm_analysis.md)
 - [分治法](./divide_and_conquer.md)
 - [分治法分析](./dac_analysis.md)
+- [二分查找](./binary_search.md)
 - [思考与提高](./improve.md)
