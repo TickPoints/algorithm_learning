@@ -34,10 +34,10 @@ pub fn realize1<T: Ord>(arr: &[T], v: &T) -> Option<usize> {
 然后，在区间内找到中间值`mid = (low + high) / 2`，这可能会溢出，利用简单数学证明可得:
 $$
 \begin{align*}
-mid &= low / 2 + high / 2 \\
-&= low / 2 + (high -low + low) / 2 \\
-&= low / 2 + (high - low) / 2 + low / 2 \\
-&= low + (high - low) / 2
+\text{mid} &= \frac{\text{low}}{2} + \frac{\text{high}}{2} \\
+&= \frac{\text{low}}{2} + \frac{\text{high} - \text{low} + \text{low}}{2} \\
+&= \frac{\text{low}}{2} + \frac{\text{high} - \text{low}}{2} + \frac{\text{low}}{2} \\
+&= \text{low} + \frac{\text{high} - \text{low}}{2}
 \end{align*}
 $$
 该式可以避免溢出。(事实上，[标准库的实现](https://www.rustwiki.org.cn/zh-CN/src/core/slice/mod.rs.html#2779-2785)也是这么做的)
