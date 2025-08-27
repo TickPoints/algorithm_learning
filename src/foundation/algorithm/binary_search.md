@@ -11,6 +11,7 @@
 ### 实现1
 ```rust
 use std::cmp::Ordering;
+
 pub fn realize1<T: Ord>(arr: &[T], v: &T) -> Option<usize> {
     let mut low = 0;
     let mut high = arr.len().checked_sub(1)?;               // 处理空数组
