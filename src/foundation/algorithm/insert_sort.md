@@ -65,6 +65,7 @@ pub fn realize2_clone<T: Ord + Clone>(arr: &mut [T]) {
     }
 }
 ```
+
 ---
 ## 练习与回答
 1. 尝试将[实现1](#实现1)改为降序排列(满足 $a_1' \geq a_2' \geq \dots \geq a_n'$ )。
