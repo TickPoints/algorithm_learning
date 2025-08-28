@@ -118,7 +118,7 @@ flowchart LR
 
 [^note1]: **递归(Recursion)** 是算法设计中的一种重要技术，指函数或过程直接或间接调用自身来解决问题的方法。
 
-[^note2]: 这种可直接求解的边界叫做**基线条件(Base Case)**。如 [实现一](#实现一) 的基本情况。
+[^note2]: 这种可直接求解的边界叫做**基线条件(Base Case)**，与之相对的就是**递归条件(Recursive Case)**。如 [实现一](#实现一) 的基本情况。
 
 [^note3]: 这意味着右数组有$\lceil n \rceil$个元素，左数组有$\lfloor n \rfloor$个元素。其中$\lceil x \rceil$表示大于或等于$x$的最小整数，$\lfloor x \rfloor$表示小于或等于$x$的最大整数。
 
