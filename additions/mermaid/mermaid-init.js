@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const darkThemes = ['ayu', 'navy', 'coal'];
-    const lightThemes = ['light', 'rust'];
+    // 兼容 catppuccin
+    const darkThemes = ['ayu', 'navy', 'coal', 'frappe', 'mocha', 'macchiato'];
+    const lightThemes = ['light', 'rust', 'latte'];
+    
     const htmlClass = document.documentElement.classList;
 
     const isDarkTheme = darkThemes.some(theme => htmlClass.contains(theme));
