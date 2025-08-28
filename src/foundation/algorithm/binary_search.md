@@ -153,6 +153,88 @@ pub fn realize4<T: Ord>(arr: &mut [T]) {
 ```
 上面这个优化仅仅改变了比较次数，不影响总体的时间复杂度。对于大规模数据和操作代价较高的会有一定优化，其他情况下还是使用线性更优。
 
+## 两数和差
+考虑下面这道题:
+
+**输入**: $n$ 个整数的数组 $<a_1, a_2, \dots, a_n>$ 和一个整数 $x$
+
+**输出**: 下标 $i_1$和$i_2$ 使得 $A[i_1] + A[i_2] = x$，或者当数组中无两数之和为 $x$ 时，返回特殊值$NIL$
+
+我们将用**增量法**，**分治法**和一**特殊方法**解决此问题。
+
+增量法最简单，我们可以用两层循环:
+### 实现5
+```rust
+pub fn realize5(arr: &[i32], x: i32) -> Option<(usize, usize)> {
+    for i in 0..arr.len() {
+        for j in (i + 1)..arr.len() {
+            if arr[i] + arr[j] == x {
+                return Some((i, j));
+            }
+        }
+    }
+    None
+}
+```
+但复杂度将达到$\Theta(n ^ 2)$。
+
+分治法则不难想到二分查找:
+### 实现6
+```rust
+pub fn realize6(arr: &[i32], x: i32) -> Option<(usize, usize)> {
+    // 先对数组进行排序 (保留原索引)
+    let mut sorted: Vec<(usize, &i32)> = arr.iter().enumerate().collect();
+    sorted.sort_by(|a, b| a.1.cmp(b.1));
+    
+    let mut left = 0;
+    let mut right = sorted.len() - 1;
+    
+    while left < right {
+        let sum = sorted[left].1 + sorted[right].1;
+        if sum == x {
+            // 确保返回的索引顺序与原数组一致
+            let (i1, i2) = (sorted[left].0, sorted[right].0);
+            return Some((i1.min(i2), i1.max(i2)));
+        } else if sum < x {
+            left += 1;
+        } else {
+            right -= 1;
+        }
+    }
+    
+    None
+}
+```
+该方案虽然使用了排序，但按照归并排序的时间复杂度(标准库的排序实现更为复杂，这里简单的以归并排序为例)，该实现仍然是$\Theta(n \log_n)$。
+
+最后一种方法非常特殊，在后面的课程中我们会具体讲到，这里简单介绍一下 **哈希表(Hash Map 或 Hash Table)**: 它的一般做法就是，将一种特定类型的数据通过**哈希函数(Hash Function)**转化为唯一不可逆哈希值，将其存放在数组中，利用数组的扁平化性质，哈希表的读取运算是$\Theta(1)$的。(由于这种性质，在特殊情况下我们也完全可以用普通数组来代替哈希表)
+### 实现7
+```rust
+// 使用标准库实现的哈希表
+use std::collections::HashMap;
+
+pub fn realize7(arr: &[i32], x: i32) -> Option<(usize, usize)> {
+    let mut map = HashMap::new();
+    
+    for (i, &num) in arr.iter().enumerate() {
+        // 计算与当前项相加等于x的值
+        let complement = x - num;
+        // 在哈希表中寻找是否有complement
+        if let Some(&j) = map.get(&complement) {
+            // 如果有，直接返回当前索引和complement所在索引
+            return Some((j, i));
+        }
+        // 否则，保存当前项对应的索引
+        map.insert(num, i);
+    }
+    
+    None
+}
+```
+该算法是单循环的，又因为哈希表的读取运算是常数时间，所以这个实现为$\Theta(n)$。
+
+---
+## 练习与回答
 > 该章节仍在编写，在 [Github仓库](https://github.com/TickPoints/algorithm_learning) 上提交PR以为本书 [贡献内容](/pr_guide/pr_standard.md)。
 
 [^note1]: 二分查找是通过缩小搜索区间来工作，而不是逐步构建解，因此不属于增量方法。它属于分治法的一种特例，我们称作 **减治法(decrease and conquer)**。
