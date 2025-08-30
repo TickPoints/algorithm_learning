@@ -153,7 +153,7 @@ pub fn realize4<T: Ord>(arr: &mut [T]) {
 ```
 上面这个优化仅仅改变了比较次数，不影响总体的时间复杂度。对于大规模数据和操作代价较高的会有一定优化，其他情况下还是使用线性更优。
 
-## 两数和差
+## 两数之和
 考虑下面这道题:
 
 **输入**: $n$ 个整数的数组 $<a_1, a_2, \dots, a_n>$ 和一个整数 $x$
@@ -209,7 +209,7 @@ pub fn realize6(arr: &[i32], x: i32) -> Option<(usize, usize)> {
 ```
 该方案虽然使用了排序，但按照归并排序的时间复杂度(标准库的排序实现更为复杂，这里简单的以归并排序为例)，该实现仍然是$\Theta(n \log n)$。
 
-最后一种方法非常特殊，在后面的课程中我们会具体讲到，这里简单介绍一下 **哈希表(Hash Map 或 Hash Table)**: 它的一般做法就是，将一种特定类型的数据通过**哈希函数(Hash Function)**转化为唯一不可逆哈希值，将其存放在数组中，利用数组的扁平化性质，哈希表的读取运算是$\Theta(1)$的。(由于这种性质，在特殊情况下我们也完全可以用普通数组来代替哈希表)
+最后一种方法非常特殊，在后面的课程中我们会具体讲到，这里简单介绍一下 **哈希表(Hash Map 或 Hash Table)**: 它的一般做法就是，将一种特定类型的数据通过 **哈希函数(Hash Function)** 转化为唯一不可逆哈希值，将其存放在数组中，利用数组的扁平化性质，哈希表的读取运算是$\Theta(1)$的。(由于这种性质，在特殊情况下我们也完全可以用普通数组来代替哈希表)
 ### 实现7
 ```rust
 // 使用标准库实现的哈希表
@@ -233,10 +233,70 @@ pub fn realize7(arr: &[i32], x: i32) -> Option<(usize, usize)> {
     None
 }
 ```
-该算法是单循环的，又因为哈希表的读取运算是常数时间，所以这个实现为$\Theta(n)$。
+该算法是单循环的，又因为哈希表的读取运算是常数时间，所以这个实现时间复杂度为$\Theta(n)$。
 
 ---
 ## 练习与回答
+1. 我们作以下考虑: 虽然归并排序的最坏情况运行时间为$\Theta(n \log n)$，而插入排序的最坏情况运行时间为$\Theta(n ^ 2)$，但是插入排序中的常量因子可能使得它在$n$较小时，在许多机器上实际运行得更快。因此，在归并排序中当子问题变得足够小时，采用插入排序来使递归的叶**变粗是有意义的**。考虑对归并排序的一种修改，使用插入排序来排序长度为$k$的$n/k$个子表，然后使用标准的合并机制来合并这些子表，这里$k$是一个待定的值。
+### 实现8
+```rust
+pub fn realize8(arr: &mut [i32], k: usize) {
+    let n = arr.len();
+    if n <= k {
+        insertion_sort(arr);
+        return;
+    }
+    let mid = n / 2;
+    realize8(&mut arr[..mid], k);
+    realize8(&mut arr[mid..], k);
+    merge(arr, mid);
+}
+
+fn insertion_sort(arr: &mut [i32]) {
+    for i in 1..arr.len() {
+        let mut j = i;
+        while j > 0 && arr[j - 1] > arr[j] {
+            arr.swap(j - 1, j);
+            j -= 1;
+        }
+    }
+}
+
+fn merge(arr: &mut [i32], mid: usize) {
+    let mut temp = arr.to_vec();
+    let (mut i, mut j, mut k) = (0, mid, 0);
+    while i < mid && j < arr.len() {
+        if temp[i] <= temp[j] {
+            arr[k] = temp[i];
+            i += 1;
+        } else {
+            arr[k] = temp[j];
+            j += 1;
+        }
+        k += 1;
+    }
+    while i < mid {
+        arr[k] = temp[i];
+        i += 1;
+        k += 1;
+    }
+    while j < arr.len() {
+        arr[k] = temp[j];
+        j += 1;
+        k += 1;
+    }
+}
+```
+这种实现与 **Timsort**[^note2] 的核心思想一致，结合了归并与插入的优点，接下来我们深入讨论:
+
+在上述算法中，插入排序可以在$\Theta(n k)$时间内排序每个长度为$k$的$n / k$个子表(每个子表排序的时间复杂度为$\Theta(k ^ 2)$，故$T(n) = \Theta(k ^ 2) \cdot (n / k) = \Theta(n k)$)。同样不难看出，合并子表的时间复杂度是$\Theta(n \log (n / k))$，综上就有该算法最坏情况下的时间复杂度为$\Theta(n k + n \log (n / k))$。为了确保任何$k$的取值不能使修改后算法时间复杂度高于原算法，$k = O(\log n)$[^note3]。
+
+在实际使用中，$k$不能随着的$n$增长增长过快，所以通常使用常数或对数级，一般选用20至100的常数，或者利用$k = \log n$的对数情况动态调整。更现实化的时候，可以通过cpu缓存规则或者混合策略(分段使用常数和对数)来解决。
+
 > 该章节仍在编写，在 [Github仓库](https://github.com/TickPoints/algorithm_learning) 上提交PR以为本书 [贡献内容](/pr_guide/pr_standard.md)。
 
 [^note1]: 二分查找是通过缩小搜索区间来工作，而不是逐步构建解，因此不属于增量方法。它属于分治法的一种特例，我们称作 **减治法(decrease and conquer)**。
+
+[^note2]: **Timsort** 是一种高效的混合排序算法，由 Tim Peters 在 2002 年为 Python 语言设计(Python 2.3 及后续版本的默认排序算法)。其针对现实世界中的部分有序数据进行了优化，具有稳定性和适应性。
+
+[^note3]: 即$k$的增长速度不超过$\log n$，这里读者可以先行自证，此类标准的证明方法在后续讲到。
