@@ -12,6 +12,9 @@
     - [二分查找](foundation/algorithm/binary_search.md)
     - [思考与提高](foundation/algorithm/improve.md)
 
+- [渐近分析](foundation/asymptotics/README.md)
+    - [渐近符号](foundation/asymptotics/symbol.md)
+
 # 附录: 数学知识
 - [连续数学中的运算工具](appendices/operations/README.md)
     - [求和与求积](appendices/operations/summation/README.md)
