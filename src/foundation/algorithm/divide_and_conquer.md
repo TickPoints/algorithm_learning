@@ -19,9 +19,9 @@ $n$ 个数的数组 $<a_1, a_2, \dots, a_n>$
 输入数组的升序排列 $<a_1', a_2', \dots, a_n'>$，满足 $a_1' \leq a_2' \leq \dots \leq a_n'$
 
 对于这个问题，我们进行分割将数组分割成两个`n/2`的子数组(实际上，`n/2`会被截断小数部分，所以当`n`为奇数时，右半部分(`right`)会多出一个元素[^note3])，然后对这两个子数组重复上面分割。不可分割时，需进行排序，然后合并已排序的数组。这是一个先自上而下分解问题，再**逐步回升(自底向上)**解决问题的过程。
-### 实现1
+### MERGE-SORT
 ```rust
-pub fn realize<T: Ord + Clone>(arr: &mut [T]) {
+pub fn merge_sort<T: Ord + Clone>(arr: &mut [T]) {
     if arr.len() <= 1 {
         return; // 基本情况: 数组长度为0或1时直接返回
     }
@@ -31,8 +31,8 @@ pub fn realize<T: Ord + Clone>(arr: &mut [T]) {
     let mut right = arr[mid..].to_vec(); // 分割右半部分
 
     // 递归排序左右子数组
-    realize(&mut left);
-    realize(&mut right);
+    merge_sort(&mut left);
+    merge_sort(&mut right);
 
     // 合并排序后的左右子数组
     merge(arr, &left, &right);

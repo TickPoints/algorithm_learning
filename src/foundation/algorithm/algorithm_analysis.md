@@ -31,7 +31,7 @@
 
 用**RAM模型**进行严格的算法分析是较难的，需要的数学技巧和工具很多。如:
 ```rust
-pub fn realize<T: Ord>(arr: &mut [T]) {
+pub fn insert_sort<T: Ord>(arr: &mut [T]) {
     for i in 1..arr.len() {
         let mut j = i;
         while j > 0 && arr[j] < arr[j - 1] {
@@ -44,7 +44,7 @@ pub fn realize<T: Ord>(arr: &mut [T]) {
 我们以 $c_i$ 表示每个操作的代价。
 
 ```rust
-pub fn realize<T: Ord>(arr: &mut [T]) {
+pub fn insert_sort<T: Ord>(arr: &mut [T]) {
     for i in 1..arr.len() {                     // 代价: c_1
         let mut j = i;                          // 代价: c_2
         while j > 0 && arr[j] < arr[j - 1] {    // 代价: c_3
@@ -60,7 +60,7 @@ pub fn realize<T: Ord>(arr: &mut [T]) {
 每个代价在循环条件都有不同次数的消耗，通过数学分析可以得到:
 ```rust
 // 先给定 n = arr.len()
-pub fn realize<T: Ord>(arr: &mut [T]) {
+pub fn insert_sort<T: Ord>(arr: &mut [T]) {
     for i in 1..arr.len() {                     // 次数: n - 1
         let mut j = i;                          // 次数: n - 1
         // 考虑到下面的评估次数受到数组的实际影响，我们简单表达:
@@ -131,7 +131,7 @@ $$
     4. 用$\Theta$记号给出选择排序的最好情况与最坏情况运行时间。
 ### 1. Rust代码
 ```rust
-fn selection_sort(arr: &mut [i32]) {
+pub fn selection_sort(arr: &mut [i32]) {
     let n = arr.len();
     for i in 0..n - 1 { // 只需遍历前 n-1 个元素
         let mut min_index = i;

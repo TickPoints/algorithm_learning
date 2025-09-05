@@ -1,9 +1,9 @@
 # 思考与提高
 ## 冒泡排序
 介绍[插入排序](./insert_sort.md)的时候我们提到了另一种简单却低效的排序算法——**冒泡排序(Bubble Sort)**。
-### 实现1
+### BUBBLE-SORT
 ```rust
-pub fn realize1<T: Ord>(arr: &mut [T]) {
+pub fn bubble_sort<T: Ord>(arr: &mut [T]) {
     let n = arr.len();
     for i in 0..n {
         for j in 0..n - i - 1 {
@@ -33,8 +33,8 @@ fn main() {
 上式读者自证不难，从上面的循环不变式不难看出: 冒泡排序通过两两互相比较，每次都将这次最大的数据放到后面。很显然，它用的是跟插入排序一样的增量法，时间复杂度也为$T(n) = n ^2$。
 
 当然我们也不难看出，如果一次循环没有进行任何交换说明已经排好序了，可以提前终止:
-```
-fn bubble_sort_optimized<T: Ord>(arr: &mut [T]) {
+```rust
+pub fn bubble_sort_optimized<T: Ord>(arr: &mut [T]) {
     let n = arr.len();
     for i in 0..n {
         let mut swapped = false; // 标记本轮是否发生交换

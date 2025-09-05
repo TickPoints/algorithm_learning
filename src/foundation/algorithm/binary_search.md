@@ -8,11 +8,11 @@
 上面这个问题是我们在[插入排序](./insert_sort.md)那一节就已经介绍的。
 
 注意到，如果序列`A`已排好序，就可以将该序列的中点与`v`进行比较。根据比较的结果，原序列中有一半就可以不用再做进一步的考虑了，这种在 **有序数组中高效查找特定元素的算法** 被称为 **二分查找(Binary Search)**。
-### 实现1
+### BINARY-SEARCH
 ```rust
 use std::cmp::Ordering;
 
-pub fn realize1<T: Ord>(arr: &[T], v: &T) -> Option<usize> {
+pub fn binary_search<T: Ord>(arr: &[T], v: &T) -> Option<usize> {
     let mut low = 0;
     let mut high = arr.len().checked_sub(1)?;               // 处理空数组
 
@@ -54,9 +54,8 @@ $$
 这个循环不变式比较简单，留给读者自证。从上面的过程，我们不难证得$T(n) = \Theta(\log n)$。
 
 我们增高难度，在现有的基础上，我们不再保证有且仅有一个`i`，即`A`数组中可能存在多个`v`，要求给出最小的`i`。这是一个常见的求左边界的二分算法，我们用Rust实现:
-### 实现2
 ```rust
-pub fn realize2<T: Ord>(arr: &[T], v: &T) -> Option<usize> {
+pub fn find_left_boundary<T: Ord>(arr: &[T], v: &T) -> Option<usize> {
     let mut low = 0;
     let mut high = arr.len().checked_sub(1)?;
 
@@ -79,9 +78,8 @@ pub fn realize2<T: Ord>(arr: &[T], v: &T) -> Option<usize> {
 这里主要逻辑改写在比较部分: 当`arr[mid] < v`时，目标值必然在右侧，所以移动`low`；当`arr[mid] >= v`目标值可能出现在左侧或当前位置(`arr[mid] == v`)，所以移动`high`到`mid`(不是`mid - 1`)。重点在`low >= high`说明所有的`v`都已出现(这里就是上面`low < high`不使用等号的原因)，那么`low`必然在最小`v`的位置上。当然这个算法有个问题，不存在时会误报，所以要二次判断。
 
 同理，不难写出寻找最大`i`的二分算法:
-### 实现3
 ```rust
-pub fn realize3<T: Ord>(arr: &[T], v: &T) -> Option<usize> {
+pub fn find_right_boundary<T: Ord>(arr: &[T], v: &T) -> Option<usize> {
     let mut low = 0;
     let mut high = arr.len().checked_sub(1)?;
 
@@ -140,9 +138,8 @@ while j > 0 && arr[j] < arr[j - 1] {
 }
 ```
 这个部分是将需要排序的元素在有序数组中移动找到适合的位置，在有序数组中查找，完全可以利用二分:
-### 实现4
 ```rust
-pub fn realize4<T: Ord>(arr: &mut [T]) {
+pub fn insert_sort_by_binary_search<T: Ord>(arr: &mut [T]) {
     for i in 1..arr.len() {
         // 此处直接使用标准库，下面代码完全可以用`partition_point`进行修改，取决于您
         let pos = arr[..i].binary_search(&arr[i]).unwrap_or_else(|pos| pos);
@@ -165,9 +162,8 @@ pub fn realize4<T: Ord>(arr: &mut [T]) {
 我们将用**增量法**，**分治法**和一**特殊方法**解决此问题。
 
 增量法最简单，我们可以用两层循环:
-### 实现5
 ```rust
-pub fn realize5(arr: &[i32], x: i32) -> Option<(usize, usize)> {
+pub fn incremental(arr: &[i32], x: i32) -> Option<(usize, usize)> {
     for i in 0..arr.len() {
         for j in (i + 1)..arr.len() {
             if arr[i] + arr[j] == x {
@@ -181,9 +177,8 @@ pub fn realize5(arr: &[i32], x: i32) -> Option<(usize, usize)> {
 但复杂度将达到$\Theta(n ^ 2)$。
 
 分治法则不难想到二分查找:
-### 实现6
 ```rust
-pub fn realize6(arr: &[i32], x: i32) -> Option<(usize, usize)> {
+pub fn divide_and_conquer(arr: &[i32], x: i32) -> Option<(usize, usize)> {
     // 先对数组进行排序 (保留原索引)
     let mut sorted: Vec<(usize, &i32)> = arr.iter().enumerate().collect();
     sorted.sort_by(|a, b| a.1.cmp(b.1));
@@ -210,12 +205,11 @@ pub fn realize6(arr: &[i32], x: i32) -> Option<(usize, usize)> {
 该方案虽然使用了排序，但按照归并排序的时间复杂度(标准库的排序实现更为复杂，这里简单的以归并排序为例)，该实现仍然是$\Theta(n \log n)$。
 
 最后一种方法非常特殊，在后面的课程中我们会具体讲到，这里简单介绍一下 **哈希表(Hash Map 或 Hash Table)**: 它的一般做法就是，将一种特定类型的数据通过 **哈希函数(Hash Function)** 转化为唯一不可逆哈希值，将其存放在数组中，利用数组的扁平化性质，哈希表的读取运算是$\Theta(1)$的。(由于这种性质，在特殊情况下我们也完全可以用普通数组来代替哈希表)
-### 实现7
 ```rust
 // 使用标准库实现的哈希表
 use std::collections::HashMap;
 
-pub fn realize7(arr: &[i32], x: i32) -> Option<(usize, usize)> {
+pub fn search_by_hash_map(arr: &[i32], x: i32) -> Option<(usize, usize)> {
     let mut map = HashMap::new();
     
     for (i, &num) in arr.iter().enumerate() {
@@ -238,17 +232,16 @@ pub fn realize7(arr: &[i32], x: i32) -> Option<(usize, usize)> {
 ---
 ## 练习与回答
 1. 我们作以下考虑: 虽然归并排序的最坏情况运行时间为$\Theta(n \log n)$，而插入排序的最坏情况运行时间为$\Theta(n ^ 2)$，但是插入排序中的常量因子可能使得它在$n$较小时，在许多机器上实际运行得更快。因此，在归并排序中当子问题变得足够小时，采用插入排序来使递归的叶**变粗是有意义的**。考虑对归并排序的一种修改，使用插入排序来排序长度为$k$的$n/k$个子表，然后使用标准的合并机制来合并这些子表，这里$k$是一个待定的值。
-### 实现8
 ```rust
-pub fn realize8(arr: &mut [i32], k: usize) {
+pub fn merge_sort_by_insert(arr: &mut [i32], k: usize) {
     let n = arr.len();
     if n <= k {
         insertion_sort(arr);
         return;
     }
     let mid = n / 2;
-    realize8(&mut arr[..mid], k);
-    realize8(&mut arr[mid..], k);
+    merge_sort_by_insert(&mut arr[..mid], k);
+    merge_sort_by_insert(&mut arr[mid..], k);
     merge(arr, mid);
 }
 

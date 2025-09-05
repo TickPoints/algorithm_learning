@@ -99,9 +99,8 @@ graph TD
 基于上面的理论依据，现在我们可以把插入排序表示为如下的一个递归过程。为了排序`A[1..n]`，我们递归地排序`A[1..n-1]`，然后把`A[n]`插入已排序的数组`A[1..n-1]`。为插入排序的这个递归版本的最坏情况时间复杂度写一个递归式。
 
 我们先给出一个Rust实现:
-#### 实现1
 ```rust
-pub fn realize<T: Ord>(arr: &mut [T]) {
+pub fn insert_sort_by_recursion<T: Ord>(arr: &mut [T]) {
     // 基本情况: 数组长度为 0 或 1 时已经有序
     if arr.len() <= 1 {
         return;
@@ -110,7 +109,7 @@ pub fn realize<T: Ord>(arr: &mut [T]) {
     let n = arr.len();
 
     // 递归排序前 n-1 个元素
-    realize(&mut arr[..n - 1]);
+    insert_sort_by_recursion(&mut arr[..n - 1]);
 
     // 将最后一个元素插入到已排序的前 n-1 个元素中
     let mut i = n - 1;
@@ -125,15 +124,15 @@ fn main() {
     let mut arr = [5, 2, 4, 6, 1, 3];
     println!("排序前: {:?}", arr);
 
-    realize(&mut arr);
+    insert_sort_by_recursion(&mut arr);
     println!("排序后: {:?}", arr);
 
     let mut empty_arr: [i32; 0] = [];
-    realize(&mut empty_arr);
+    insert_sort_by_recursion(&mut empty_arr);
     println!("空数组: {:?}", empty_arr);
 
     let mut single_arr = [7];
-    realize(&mut single_arr);
+    insert_sort_by_recursion(&mut single_arr);
     println!("单元素数组: {:?}", single_arr);
 }
 ```
