@@ -90,9 +90,9 @@ fn sum(arr: &[usize]) -> usize {
 
 **循环不变式是算法正确性的重要工具，合理使用它可以提高代码的可读性和可靠性。**
 ## 深化
-我们以[上一期习题](./insert_sort.md#实现5)来尝试给出循环不变式并证明。
+我们以[上一期习题](./insert_sort.md#LINEAR-SEARCH)来尝试给出循环不变式并证明。
 ```rust
-pub fn realize5<T: PartialEq>(arr: &[T], v: T) -> Option<usize> {
+pub fn linear_search<T: PartialEq>(arr: &[T], v: T) -> Option<usize> {
     for i in 0..arr.len() {
         if v == arr[i] {
             return Some(i);
@@ -128,7 +128,7 @@ pub fn realize5<T: PartialEq>(arr: &[T], v: T) -> Option<usize> {
 
 ---
 ## 练习与回答
-1. 考虑为上一期的[主问题实现](./insert_sort.md#实现1)，给出一个循环不变式并证明。
+1. 考虑为上一期的[主问题实现](./insert_sort.md#INSERT-SORT)，给出一个循环不变式并证明。
 ### 设计
 我们需要为 **外层循环** 和 **内层循环** 分别设计循环不变式。
 #### 外层循环的不变式

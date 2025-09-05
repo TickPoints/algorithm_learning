@@ -68,6 +68,7 @@ pub fn insert_sort_of_clone<T: Ord + Clone>(arr: &mut [T]) {
 ---
 ## 练习与回答
 1. 尝试将[INSERT-SORT](#INSERT-SORT)改为降序排列(满足 $a_1' \geq a_2' \geq \dots \geq a_n'$ )。
+
 ```rust
 pub fn insert_sort_in_reverse<T: Ord>(arr: &mut [T]) {
     for i in 0..arr.len() - 1 {
