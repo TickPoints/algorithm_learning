@@ -9,9 +9,9 @@ $n$ 个数的数组 $<a_1, a_2, \dots, a_n>$
 在《算法导论》中，我们先引入了插入排序，这并不特别简单(不如冒泡)但可以让我们进行较高级的初步学习。
 
 来看下面实现:
-### 实现1
+### INSERT-SORT
 ```rust
-pub fn realize<T: Ord>(arr: &mut [T]) {
+pub fn insert_sort<T: Ord>(arr: &mut [T]) {
     for i in 1..arr.len() {
         let mut j = i;
         while j > 0 && arr[j] < arr[j - 1] {
@@ -27,9 +27,8 @@ pub fn realize<T: Ord>(arr: &mut [T]) {
 > **注**: 这里我们采用了泛型，使得任何实现了[`Ord trait`](https://rustwiki.org/zh-CN/std/cmp/trait.Ord.html)的数组(切片)均可进行插入排序。
 
 在《算法导论》中，其实不是通过[`swap`](https://rustwiki.org/zh-CN/std/primitive.slice.html#method.swap)交换，而是将操作值保存，直到最后再进行赋值。代价是需要更多的`trait`，像接下来的实现:
-### 实现2
 ```rust
-pub fn realize2<T: Ord + Copy>(arr: &mut [T]) {
+pub fn insert_sort_of_copy<T: Ord + Copy>(arr: &mut [T]) {
     for i in 1..arr.len() {
         // 保存当前元素的值
         let key = arr[i];
@@ -49,7 +48,7 @@ pub fn realize2<T: Ord + Copy>(arr: &mut [T]) {
 
 同理，也可以使用[`Clone`](https://rustwiki.org/zh-CN/std/clone/trait.Clone.html):
 ```rust
-pub fn realize2_clone<T: Ord + Clone>(arr: &mut [T]) {
+pub fn insert_sort_of_clone<T: Ord + Clone>(arr: &mut [T]) {
     for i in 1..arr.len() {
         // 保存当前元素的值
         let key = arr[i].clone();
@@ -68,11 +67,9 @@ pub fn realize2_clone<T: Ord + Clone>(arr: &mut [T]) {
 
 ---
 ## 练习与回答
-1. 尝试将[实现1](#实现1)改为降序排列(满足 $a_1' \geq a_2' \geq \dots \geq a_n'$ )。
-### 实现3
+1. 尝试将[INSERT-SORT](#INSERT-SORT)改为降序排列(满足 $a_1' \geq a_2' \geq \dots \geq a_n'$ )。
 ```rust
-// 对应练习 1
-pub fn realize3<T: Ord>(arr: &mut [T]) {
+pub fn insert_sort_in_reverse<T: Ord>(arr: &mut [T]) {
     for i in 0..arr.len() - 1 {
         let mut j = i;
         while j > 0 && arr[j] > arr[j - 1] {
@@ -84,11 +81,10 @@ pub fn realize3<T: Ord>(arr: &mut [T]) {
 ```
 > **注**: 可以发现: 在插入排序中，只需修改比较条件即可改变排序方向
 
-所以我们也有[实现4](#实现4)这种设置排序规则的:
-### 实现4
+所以我们也有下面这种设置排序规则的:
 ```rust
 // 实现以`compare`来控制排序规则的插入排序
-pub fn realize4<T, F>(arr: &mut [T], compare: F)
+pub fn insert_sort_by<T, F>(arr: &mut [T], compare: F)
 where
     F: Fn(&T, &T) -> bool,
 {
@@ -109,7 +105,7 @@ struct Person {
     age: u32,
 }
 
-pub fn realize4<T, F>(arr: &mut [T], compare: F)
+pub fn insert_sort_by<T, F>(arr: &mut [T], compare: F)
 where
     F: Fn(&T, &T) -> bool,
 {
@@ -151,9 +147,9 @@ fn main() {
 
 > 观察来看，这道题目适合[`Option`](https://rustwiki.org/zh-CN/std/option/enum.Option.html)可以用`Option::None`来解决`NIL`。
 
-### 实现5
+### LINEAR-SEARCH
 ```rust
-pub fn realize5<T: PartialEq>(arr: &[T], v: T) -> Option<usize> {
+pub fn linear_search<T: PartialEq>(arr: &[T], v: T) -> Option<usize> {
     for i in 0..arr.len() {
         if v == arr[i] {
             return Some(i);
