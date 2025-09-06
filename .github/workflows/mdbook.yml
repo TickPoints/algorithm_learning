@@ -3,6 +3,10 @@ name: Deploy mdBook site to Pages
 on:
   push:
     branches: ["main"]
+    paths:
+      - '**.md'
+      - 'book.toml'
+      - 'src/**'
   workflow_dispatch:
 
 permissions:
