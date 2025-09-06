@@ -7,6 +7,13 @@
 用**Rust**实现[《算法导论》第3版](https://github.com/0voice/expert_readed_books/blob/master/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/%E7%AE%97%E6%B3%95%E5%AF%BC%E8%AE%BA_%E5%8E%9F%E4%B9%A6%E7%AC%AC3%E7%89%88_CHS.pdf)中的所有伪代码，同时对一些例题进行解答。谨(仅)为中文开发者提供。
 ## 阅读
 本书用[**mdBook**](https://rust-lang.github.io/mdBook)，阅读方法可参考 [这里](https://rust-lang.github.io/mdBook/guide/reading.html)。
+
+> 注: 阅读前请确保至少掌握Rust基础语法，可通过[官方书籍](https://doc.rust-lang.org/reference/)来补充了解，部分语法知识会单独介绍，中文版也可参照[中文版官方书籍](https://www.rustwiki.org.cn/zh-CN/reference/)。
+
+> 注: 通常来说，由于《算法导论》对于大部分语言的支持性，基础语法一般可以完成算法导论中的所有内容。但实际使用时我们更推荐用Rust的零成本抽象，所以会补充介绍，必要时还会额外用算法知识解释。
+
+> 注: 另外一部分地方(如标准库函数介绍)也给出[中文版官方文档](https://www.rustwiki.org.cn/zh-CN/std/index.html)的链接。
+
 内容从《算法导论》第一部分第2章(这是正式开始介绍算法的地方)开始提供。
 ## 其它
 ### 开源协议
