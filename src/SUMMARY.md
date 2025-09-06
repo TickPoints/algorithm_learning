@@ -11,6 +11,7 @@
     - [分治法分析](foundation/algorithm/dac_analysis.md)
     - [二分查找](foundation/algorithm/binary_search.md)
     - [思考与提高](foundation/algorithm/improve.md)
+    - [后记](foundation/algorithm/postscript.md)
 
 - [渐近分析](foundation/asymptotics/README.md)
     - [渐近符号](foundation/asymptotics/symbol.md)
