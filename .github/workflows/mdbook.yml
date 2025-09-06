@@ -3,10 +3,6 @@ name: Deploy mdBook site to Pages
 on:
   push:
     branches: ["main"]
-    paths:
-      - '**.md'
-      - 'book.toml'
-      - 'src/**'
   workflow_dispatch:
 
 permissions:
@@ -23,40 +19,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      # 缓存 cargo-binstall 和预编译的二进制文件
-      - name: Cache cargo dependencies
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.cargo/bin/
-            ~/.cargo/registry/
-            ~/.cargo/git/
-          key: ${{ runner.os }}-cargo-bins-${{ hashFiles('**/Cargo.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-cargo-bins-
-
-      # 安装 cargo-binstall
-      - name: Install cargo-binstall
+      - name: Install rustup and cargo-binstall
         run: |
-          if ! command -v cargo-binstall &> /dev/null; then
-            curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
-          fi
-
-      # 使用 cargo-binstall 安装 mdBook 和插件
-      - name: Install mdBook and plugins
-        run: |
-          cargo binstall mdbook --no-confirm
-          cargo binstall mdbook-katex --no-confirm
-          cargo binstall mdbook-mermaid --no-confirm
-
+          curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf -y | sh
+          rustup update
+          curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
+      - name: Install mdbook
+        run: cargo binstall  mdbook --no-confirm
+      - name: Install mdbook-katex plugin
+        run: cargo binstall mdbook-katex --no-confirm
+      - name: Install mdbook-mermaid plugin
+        run: cargo binstall mdbook-mermaid --no-confirm 
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
-
       - name: Build with mdBook
         run: mdbook build
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
