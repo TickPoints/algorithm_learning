@@ -122,8 +122,8 @@ let values = vec![1, 2, 3, 4, 5];
 ```
 另外我们常使用的区间也是基于迭代器的:
 ```rust
-let numbers = 0..;      // 生成一个无线迭代器
-let five_numbers = numbers.take(5);
+let numbers = 0..;                      // 生成一个无限迭代器
+let five_numbers = numbers.take(5);     // 切割为有限
 
 for number in five_numbers {
     println!("{number}");
