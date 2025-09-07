@@ -67,6 +67,8 @@ $$
 但真正重要的是，我们可以在这个过程中融入**迭代法**，从而得到:
 
 ```rust
+use std::ops::{Mul, Add};
+
 /// 使用霍纳规则计算多项式 P(x) = a_n x^n + a_{n-1} x^{n-1} + a_{n-2} x^{n-2} + \dots + a_1 x + a_0
 /// 输入：
 /// - `coeffs`: 多项式系数切片，按 `a_0` 到 `a_n` 顺序排列
@@ -79,20 +81,28 @@ $$
 /// - `T` 必须实现 `Copy` trait(或改用 `clone()`)
 pub fn horner<T>(coeffs: &[T], x: T) -> T
 where
-    T: std::ops::Mul<Output = T> + std::ops::Add<Output = T> + Copy,
+    T: Mul<Output = T> + Add<Output = T> + Copy + Default,
 {
     coeffs.iter().rev().fold(
-        // 初始值：0(如果 coeffs 为空，返回 0)
-        // 注意：这里假设 T 有 `Default` 或 `Zero` trait，但 Rust 标准库没有 `Zero` trait，
-        // 所以更通用的做法是 panic 或返回 Option<T> (此处简化处理)
-        // 实际使用时，建议确保 coeffs 非空，或调整逻辑
-        coeffs.first().copied().unwrap_or_else(|| panic!("empty coefficients")),
-        |acc, &coeff| acc * x + coeff,
+        T::default(),
+        |acc, &coeff| acc * x + coeff
     )
 }
 ```
-> 注: 上面的内容使用文档注释进行了详细介绍，因为霍纳规则的通常不直接使用函数来调用，上面的写法也仅作示例。
-
 > 注: 这种迭代的思想在泰勒展开、密码学，之前提到的牛顿迭代都有广泛的应用。霍纳并非最早提出此方法，类似思想可追溯至中国古代数学家**秦九韶(《数书九章》，高次方程数值解)**，因此在中国也称为 **秦九韶算法**。
 
+该算法用了`fold()`一次，不难看出时间复杂度为$\Theta(n)$，我们写个普通运算:
+```rs
+pub fn polynomial_sum<T>(coeffs: &[T], x: T) -> T
+where
+    T: Mul<Output = T> + Add<Output = T> + Copy + From<u32>,
+{
+    coeffs.iter().enumerate().fold(T::from(0), |acc, (i, &coeff)| {
+        acc + coeff * (0..i).fold(T::from(1), |acc, _| acc * x)
+    })
+}
+```
+该算法用了`fold()`两次(一次用于幂，也可用[快速幂](/appendices/operations/logarithm.md#编程中使用)使总时间复杂度降为$\Theta(n \log n)$)，不难看出时间复杂度为$\Theta(n ^ 2)$。
+
+## 逆序对
 > 该章节仍在编写，在 [Github仓库](https://github.com/TickPoints/algorithm_learning) 上提交PR以为本书 [贡献内容](/pr_guide/pr_standard.md)。
