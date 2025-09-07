@@ -9,8 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     mermaid.initialize({
         theme: isDarkTheme ? 'dark' : 'default',
-        startOnLoad: true,
-        experimental: { xyChart: true }
+        startOnLoad: true
     });
 
     const handleThemeChange = (isLight) => {
