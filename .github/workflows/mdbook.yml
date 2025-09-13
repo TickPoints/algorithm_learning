@@ -4,7 +4,6 @@ on:
   push:
     branches: ["main"]
     paths:
-      - '**.md'
       - 'book.toml'
       - 'src/**'
   workflow_dispatch:
