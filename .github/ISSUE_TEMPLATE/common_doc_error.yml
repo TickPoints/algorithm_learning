@@ -1,0 +1,28 @@
+name: "文档错误报告"
+description: "关于文档的理论性错误，或附加的代码错误进行报告"
+title: "[文档错误]: "
+labels: ["bug", "error", "document"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢您花费时间撰写本报告，我们将尽快解决问题。
+        下面请你耐心填写以下内容。
+  - type: dropdown
+    attributes:
+      label: 错误类型
+      description: "选择你认为的错误类型。"
+      options: ["附加代码错误", "严重理论错误", "一般理论错误(如人名或者因改变而需要更新的内容)", "较弱理论错误(如时间错误)", "不确定/其他"]
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: 错误类型
+      description: "如果在上面您选择了其他错误，请在这里简要介绍错误情况 或者考虑选择其他错误模板。"
+  - type: textarea
+    attributes:
+      label: 具体描述
+      description: "在这里描述具体的错误类型，必要时可引用文献和图片。"
+      placeholder: "描述错误"
+    validations:
+      required: true
