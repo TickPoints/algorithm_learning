@@ -102,7 +102,22 @@ where
     })
 }
 ```
-该算法用了`fold()`两次(一次用于幂，也可用[快速幂](/appendices/operations/logarithm.md#编程中使用)使总时间复杂度降为$\Theta(n \log n)$)，不难看出时间复杂度为$\Theta(n ^ 2)$。
+该算法用了`fold()`两次(一次用于幂，也可用[快速幂](/appendices/operations/logarithm.md#编程中使用)使总时间复杂度降为$\Theta(n \log n)$)，不难看出时间复杂度为$\Theta(n ^ 2)$。可见霍纳规则效率之高。
 
 ## 逆序对
+设$A$为一个有$n$个不相同元素的数组，若$i < j$且$A[i] > A[j]$，则称$(i, j)$为$A$的一个 **逆序对(inversion)**。
+
+我们来考虑$[2, 3, 8, 6, 1]$有多少逆序对，首先想到遍历列表:
+```rust
+let mut a = [2, 3, 8, 6, 1];
+for i in 0..a.len() {
+    for j in (i + 1)..a.len() {
+        if a[i] > a[j] {
+            println!("({i}, {j})");
+        }
+    }
+}
+```
+很显然，时间复杂度为$\Theta(n ^ 2)$。
+
 > 该章节仍在编写，在 [Github仓库](https://github.com/TickPoints/algorithm_learning) 上提交PR以为本书 [贡献内容](/pr_guide/pr_standard.md)。
