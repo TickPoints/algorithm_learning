@@ -1,0 +1,40 @@
+name: "脚本错误"
+description: "关于文档的相关的脚本错误进行报告"
+title: "[文档错误]: "
+labels: ["bug", "invalid"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢您花费时间撰写本报告，我们将尽快解决问题。
+        我们提供了一些脚本，`shell`或是`js`它们有的用于快速构建，有的用于辅助网页运行，如果你觉得他们有错误或需要改良，您可以继续。`css`或依赖项等不在其中，请选择其他。
+        下面请你耐心填写以下内容。
+  - type: dropdown
+    attributes:
+      label: 代码类型
+      description: "选择代码类型"
+      options: ["shell", "javascript", "其他"]
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: 代码类型描述
+      description: "如果你在上面填写了其他的代码类型，请在这里进行简要描述。"
+  - type: dropdown
+    attributes:
+      label: 目的
+      description: "选择目的"
+      options: ["一般优化(优化代码格式效率等)", "功能优化(添加新的功能，删减错误功能)", "其他"]
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: 目的描述
+      description: "如果你在上面填写了其他的目的类型，请在这里进行简要描述。"
+  - type: textarea
+    attributes:
+      label: 具体描述
+      description: "在这里描述具体的错误类型，必要时可引用文献和图片。"
+      placeholder: "描述错误"
+    validations:
+      required: true
