@@ -1,0 +1,28 @@
+name: "修改请求"
+description: "请求对一些不安全的内容进行修改"
+title: "[修改请求]: "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢您花费时间撰写本报告，我们将尽快解决问题。
+        本书对一些特殊内容的修改有所限制，任何没有提前出issue的修改都将被驳回。如果您真的有必要对他们进行修改，请继续。
+        下面请你耐心填写以下内容。
+  - type: dropdown
+    attributes:
+      label: 修改类型
+      options: [".github/*", "additions/*", "图片资源", "src/not-found.md", "README.md", "删除文件", "仓库根目录下的其他内容"]
+      multiple: true
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: 修改类型描述
+      description: "如果在上面您选择了其他修改类型，请在这里简要介绍错误情况。"
+  - type: textarea
+    attributes:
+      label: 具体描述
+      description: "在这里描述具体的修改类型，必要时可引用文献和图片。"
+    validations:
+      required: true
