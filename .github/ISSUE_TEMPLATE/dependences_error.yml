@@ -19,7 +19,7 @@ body:
   - type: input
     attributes:
       label: 错误类型描述
-      description: "如果在上面您选择了其他错误，请在这里简要介绍错误情况 或者考虑选择其他错误模板。"
+      description: "如果在上面您选择了其他错误，请在这里简要介绍错误。"
   - type: textarea
     attributes:
       label: 具体描述
