@@ -7,6 +7,7 @@ body:
     attributes:
       value: |
         感谢您花费时间撰写本报告，我们将尽快解决问题。
+        本书是基于文档的，文档错误是本书的一个重要错误。
         下面请你耐心填写以下内容。
   - type: dropdown
     attributes:
