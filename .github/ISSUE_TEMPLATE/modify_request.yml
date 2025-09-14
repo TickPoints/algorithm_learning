@@ -1,7 +1,7 @@
 name: "修改请求"
 description: "请求对一些不安全的内容进行修改"
 title: "[修改请求]: "
-labels: []
+labels: ["help wanted"]
 body:
   - type: markdown
     attributes:
