@@ -1,6 +1,6 @@
 name: "脚本错误"
 description: "关于文档的相关的脚本错误进行报告"
-title: "[文档错误]: "
+title: "[脚本错误]: "
 labels: ["bug", "invalid"]
 body:
   - type: markdown
