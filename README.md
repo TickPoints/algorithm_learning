@@ -13,12 +13,12 @@
 ## 本地构建
 我们准备了一个`setup.sh`来帮助您快速构建:
 ```bash
-curl -sSL https://raw.githubusercontent.com/TickPoints/algorithm_learning/main/scripts/setup.sh | bash
+curl -sSL https://raw.githubusercontent.com/TickPoints/algorithm_learning/main/setup.sh | bash
 ```
 或者通过
 ```bash
 # 国内加速镜像
-curl -sSL https://ghproxy.com/https://raw.githubusercontent.com/TickPoints/algorithm_learning/main/scripts/setup.sh | bash
+curl -sSL https://ghproxy.com/https://raw.githubusercontent.com/TickPoints/algorithm_learning/main/setup.sh | bash
 ```
 
 如果脚本无法正常运行，也可以按照下面的方式安装:
