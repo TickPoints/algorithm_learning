@@ -102,12 +102,12 @@ where
     })
 }
 ```
-该算法用了`fold()`两次(一次用于幂，也可用[快速幂](/appendices/operations/logarithm.md#编程中使用)使总时间复杂度降为$\Theta(n \log n)$)，不难看出时间复杂度为$\Theta(n ^ 2)$。可见霍纳规则效率之高。
+该算法用了`fold()`两次(一次用于幂，也可用[快速幂](/appendices/operations/logarithm.md#编程中使用)使总时间复杂度降为$\Theta(n \log n)$)，不难看出时间复杂度为$\Theta(n ^ 2)$。对比可见霍纳规则效率之高。
 
 ## 逆序对
 设$A$为一个有$n$个不相同元素的数组，若$i < j$且$A[i] > A[j]$，则称$(i, j)$为$A$的一个 **逆序对(inversion)**。
 
-我们来考虑$[2, 3, 8, 6, 1]$有多少逆序对，首先想到遍历列表:
+我们来考虑$[2, 3, 8, 6, 1]$有哪些逆序对，首先想到遍历列表:
 ```rust
 let mut a = [2, 3, 8, 6, 1];
 for i in 0..a.len() {
@@ -120,4 +120,77 @@ for i in 0..a.len() {
 ```
 很显然，时间复杂度为$\Theta(n ^ 2)$。
 
+对于寻找"哪些逆序对"，该时间复杂度不能再降了。因为最坏情况下有$\Theta(n ^ 2)$[^note1]的逆序对，输出它们并需要$\Theta(n ^ 2)$的时间复杂度。那试考虑 **寻找"有几个逆序对"有无更低时间复杂度的解**:
+
+应该不难注意到分治法常见的时间复杂度——$\Theta(n \log n)$，不妨来试一下:
+
+我们回顾该合并:
+```rs
+// 比较左右子数组的元素，按顺序合并到原数组
+while i < left.len() && j < right.len() {
+    if left[i] <= right[j] {
+        arr[k] = left[i].clone();
+        i += 1;
+    } else {
+        // 注意到，此时 `left[i..]` 均与 `right[j]` 成逆序对
+        // 基于 `left` 和 `right` 均已排序的条件
+        arr[k] = right[j].clone();
+        j += 1;
+    }
+    k += 1;
+}
+```
+那么有:
+```rust
+fn count_inversions(arr: &mut [i32]) -> usize {
+    let n = arr.len();
+    if n <= 1 {
+        return 0;
+    }
+
+    let mid = n / 2;
+    let mut left = arr[..mid].to_vec();
+    let mut right = arr[mid..].to_vec();
+
+    let mut inversions = 0;
+    inversions += count_inversions(&mut left);
+    inversions += count_inversions(&mut right);
+
+    let (mut i, mut j, mut k) = (0, 0, 0);
+    while i < left.len() && j < right.len() {
+        if left[i] <= right[j] {
+            arr[k] = left[i];
+            i += 1;
+        } else {
+            arr[k] = right[j];
+            j += 1;
+            inversions += left.len() - i;
+        }
+        k += 1;
+    }
+
+    while i < left.len() {
+        arr[k] = left[i];
+        i += 1;
+        k += 1;
+    }
+    while j < right.len() {
+        arr[k] = right[j];
+        j += 1;
+        k += 1;
+    }
+
+    inversions
+}
+
+fn main() {
+    let mut a = [2, 3, 8, 6, 1];
+    let inversions = count_inversions(&mut a);
+    println!("Number of inversions: {}", inversions);
+}
+```
+时间复杂度降为 $\Theta(n log n)$。
+
 > 该章节仍在编写，在 [Github仓库](https://github.com/TickPoints/algorithm_learning) 上提交PR以为本书 [贡献内容](/pr_guide/pr_standard.md)。
+
+[^note1]: 这里指 **空间复杂度**，后面的则仍为时间复杂度。空间复杂度会在后面介绍。
