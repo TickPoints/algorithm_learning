@@ -10,7 +10,7 @@
 let nums = vec![1i32, 2, 3];
 let squared: Vec<i32> = nums.iter();
 ```
-由于惰性性质，在不使用任何方法时，迭代器不产生任何效果。
+由于惰性性质，在不使用任何方法时，迭代器不产生任何效果(仅在使用时求值评估)。
 
 接下来介绍相关方法:
 ```rs
@@ -67,7 +67,7 @@ inspect(f: FnMut(&Self::Item)) -> Inspect<Self, FnMut(&Self::Item)>
 使用示例如下:
 ```rust
 // 取前5个元素
-let taken = (1..).take(5);    // 1~5
+let taken = (1..).take(5);    // 1~5 (由于惰性性质，可安全切割)
 
 // 带索引遍历
 for (i, c) in "Rust".chars().enumerate() {

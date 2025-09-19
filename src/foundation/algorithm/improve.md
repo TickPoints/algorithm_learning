@@ -191,6 +191,4 @@ fn main() {
 ```
 时间复杂度降为 $\Theta(n log n)$。
 
-> 该章节仍在编写，在 [Github仓库](https://github.com/TickPoints/algorithm_learning) 上提交PR以为本书 [贡献内容](/pr_guide/pr_standard.md)。
-
 [^note1]: 这里指 **空间复杂度**，后面的则仍为时间复杂度。空间复杂度会在后面介绍。
