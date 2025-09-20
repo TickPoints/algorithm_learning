@@ -22,7 +22,7 @@ install_tools() {
 
     # 安装 mdbook-alerts
     echo "安装 mdbook-alerts..."
-    cargo install mdbook-alerts
+    cargo binstall mdbook-alerts || cargo install mdbook-mermaid
 }
 
 # 克隆或更新仓库
@@ -46,7 +46,7 @@ main() {
     setup_repo
 
     cd algorithm_learning
-    echo "启动文档服务，访问地址：http://localhost:3000"
+    echo "启动文档服务，请访问地址：http://localhost:3000"
     mdbook serve
 }
 
