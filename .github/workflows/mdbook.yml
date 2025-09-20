@@ -32,7 +32,9 @@ jobs:
       - name: Install mdbook-katex plugin
         run: cargo binstall mdbook-katex --no-confirm
       - name: Install mdbook-mermaid plugin
-        run: cargo binstall mdbook-mermaid --no-confirm 
+        run: cargo binstall mdbook-mermaid --no-confirm
+      - name: Install mdbook-alerts plugin
+        run: cargo binstall mdbook-alerts --no-confirm
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5

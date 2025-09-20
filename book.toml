@@ -5,7 +5,7 @@ description = "为中文开发者提供的算法导论 Rust 实现(工作中...)
 language = "zh-CN"
 
 [output.html]
-additional-css = ["./additions/theme/catppuccin.css"]
+additional-css = ["./additions/theme/catppuccin.css", "./additions/theme/catppuccin-alerts.css"]
 preferred-dark-theme = "mocha"
 default-theme = "latte"
 additional-js = ["./additions/mermaid/mermaid.min.js", "./additions/mermaid/mermaid-init.js"]
@@ -21,3 +21,6 @@ after = ["links"]
 [preprocessor.mermaid]
 # 使用mermaid
 command = "mdbook-mermaid"
+
+[preprocessor.alerts]
+# 使用alerts
