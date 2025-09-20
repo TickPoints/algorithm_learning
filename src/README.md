@@ -28,3 +28,5 @@
 采用**Jan-Erik Rediger**提供的[**mdbook-mermaid**](https://github.com/badboy/mdbook-mermaid)插件，许可证是**MPL**。本书以**保留原 MPL 文件的版权声明和许可证文本**进行兼容。
 #### `mdbook-katex`
 采用**Lucas Zanini**提供的[**mdbook-katex**](https://github.com/lzanini/mdbook-katex)插件，许可证同样是**MIT**。
+#### `mdbook-alerts`
+采用**Λlisue**提供的[**mdbook-alerts**](https://github.com/lambdalisue/rs-mdbook-alerts)，许可证同样是**MIT**。
