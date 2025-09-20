@@ -154,5 +154,6 @@ for number in five_numbers {
 ### 渐近符号
 **保罗·巴赫曼(Paul Bachmann)** 在数论著作(1894)中首创大$O$符号。后来由**唐纳德·克努特(Donald Knuth)** 在1976年 **《计算机程序设计艺术》(卷1)** 中推广其用于算法分析，在其同一著作另一卷中使用了$\Theta$定义严格紧确界，同年也定义了下界(他们的严格定义将在下一章介绍)。
 
-> “Floyd的循环不变式和Knuth的$\Theta$记号，将算法分析从经验描述提升为精确科学。”
-—— *《算法设计的艺术》(The Art of Algorithm Design, 2015)*
+> “**Floyd的循环不变式和Knuth的$\Theta$记号，将算法分析从经验描述提升为精确科学。”**
+>
+> —— *《算法设计的艺术》(The Art of Algorithm Design, 2015)*

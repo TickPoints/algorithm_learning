@@ -41,6 +41,7 @@
 临时占位:
 如果文档需要长期编写，可添加如下占位说明:
 ```md
+> [!WARNING]
 > 该章节仍在编写，欢迎在 [GitHub仓库](https://github.com/TickPoints/algorithm_learning) 提交PR贡献内容。
 ```
 

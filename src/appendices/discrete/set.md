@@ -20,6 +20,7 @@
 - $\mathbb{C}$: **复数集**。
 
 ## 集合间关系
+> [!WARNING]
 > 该章节仍在编写，在 [Github仓库](https://github.com/TickPoints/algorithm_learning) 上提交PR以为本书 [贡献内容](/pr_guide/pr_standard.md)。
 
 [^note1]: **多重集(Multiset)** 也称为 **袋(bag)** 是数学中一种广义的集合概念。与普通集合不同，多重集中的元素可以重复出现。
