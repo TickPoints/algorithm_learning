@@ -259,6 +259,66 @@ $$
 
 用`\$`而正常显示\$
 
+### 引用和警告
+我们采用[mdbook-alerts](https://crates.io/crates/mdbook-alerts)来添加[Github Markdown扩展的警告功能](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts)支持。同时利用**mdbook**自带的引用功能。
+
+一般格式类似于:
+```md
+> 引用信息
+```
+引用文本推荐:
+```md
+> **“需要引用的信息”**
+>
+> —— *来源说明*
+```
+基于引用行还支持警告功能:
+```md
+请注意，由于mdbook-alerts的BUG，下面内容可能会被转译为html，html的形式在本书中不应该出现，如果需要继续阅读这个代码块可以进入编辑页面查看原始代码。
+
+> [!NOTE]
+> 注意信息(常用)。
+
+> [!TIP]
+> 提示信息，尽量简短，任何超过20个字的提示信息都应该使用注意信息(一般)。
+
+> [!IMPORTANT]
+> 重要信息，非常重要的信息，但又尽量简短。较长的重要信息可以直接在段落中显现(极少用)。
+
+> [!WARNING]
+> 警告信息，来自于本书自身的问题，不应该与知识类内容相混淆。任何来自本书自身的问题且需要警告的信息都必须要使用这个(常用)。
+
+> [!CAUTION]
+> 谨慎使用信息。在本书中一般不允许使用。
+```
+#### 渲染
+一般格式类似于:
+
+> 引用信息
+
+引用文本推荐:
+
+> **“需要引用的信息”**
+>
+> —— *来源说明*
+
+基于引用行还支持警告功能:
+
+> [!NOTE]
+> 注意信息(常用)。
+
+> [!TIP]
+> 提示信息，尽量简短，任何超过20个字的提示信息都应该使用注意信息(一般)。
+
+> [!IMPORTANT]
+> 重要信息，非常重要的信息，但又尽量简短。较长的重要信息可以直接在段落中显现(极少用)。
+
+> [!WARNING]
+> 警告信息，来自于本书自身的问题，不应该与知识类内容相混淆。任何来自本书自身的问题且需要警告的信息都必须要使用这个(常用)。
+
+> [!CAUTION]
+> 谨慎使用信息。在本书中一般不允许使用。
+
 ### mermaid
 我们采用[mdbook-mermaid](https://crates.io/crates/mdbook-mermaid)来添加添加[mermaid.js](https://mermaid.js.org/#/)支持。使用Mermaid来渲染好的图表，帮助理解。
 
