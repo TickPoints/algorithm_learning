@@ -52,4 +52,5 @@ sorting_algorithm_visualization.png
 2. 尽量避免提交图片到仓库
 3. 侵权内容将立即删除
 
+> [!TIP]
 > 如有疑问，请通过issue或讨论区提出

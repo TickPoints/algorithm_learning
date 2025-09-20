@@ -24,7 +24,8 @@ pub fn insert_sort<T: Ord>(arr: &mut [T]) {
 可以发现: 插入排序的核心逻辑是通过逐步比较和移动元素来维护一个有序的子序列。具体地:
 - 有序部分逐步扩张：将数组分为已排序部分(初始仅含第一个元素)和未排序部分，每次从未排序部分取出第一个元素，将其插入到已排序部分的正确位置，直到所有元素有序。
 - 原地插入：插入操作通过依次向后移动元素实现，无需额外空间。
-> **注**: 这里我们采用了泛型，使得任何实现了[`Ord trait`](https://rustwiki.org/zh-CN/std/cmp/trait.Ord.html)的数组(切片)均可进行插入排序。
+> [!NOTE]
+> 这里我们采用了泛型，使得任何实现了[`Ord trait`](https://rustwiki.org/zh-CN/std/cmp/trait.Ord.html)的数组(切片)均可进行插入排序。
 
 在《算法导论》中，其实不是通过[`swap`](https://rustwiki.org/zh-CN/std/primitive.slice.html#method.swap)交换，而是将操作值保存，直到最后再进行赋值。代价是需要更多的`trait`，像接下来的实现:
 ```rust
@@ -44,7 +45,8 @@ pub fn insert_sort_of_copy<T: Ord + Copy>(arr: &mut [T]) {
     }
 }
 ```
-> **注**: 需要[`Copy`](https://rustwiki.org/zh-CN/std/marker/trait.Copy.html)
+> [!NOTE]
+> 需要[`Copy`](https://rustwiki.org/zh-CN/std/marker/trait.Copy.html)
 
 同理，也可以使用[`Clone`](https://rustwiki.org/zh-CN/std/clone/trait.Clone.html):
 ```rust
@@ -80,7 +82,8 @@ pub fn insert_sort_in_reverse<T: Ord>(arr: &mut [T]) {
     }
 }
 ```
-> **注**: 可以发现: 在插入排序中，只需修改比较条件即可改变排序方向
+> [!NOTE]
+> 可以发现: 在插入排序中，只需修改比较条件即可改变排序方向
 
 所以我们也有下面这种设置排序规则的:
 ```rust

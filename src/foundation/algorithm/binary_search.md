@@ -28,7 +28,8 @@ pub fn binary_search<T: Ord>(arr: &[T], v: &T) -> Option<usize> {
     None
 }
 ```
-> **注**: 在这里[`checked_sub`](https://rustwiki.org/zh-CN/std/primitive.isize.html#method.checked_sub)用于检查整数减法，计算 `self - rhs`，如果发生溢出则返回 `None`。并使用[`Ordering`](https://rustwiki.org/zh-CN/std/cmp/enum.Ordering.html)方便用`match`进行匹配。
+> [!NOTE]
+> 在这里[`checked_sub`](https://rustwiki.org/zh-CN/std/primitive.isize.html#method.checked_sub)用于检查整数减法，计算 `self - rhs`，如果发生溢出则返回 `None`。并使用[`Ordering`](https://rustwiki.org/zh-CN/std/cmp/enum.Ordering.html)方便用`match`进行匹配。
 
 首先，我们要确定区间`[low, high]`，`low`为数组首索引(在Rust中为`0`)，`high`为数组尾索引(在Rust中为`arr.len() - 1`)。
 
@@ -109,14 +110,16 @@ assert_eq!(v.binary_search(&4), Err(2));    // 插入后为 [1, 3, 4, 5, 7, 9]
 ```
 上面这个例子中[`binary_search`](https://www.rustwiki.org.cn/zh-CN/std/primitive.slice.html#method.binary_search)返回`Result<usize, usize>`，`Ok(index)` 中 `index` 为元素所在位置，`Err(index)` 中则为未找到元素时，如果将元素插入到数组，保持有序的位置。[`binary_search_by`](https://www.rustwiki.org.cn/zh-CN/std/primitive.slice.html#method.binary_search_by)允许通过函数来设置查找规则，[`binary_search_by_key`](https://www.rustwiki.org.cn/zh-CN/std/primitive.slice.html#method.binary_search_by_key)允许通过键(如结构体字段)查找。
 
-> **注**: 上面的这些方法和实现都要确保数组已经排序，否则返回的结果无意义。[`binary_search_by`](https://www.rustwiki.org.cn/zh-CN/std/primitive.slice.html#method.binary_search_by)之类的，通常来说与上面的手写性能相差不大，但更具有扩展性。
+> [!NOTE]
+> 上面的这些方法和实现都要确保数组已经排序，否则返回的结果无意义。[`binary_search_by`](https://www.rustwiki.org.cn/zh-CN/std/primitive.slice.html#method.binary_search_by)之类的，通常来说与上面的手写性能相差不大，但更具有扩展性。
 
 在较新的版本(`Rust 1.52+`)中，[`partition_point`](https://www.rustwiki.org.cn/zh-CN/std/primitive.slice.html#method.partition_point) 可以用来返回满足条件的第一个元素的位置:
 ```rust
 let v = vec![1, 2, 2, 3, 3, 4, 5];
 println!("{}", v.partition_point(|&x| x < 4));  // 第一个不小于4的元素位置
 ```
-> **注**: 该函数底层是`self.binary_search_by(|x| if pred(x) { Less } else { Greater }).unwrap_or_else(|i| i)`这种写法使得`binary_search`永远找不到等于的位置，所以就会返回插入之后仍然有序的位置，也就是第一个不满足`pred`函数的位置。(其中`pred`是调用者的输入)
+> [!NOTE]
+> 该函数底层是`self.binary_search_by(|x| if pred(x) { Less } else { Greater }).unwrap_or_else(|i| i)`这种写法使得`binary_search`永远找不到等于的位置，所以就会返回插入之后仍然有序的位置，也就是第一个不满足`pred`函数的位置。(其中`pred`是调用者的输入)
 
 我们重新来看[插入排序](./insert_sort.md):
 ```rs
@@ -157,7 +160,8 @@ pub fn insert_sort_by_binary_search<T: Ord>(arr: &mut [T]) {
 
 **输出**: 下标 $i_1$和$i_2$ 使得 $A[i_1] + A[i_2] = x$，或者当数组中无两数之和为 $x$ 时，返回特殊值$NIL$
 
-**注**: 保证有且仅有一个满足条件的解
+> [!TIP]
+> 保证有且仅有一个满足条件的解
 
 我们将用**增量法**，**分治法**和一**特殊方法**解决此问题。
 
