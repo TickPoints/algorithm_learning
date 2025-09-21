@@ -1,0 +1,48 @@
+name: Release Build
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Install rustup and cargo-binstall
+      run: |
+        curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf -y | sh
+        source $HOME/.cargo/env
+        rustup update
+        curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
+
+    - name: Install mdBook
+      run: cargo binstall mdbook --no-confirm
+
+    - name: Build Documentation
+      run: mdbook build --dest-dir book_build
+
+    - name: Install Compression Tools
+      run: sudo apt-get update && sudo apt-get install -y zip rar
+
+    - name: Package Documentation
+      run: |
+        mkdir artifacts
+        cd book_build/book
+        zip -r ../../artifacts/book.zip .
+        rar a -r ../../artifacts/book.rar .
+
+    - name: Upload Release
+      id: upload-release
+      uses: softprops/action-gh-release@v1
+      with:
+        # 如果标签包含-stable则为正式版，否则为预览版
+        prerelease: ${{ !contains(github.ref, '-stable') }}
+        files: |
+          artifacts/book.zip
+          artifacts/book.rar
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
