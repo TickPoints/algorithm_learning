@@ -28,7 +28,7 @@ jobs:
           rustup update
           curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
       - name: Install mdbook
-        run: cargo binstall  mdbook --no-confirm
+        run: cargo binstall mdbook --no-confirm
       - name: Install mdbook-katex plugin
         run: cargo binstall mdbook-katex --no-confirm
       - name: Install mdbook-mermaid plugin
