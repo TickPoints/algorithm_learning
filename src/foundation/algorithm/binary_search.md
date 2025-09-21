@@ -290,8 +290,6 @@ fn merge(arr: &mut [i32], mid: usize) {
 
 在实际使用中，$k$不能随着的$n$增长增长过快，所以通常使用常数或对数级，一般选用20至100的常数，或者利用$k = \log n$的对数情况动态调整。更现实化的时候，可以通过cpu缓存规则或者混合策略(分段使用常数和对数)来解决。
 
-> 该章节仍在编写，在 [Github仓库](https://github.com/TickPoints/algorithm_learning) 上提交PR以为本书 [贡献内容](/pr_guide/pr_standard.md)。
-
 [^note1]: 二分查找是通过缩小搜索区间来工作，而不是逐步构建解，因此不属于增量方法。它属于分治法的一种特例，我们称作 **减治法(decrease and conquer)**。
 
 [^note2]: **Timsort** 是一种高效的混合排序算法，由 **提姆·彼得斯(Tim Peters)** 在 2002 年为 Python 语言设计(Python 2.3 及后续版本的默认排序算法)。其针对现实世界中的部分有序数据进行了优化，具有稳定性和适应性。
