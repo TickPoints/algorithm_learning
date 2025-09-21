@@ -3,7 +3,8 @@ name: Release Build
 on:
   push:
     tags:
-      - 'v*'  # 匹配以v开头的标签
+      - 'v*'
+  workflow_dispatch:
 
 jobs:
   build-release:
