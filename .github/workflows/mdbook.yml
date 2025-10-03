@@ -35,6 +35,8 @@ jobs:
         run: cargo binstall mdbook-mermaid --no-confirm
       - name: Install mdbook-alerts plugin
         run: cargo binstall mdbook-alerts --no-confirm
+      - name: Install mdbook-betterlink plugin
+        run: cargo binstall mdbook-betterlink --no-confirm
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
