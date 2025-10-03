@@ -30,3 +30,5 @@
 采用**Lucas Zanini**提供的[**mdbook-katex**](https://github.com/lzanini/mdbook-katex)插件，许可证同样是**MIT**。
 #### `mdbook-alerts`
 采用**Λlisue**提供的[**mdbook-alerts**](https://github.com/lambdalisue/rs-mdbook-alerts)，许可证同样是**MIT**。
+#### `mdbook-betterlink`
+采用**TickPoints**提供的[**mdbook-betterlink**](https://github.com/TickPoints/mdbook-betterlink)，许可证同样是**MIT**。
