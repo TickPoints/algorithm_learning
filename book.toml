@@ -24,3 +24,6 @@ command = "mdbook-mermaid"
 
 [preprocessor.alerts]
 # 使用alerts
+
+[preprocessor.betterlink]
+# 使用betterlink
