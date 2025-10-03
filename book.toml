@@ -27,3 +27,4 @@ command = "mdbook-mermaid"
 
 [preprocessor.betterlink]
 # 使用betterlink
+display_processed_contexts = false
