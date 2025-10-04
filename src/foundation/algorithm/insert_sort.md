@@ -6,7 +6,7 @@ $n$ 个数的数组 $[a_1, a_2, \dots, a_n]$
 ### 输出
 输入数组的升序排列 $[a_1', a_2', \dots, a_n']$，满足 $a_1' \leq a_2' \leq \dots \leq a_n'$
 ## 主问题思考
-在《算法导论》中，我们先引入了插入排序，这并不特别简单(不如冒泡)但可以让我们进行较高级的初步学习。
+这个主问题是我们本章将要讨论的基点。是一个非常经典的排序问题。在这里我们引入一个相对简单的排序: **插入排序(Insert Sort)**。
 
 来看下面实现:
 ### INSERT-SORT
@@ -21,13 +21,13 @@ pub fn insert_sort<T: Ord>(arr: &mut [T]) {
     }
 }
 ```
-可以发现: 插入排序的核心逻辑是通过逐步比较和移动元素来维护一个有序的子序列。具体地:
+可以发现: **插入排序的核心逻辑是通过逐步比较和移动元素来维护一个有序的子序列**。具体地:
 - 有序部分逐步扩张：将数组分为已排序部分(初始仅含第一个元素)和未排序部分，每次从未排序部分取出第一个元素，将其插入到已排序部分的正确位置，直到所有元素有序。
 - 原地插入：插入操作通过依次向后移动元素实现，无需额外空间。
 > [!NOTE]
 > 这里我们采用了泛型，使得任何实现了[`Ord trait`](https://rustwiki.org/zh-CN/std/cmp/trait.Ord.html)的数组(切片)均可进行插入排序。
 
-在《算法导论》中，其实不是通过[`swap`](https://rustwiki.org/zh-CN/std/primitive.slice.html#method.swap)交换，而是将操作值保存，直到最后再进行赋值。代价是需要更多的`trait`，像接下来的实现:
+另一种方法不通过[`swap`](https://rustwiki.org/zh-CN/std/primitive.slice.html#method.swap)交换，而是将操作值保存，直到最后再进行赋值，像接下来的实现:
 ```rust
 pub fn insert_sort_of_copy<T: Ord + Copy>(arr: &mut [T]) {
     for i in 1..arr.len() {
