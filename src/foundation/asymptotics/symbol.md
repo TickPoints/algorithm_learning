@@ -56,16 +56,41 @@ $$
 上面的仅作为例子，对于任意二次函数的证明可以参考[练习与回答](#练习与回答)。
 
 照这样，我们也可以把其他的记号都定义出来:
-
 ## $O$ 记号
-$O$ 记号在历史上出现的最早，也最为常用(因为不需要像$\Theta$同时保证一个下界，因此更方便无需更复杂的数学证明)。
+$O$ 记号在历史上出现的最早，也最为常用(因为不需要像$\Theta$同时保证一个下界，因此无需更复杂的数学证明)。
 $$
 O(g(n)) = \{ f(x) | \exists c > 0, \exists n_0 \in \mathbb{N}, \forall n \geq n_0, \, |f(n)| \leq c \cdot |g(n)| \}
 $$
 
 在定义下一个记号之前让我们先缓一下，在[二分查找](/foundation/algorithm/binary_search.md)一节中我们提到了下面这个问题:
 
-在上述算法中，插入排序可以在$\Theta(n k)$时间内排序每个长度为$k$的$n / k$个子表(每个子表排序的时间复杂度为$\Theta(k ^ 2)$，故$T(n) = \Theta(k ^ 2) \cdot (n / k) = \Theta(n k)$)。同样不难看出，合并子表的时间复杂度是$\Theta(n \log (n / k))$，综上就有该算法最坏情况下的时间复杂度为$\Theta(n k + n \log (n / k))$。为了确保任何$k$的取值不能使修改后算法时间复杂度高于原算法，$k = O(\log n)$。
+> 在上述算法中，插入排序可以在$\Theta(n k)$时间内排序每个长度为$k$的$n / k$个子表(每个子表排序的时间复杂度为$\Theta(k ^ 2)$，故$T(n) = \Theta(k ^ 2) \cdot (n / k) = \Theta(n k)$)。同样不难看出，合并子表的时间复杂度是$\Theta(n \log (n / k))$，综上就有该算法最坏情况下的时间复杂度为$\Theta(n k + n \log (n / k))$。为了确保任何$k$的取值不能使修改后算法时间复杂度高于原算法，$k = O(\log n)$。
+
+让我们来尝试证明它: 这里的核心部分是: 对于$\Theta(n k + n \log (n / k))$，若$\Theta(n k + n \log (n / k)) \leq \Theta(n \log n)$[^note1]，试求$k$的取值。
+
+首先观察$\leq \Theta(n \log n)$，说明$n k + n \log (n / k)$的渐进增长率[^note2]不超过$n \log n$，应用我们刚刚所学的$O$符号就可以把不等式转换成:
+$$
+n k + n \log (n / k) = O(n \log n)
+$$
+
+我们需要展示存在常数$c > 0$和$n_0$，使得对于所有 $n \geq n_0$，有：
+$$
+n k + n \log \left( \frac{n}{k} \right) \leq c \cdot n \log n
+$$
+
+两边同时除以$n$(假设 $n > 0$):
+$$
+k + \log \left( \frac{n}{k} \right) \leq c \log n
+$$
+
+展开 $\log \left( \frac{n}{k} \right) = \log n - \log k$并变形得:
+$$
+k - \log k \leq (c - 1) \log n
+$$
+
+为了对于所有的$n$，上面表达式都成立，我们需要考虑两种情况:
+1. $k$为常数
+
 
 > [!WARNING]
 > 该章节仍在编写，欢迎在 [GitHub仓库](https://github.com/TickPoints/algorithm_learning) 提交PR贡献内容。
@@ -74,3 +99,7 @@ $$
 ## 练习与回答
 > [!WARNING]
 > 该章节仍在编写，欢迎在 [GitHub仓库](https://github.com/TickPoints/algorithm_learning) 提交PR贡献内容。
+
+[^note1]: 与等号的非形式化运用相似，这里是对于渐近符号的不等式非形式化运用。此处严格可表示为: $\Theta(n k + n \log (n / k)) \subseteq \Theta(n \log n)$
+
+[^note2]: **渐进增长率(Asymptotic Growth Rate)** 是计算机科学和数学中用于描述函数在输入规模$n$趋近于无穷大时的增长趋势的一种工具。可以简单理解为渐进增长率就是一个函数渐近分析后的结果。
