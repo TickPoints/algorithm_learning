@@ -14,7 +14,7 @@
     - [后记](foundation/algorithm/postscript.md)
 
 - [渐近分析](foundation/asymptotics/README.md)
-    - [渐近符号](foundation/asymptotics/symbol.md)
+    - [渐近符号](foundation/asymptotics/asymptotic_symbol.md)
 
 # 附录: 数学知识
 - [连续数学中的运算工具](appendices/operations/README.md)
