@@ -5,3 +5,4 @@
 > 本章原名: **函数的增长**。
 
 - [渐近符号](./asymptotic_symbol.md)
+- [非紧渐近符号](./noncompact_symbol.md)
