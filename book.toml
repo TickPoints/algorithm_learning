@@ -8,7 +8,10 @@ language = "zh-CN"
 additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-alerts.css"]
 preferred-dark-theme = "mocha"
 default-theme = "latte"
-additional-js = ["./theme/scripts/mermaid.min.js", "./theme/scripts/mermaid-init.js"]
+additional-js = [
+  "./theme/scripts/mermaid.min.js",
+  "./theme/scripts/mermaid-init.js",
+]
 edit-url-template = "https://github.com/tickpoints/algorithm_learning/edit/main/{path}"
 git-repository-url = "https://github.com/tickpoints/algorithm_learning"
 git-repository-icon = "fa-github"
