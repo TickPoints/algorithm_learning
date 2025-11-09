@@ -31,3 +31,9 @@
     - [文档语法](pr_guide/document_syntax.md)
     - [PR规范](pr_guide/pr_standard.md)
     - [导论匹配](pr_guide/introductory_match.md)
+
+# 附录: 开源协议
+- [本书](licenses/this.md)
+- [其他MIT开源内容相关协议](licenses/mit.md)
+- [其他MPL开源内容相关协议](licenses/mpl2.md)
+- [其他OFL开源字体相关协议](licenses/ofl.md)
