@@ -32,3 +32,5 @@
 采用**Λlisue**提供的[**mdbook-alerts**](https://github.com/lambdalisue/rs-mdbook-alerts)，许可证同样是**MIT**。
 #### `mdbook-betterlink`
 采用**TickPoints**提供的[**mdbook-betterlink**](https://github.com/TickPoints/mdbook-betterlink)，许可证同样是**MIT**。
+### 参考书
+本书参考《算法导论》编写。
