@@ -77,13 +77,20 @@ pub fn insert_sort<T: Ord>(arr: &mut [T]) {
 ```
 每一步操作的实际消耗是代价乘上对应的次数，我们用 $T$ 代表一个算法(或操作)的运行时间，同时对这种形式我们加之 `n` 等参数使表示更为精准($t_i$对于输入情况的解释非常复杂)，那么有:
 $$
-T(n) = c_1 (n - 1)  + c_2 (n - 1) + c_3 (\sum_{i=1}^{n-1} t_i) + c_4 (\sum_{i=1}^{n-1} (t_i - 1)) + c_5 (\sum_{i=1}^{n-1} (t_i - 1))
+\begin{aligned}
+T(n) &= c_1 (n - 1) + c_2 (n - 1) + c_3 \left( \sum_{i=1}^{n-1} t_i \right) \\
+     &\quad + c_4 \left( \sum_{i=1}^{n-1} (t_i - 1) \right) + c_5 \left( \sum_{i=1}^{n-1} (t_i - 1) \right)
+\end{aligned}
 $$
+
 接着我们代入`t_i`最值，于是有:
 
 **最优情况**:
 $$
-T(n) = c_1 (n - 1)  + c_2 (n - 1) + c_3 (n - 1) = (c_1 + c_2 + c_3) n + (c_1 + c_2 + c_3)
+\begin{aligned}
+T(n) &= c_1 (n - 1)  + c_2 (n - 1) + c_3 (n - 1) \\
+     &= (c_1 + c_2 + c_3) n + (c_1 + c_2 + c_3)
+\end{aligned}
 $$
 观察后可以发现，$c_i$属于基本操作，所以 $(c_1 + c_2 + c_3)$ 是常数，不难得 $T(n)$ 是关于 $n$ 的**线性函数**[^note1]。
 
@@ -99,7 +106,10 @@ $$
 $$
 同样我们代入变形:
 $$
-T(n) = \frac{c_3 + c_4 + c_5}{2}n^2 + \left(c_1 + c_2 + \frac{c_3 - c_4 - c_5}{2}\right)n - \left(c_1 + c_2 + c_3 - \frac{c_4 + c_5}{2}\right)
+\begin{aligned}
+T(n) &= \frac{c_3 + c_4 + c_5}{2}n^2 + \left(c_1 + c_2 + \frac{c_3 - c_4 - c_5}{2}\right)n  \\
+     &\quad - \left(c_1 + c_2 + c_3 - \frac{c_4 + c_5}{2}\right)
+\end{aligned}
 $$
 很显然，这是一个**二次函数**。
 
@@ -173,9 +183,14 @@ $$
 
 **比较次数的期望值**:
 $$
-E = \sum_{k=1}^{n} \left( \text{第 } k \text{ 次找到的概率} \times k \right) = \sum_{k=1}^{n} \left( \frac{1}{n} \times k \right) = \frac{1}{n} \cdot \frac{n(n+1)}{2} = \frac{n+1}{2}
+\begin{aligned}
+E &= \sum_{k=1}^{n} \left( \text{第 } k \text{ 次找到的概率} \times k \right)  \\
+  &= \sum_{k=1}^{n} \left( \frac{1}{n} \times k \right) = \frac{1}{n} \cdot \frac{n(n+1)}{2} = \frac{n+1}{2}
+\end{aligned}
 $$
+
 则
+
 $$
 T_{\text{avg}}(n) = \Theta(n)
 $$

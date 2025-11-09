@@ -15,7 +15,10 @@ $T(n)$本身就是一个函数，当$n \to \infty$时，可能会无限接近另
 
 ## $\Theta$ 记号
 $$
-\Theta(g(n)) = \{ f(n) | \exists c_1, c_2 > 0, n_0 > 0 : \forall n \geq n_0, 0 \leq c_1 g(n) \leq f(n) \leq c_2 g(n) \}
+\begin{aligned}
+&\Theta(g(n)) = \\
+&\{ f(n) | \exists c_1, c_2 > 0, n_0 > 0 : \forall n \geq n_0, 0 \leq c_1 g(n) \leq f(n) \leq c_2 g(n) \}
+\end{aligned}
 $$
 $\Theta$ 是本书中常用的渐近符号，我们来分析一下这个定义:
 - $f(x)$ 是这个记号所代表集合的成员，例如我们之前用的$T(n)$。
@@ -124,7 +127,11 @@ $$
 
 上面这三个渐近符号都有一个特点: **紧**，这里的上下界都是可达到的，下一节中的内容则允许不达到。另外我们还有另外一种定义方法，通过函数来反向定义，如:
 $$
-f(n) = \Theta(g(n)) \iff \exists c_1 > 0, \exists c_2 > 0, \exists n_0 \in \mathbb{N}, \forall n \geq n_0, \, c_1 \cdot |g(n)| \leq |f(n)| \leq c_2 \cdot |g(n)|
+\begin{aligned}
+&f(n) = \Theta(g(n))     \\
+&\iff \exists c_1 > 0, c_2 > 0, n_0 \in \mathbb{N}, \\
+&\forall n \geq n_0, \, c_1 \cdot |g(n)| \leq |f(n)| \leq c_2 \cdot |g(n)|
+\end{aligned}
 $$
 这对于其他几种渐近符号也是通用的。
 
