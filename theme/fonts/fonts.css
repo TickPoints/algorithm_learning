@@ -1,0 +1,33 @@
+/* 引入 Monaspace Font */
+@font-face {
+  font-family: 'Monaspace Neon';
+  src: url('./MonaspaceArgonVar.woff2') format('truetype-variations');
+  font-weight: 100 900;
+  font-stretch: 75% 100%;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  font-family: 'Monaspace Neon', monospace;
+}
+
+
+code, kbd, pre, samp {
+  font-family: 'Monaspace Neon', monospace;
+  font-variation-settings: 'wdth' 75, 'wght' 600;
+}
+
+.boring {
+  font-family: 'Monaspace Neon', monospace;
+  font-variation-settings: 'wdth' 75, 'wght' 500;
+}
+
+.boring strong,
+.boring em,
+.boring b,
+.boring i {
+  font-family: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+}
