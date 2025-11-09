@@ -131,11 +131,11 @@ fn main() {
     ];
     
     // 按年龄升序排序
-    realize4(&mut people, |a, b| a.age < b.age);
+    insert_sort_by(&mut people, |a, b| a.age < b.age);
     println!("按年龄排序: {:?}", people);
     
     // 按名字字典序排序
-    realize4(&mut people, |a, b| a.name < b.name);
+    insert_sort_by(&mut people, |a, b| a.name < b.name);
     println!("按名字排序: {:?}", people);
 }
 ```
