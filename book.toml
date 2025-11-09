@@ -20,7 +20,6 @@ input-404 = "not-found.md"
 [preprocessor.katex]
 # 使用katex
 after = ["links"]
-fleqn = true
 
 [preprocessor.mermaid]
 # 使用mermaid
