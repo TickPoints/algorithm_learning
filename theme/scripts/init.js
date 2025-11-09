@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // 控制mermaid
     // 兼容 catppuccin
     const darkThemes = ['ayu', 'navy', 'coal', 'frappe', 'mocha', 'macchiato'];
     const lightThemes = ['light', 'rust', 'latte'];
