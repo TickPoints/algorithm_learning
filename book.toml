@@ -10,7 +10,7 @@ preferred-dark-theme = "mocha"
 default-theme = "latte"
 additional-js = [
   "./theme/scripts/mermaid.min.js",
-  "./theme/scripts/mermaid-init.js",
+  "./theme/scripts/init.js",
 ]
 edit-url-template = "https://github.com/tickpoints/algorithm_learning/edit/main/{path}"
 git-repository-url = "https://github.com/tickpoints/algorithm_learning"
@@ -20,6 +20,7 @@ input-404 = "not-found.md"
 [preprocessor.katex]
 # 使用katex
 after = ["links"]
+fleqn = true
 
 [preprocessor.mermaid]
 # 使用mermaid
