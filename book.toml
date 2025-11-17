@@ -31,4 +31,4 @@ command = "mdbook-mermaid"
 [preprocessor.betterlink]
 # 使用betterlink
 display_processed_contents = false
-use_old_tag_adder = true
+use_old_tag_adder = false
