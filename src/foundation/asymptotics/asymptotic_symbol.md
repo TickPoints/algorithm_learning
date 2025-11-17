@@ -78,7 +78,7 @@ $$
 n k + n \log (n / k) = O(n \log n)
 $$
 
-我们需要展示存在常数 $c > 0$ 和 $n_0$ ，使得对于所有 $n \geq n_0$，有：
+我们需要展示存在常数 $c > 0$ 和 $n_0$ ，使得对于所有 $n \geq n_0$，有:
 $$
 n k + n \log \left( \frac{n}{k} \right) \leq c \cdot n \log n
 $$
@@ -145,13 +145,13 @@ c_1 n^2 \leq 3n^2 + 2n + 5 \leq c_2 n^2
 $$
 
 当 $n \geq 1$ 时，$2n \leq 2n^2$ 和 $5 \leq 5n^2$
-因此：
+因此:
 $$
 f(n) = 3n^2 + 2n + 5 \leq 3n^2 + 2n^2 + 5n^2 = 10n^2
 $$
 取 $c_2 = 10$，当 $n \geq 1$ 时，上界成立。
 
-当 $n \geq 1$ 时，$2n$ 和 $5$ 均为非负数，因此：
+当 $n \geq 1$ 时，$2n$ 和 $5$ 均为非负数，因此:
 $$
 f(n) = 3n^2 + 2n + 5 \geq 3n^2
 $$
@@ -165,6 +165,43 @@ $$
 
 由题意，易知上述两者均有$f(n) = \Theta(g(n))$。详细证明略。
 
+3. 严格证明任意二次函数$f(x) = \Theta(n ^ 2)$。
+### 对任意二次函数的证明
+对于任意二次函数$f(x) = ax ^ 2 + bx + c$:
+
+需找到常数 $c_1, c_2 > 0$ 和 $n_0 \geq 1$，使得对所有 $n \geq n_0$，有:
+$$
+c_1 n^2 \leq an^2 + bn + c \leq c_2 n^2
+$$
+
+当 $n$ 充分大时，线性项 $bn$ 和常数项 $c$ 可以被 $n^2$ 放大:
+$$
+bn \leq |b|n \leq |b|n^2 \quad (\text{当 } n \geq 1)
+$$
+$$
+c \leq |c| \leq |c|n^2 \quad (\text{当 } n \geq 1)
+$$
+因此:
+$$
+f(n) = an^2 + bn + c \leq an^2 + |b|n^2 + |c|n^2 = \left(a + |b| + |c| \right) n^2
+$$
+取 $c_2 = a + |b| + |c|$，则对所有 $n \geq 1$，上界成立。
+
+若 $a > 0$，当 $n$ 充分大时，二次项 $an^2$ 将主导其他项。选择 $n_0$ 使得:
+$$
+|bn| \leq \frac{a}{2} n^2 \quad \text{且} \quad |c| \leq \frac{a}{2} n^2
+$$
+这等价于:
+$$
+n \geq \max\left( \frac{2|b|}{a}, \sqrt{\frac{2|c|}{a}} \right)
+$$
+取 $n_0 = \max\left( 1, \frac{2|b|}{a}, \sqrt{\frac{2|c|}{a}} \right)$，则对所有 $n \geq n_0$:
+$$
+f(n) = an^2 + bn + c \geq an^2 - |bn| - |c| \geq an^2 - \frac{a}{2}n^2 - \frac{a}{2}n^2 = \frac{a}{2}n^2
+$$
+取 $c_1 = \frac{a}{2}$，则下界成立。
+
+**在 $a \neq 0$ 的情况下，上述分析对任意二次函数均成立。**
 
 [^note1]: 与等号的非形式化运用相似，这里是对于渐近符号的不等式非形式化运用。此处严格可表示为: $\Theta(n k + n \log (n / k)) \subseteq \Theta(n \log n)$
 
