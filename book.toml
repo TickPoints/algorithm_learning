@@ -21,9 +21,9 @@ input-404 = "not-found.md"
 # 使用katex
 after = ["links"]
 
-[preprocessor.mermaid]
+#[preprocessor.mermaid]
 # 使用mermaid
-command = "mdbook-mermaid"
+#command = "mdbook-mermaid"
 
 [preprocessor.alerts]
 # 使用alerts
