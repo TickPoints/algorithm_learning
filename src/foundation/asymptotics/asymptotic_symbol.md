@@ -64,7 +64,7 @@ $$
 ## $O$ 记号[^note1]
 $O$ 记号在历史上出现的最早，也最为常用(因为不需要像$\Theta$同时保证一个下界，因此无需更复杂的数学证明)[^note2]。
 $$
-O(g(n)) = \{ f(x) | \exists c > 0, n_0 \in \mathbb{N} : \forall n \geq n_0, \, |f(n)| \leq c \cdot |g(n)| \}
+O(g(n)) = \{ f(x) | \exists c > 0, n_0 \in \mathbb{N} : \forall n \geq n_0, |f(n)| \leq c \cdot |g(n)| \}
 $$
 
 在定义下一个记号之前让我们先缓一下，在[二分查找](/foundation/algorithm/binary_search.md)一节中我们提到了下面这个问题:
@@ -121,7 +121,7 @@ $$
 ## $\Omega$ 符号
 很显然，$O$是上界，$\Theta$是上下界都有，那么此处的$\Omega$就应该能猜到是下界:
 $$
-\Omega(g(n)) = \{ f(n) | \exists c > 0, n_0 \in \mathbb{N} : \forall n \geq n_0, \, |f(n)| \geq c \cdot |g(n)| \}
+\Omega(g(n)) = \{ f(n) | \exists c > 0, n_0 \in \mathbb{N} : \forall n \geq n_0, |f(n)| \geq c \cdot |g(n)| \}
 $$
 与上界的定义非常相似，不证而明，相映成趣。
 
@@ -130,7 +130,7 @@ $$
 \begin{aligned}
 &f(n) = \Theta(g(n))     \\
 &\iff \exists c_1 > 0, c_2 > 0, n_0 \in \mathbb{N}, \\
-&\forall n \geq n_0, \, c_1 \cdot |g(n)| \leq |f(n)| \leq c_2 \cdot |g(n)|
+&\forall n \geq n_0, c_1 \cdot |g(n)| \leq |f(n)| \leq c_2 \cdot |g(n)|
 \end{aligned}
 $$
 这对于其他几种渐近符号也是通用的。
