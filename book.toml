@@ -25,7 +25,7 @@ after = ["links"]
 # 使用mermaid
 command = "mdbook-mermaid"
 
-#[preprocessor.alerts]
+[preprocessor.alerts]
 # 使用alerts
 
 [preprocessor.betterlink]
