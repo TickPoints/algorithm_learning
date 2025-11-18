@@ -28,7 +28,7 @@ command = "mdbook-mermaid"
 [preprocessor.alerts]
 # 使用alerts
 
-# [preprocessor.betterlink]
-# # 使用betterlink
-# display_processed_contents = false
-# use_old_tag_adder = false
+[preprocessor.betterlink]
+# 使用betterlink
+display_processed_contents = false
+use_old_tag_adder = false
