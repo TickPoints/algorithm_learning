@@ -14,7 +14,7 @@ additional-js = [
 ]
 edit-url-template = "https://github.com/tickpoints/algorithm_learning/edit/main/{path}"
 git-repository-url = "https://github.com/tickpoints/algorithm_learning"
-git-repository-icon = "fa-github"
+git-repository-icon = "fab-github"
 input-404 = "not-found.md"
 
 [preprocessor.katex]
