@@ -8,9 +8,9 @@ install_tools() {
         cargo install cargo-binstall
     fi
 
-    # 安装 mdBook(优先使用binstall，失败则用git方式)
+    # 安装 mdBook(为兼容性，现使用v0.4.52)
     echo "安装 mdBook..."
-    cargo binstall mdbook || cargo install --git https://github.com/rust-lang/mdBook.git mdbook
+    cargo binstall mdbook --version 0.4.52 || cargo install mdbook --version 0.4.52
 
     # 安装 mdbook-mermaid
     echo "安装 mdbook-mermaid..."
