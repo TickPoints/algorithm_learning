@@ -17,18 +17,18 @@ git-repository-url = "https://github.com/tickpoints/algorithm_learning"
 git-repository-icon = "fa-github"
 input-404 = "not-found.md"
 
-[preprocessor.katex]
-# 使用katex
-after = ["links"]
+# [preprocessor.katex]
+# # 使用katex
+# after = ["links"]
 
-[preprocessor.mermaid]
-# 使用mermaid
-command = "mdbook-mermaid"
+# [preprocessor.mermaid]
+# # 使用mermaid
+# command = "mdbook-mermaid"
 
-[preprocessor.alerts]
-# 使用alerts
+# [preprocessor.alerts]
+# # 使用alerts
 
-[preprocessor.betterlink]
-# 使用betterlink
-display_processed_contents = false
-use_old_tag_adder = false
+# [preprocessor.betterlink]
+# # 使用betterlink
+# display_processed_contents = false
+# use_old_tag_adder = false
