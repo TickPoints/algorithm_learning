@@ -30,13 +30,13 @@ jobs:
       - name: Install mdbook
         run: cargo binstall mdbook --version 0.4.52 --no-confirm
       - name: Install mdbook-katex plugin
-        run: cargo binstall mdbook-katex --no-confirm
+        run: cargo binstall mdbook-katex --version 0.9.4 --no-confirm
       - name: Install mdbook-mermaid plugin
-        run: cargo binstall mdbook-mermaid --no-confirm
+        run: cargo binstall mdbook-mermaid --version 0.15.0 --no-confirm
       - name: Install mdbook-alerts plugin
-        run: cargo binstall mdbook-alerts --no-confirm
+        run: cargo binstall mdbook-alerts --version 0.8.0 --no-confirm
       - name: Install mdbook-betterlink plugin
-        run: cargo binstall mdbook-betterlink --no-confirm
+        run: cargo binstall mdbook-betterlink --version 0.4.1 --no-confirm
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
