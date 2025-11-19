@@ -47,4 +47,4 @@
 
 ## 特殊
 ### 关于近期更改
-由于**`mdbook`**升级到`v0.5`导致的破坏性更新，许多插件已不再可以正常工作。我们通过降级处理，等待它们再次恢复工作。所以现在请使用`0.4`版本的**MDBOOK**，并推荐使用[`setup.sh`](https://github.com/TickPoints/algorithm_learning/blob/main/setup.sh)给出的插件版本(部分兼容新版本的插件也无法与原`v0.4`版本一起工作)。更多相关内容可以查看[#2](https://github.com/TickPoints/algorithm_learning/issues/2)
+由于 **`mdbook`** 升级到`v0.5`导致的破坏性更新，许多插件已不再可以正常工作。我们通过降级处理，等待它们再次恢复工作。所以现在请使用`0.4`版本的 **MDBOOK**，并推荐使用[`setup.sh`](https://github.com/TickPoints/algorithm_learning/blob/main/setup.sh)给出的插件版本(部分兼容新版本的插件也无法与原`v0.4`版本一起工作)。更多相关内容可以查看[#2](https://github.com/TickPoints/algorithm_learning/issues/2)
