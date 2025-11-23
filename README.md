@@ -43,20 +43,7 @@ cargo binstall mdbook-mermaid
 ```bash
 cargo install mdbook-katex
 ```
-4. 安装[mdbook-alerts插件](https://github.com/lambdalisue/rs-mdbook-alerts):
-```bash
-# 默认方式
-cargo install mdbook-alerts
-# binstall
-cargo binstall mdbook-alerts
-```
-5. 安装[mdbook-betterlink插件](https://github.com/TickPoints/mdbook-betterlink):
-```bash
-# 默认方式
-cargo install mdbook-betterlink
-# binstall
-cargo binstall mdbook-betterlink
-```
+
 ### 克隆仓库
 ```bash
 git clone https://github.com/TickPoints/algorithm_learning.git
