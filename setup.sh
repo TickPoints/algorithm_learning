@@ -19,14 +19,6 @@ install_tools() {
     # 安装 mdbook-katex
     echo "安装 mdbook-katex..."
     cargo install mdbook-katex
-
-    # 安装 mdbook-alerts
-    echo "安装 mdbook-alerts..."
-    cargo binstall mdbook-alerts || cargo install mdbook-alerts
-
-    # 安装 mdbook-alerts
-    echo "安装 mdbook-betterlink..."
-    cargo binstall mdbook-betterlink || cargo install mdbook-betterlink
 }
 
 # 克隆或更新仓库
