@@ -5,7 +5,7 @@ description = "为中文开发者提供的算法导论 Rust 实现(工作中...)
 language = "zh-CN"
 
 [output.html]
-additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-alerts.css"]
+additional-css = ["./theme/catppuccin.css"]
 preferred-dark-theme = "mocha"
 default-theme = "latte"
 additional-js = [
