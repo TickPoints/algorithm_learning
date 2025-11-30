@@ -5,7 +5,7 @@ description = "为中文开发者提供的算法导论 Rust 实现(工作中...)
 language = "zh-CN"
 
 [output.html]
-additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-alerts.css"]
+additional-css = ["./theme/catppuccin.css"]
 preferred-dark-theme = "mocha"
 default-theme = "latte"
 additional-js = [
@@ -14,7 +14,7 @@ additional-js = [
 ]
 edit-url-template = "https://github.com/tickpoints/algorithm_learning/edit/main/{path}"
 git-repository-url = "https://github.com/tickpoints/algorithm_learning"
-git-repository-icon = "fa-github"
+git-repository-icon = "fab-github"
 input-404 = "not-found.md"
 
 [preprocessor.katex]
@@ -24,11 +24,3 @@ after = ["links"]
 [preprocessor.mermaid]
 # 使用mermaid
 command = "mdbook-mermaid"
-
-[preprocessor.alerts]
-# 使用alerts
-
-[preprocessor.betterlink]
-# 使用betterlink
-display_processed_contents = false
-use_old_tag_adder = false

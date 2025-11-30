@@ -14,19 +14,11 @@ install_tools() {
 
     # 安装 mdbook-mermaid
     echo "安装 mdbook-mermaid..."
-    cargo binstall mdbook-mermaid --version 0.15.0 || cargo install mdbook-mermaid --version 0.15.0
+    cargo binstall mdbook-mermaid || cargo install mdbook-mermaid
 
     # 安装 mdbook-katex
     echo "安装 mdbook-katex..."
-    cargo install mdbook-katex --version 0.9.4
-
-    # 安装 mdbook-alerts
-    echo "安装 mdbook-alerts..."
-    cargo binstall mdbook-alerts --version 0.8.0 || cargo install mdbook-alerts --version 0.8.0
-
-    # 安装 mdbook-alerts
-    echo "安装 mdbook-betterlink..."
-    cargo binstall mdbook-betterlink || cargo install mdbook-betterlink
+    cargo install mdbook-katex --version 0.10.0-alpha
 }
 
 # 克隆或更新仓库
