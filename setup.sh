@@ -10,15 +10,15 @@ install_tools() {
 
     # 安装 mdBook
     echo "安装 mdBook..."
-    cargo binstall mdbook --version 0.4.52 || cargo install mdbook --version 0.4.52
+    cargo binstall mdbook || cargo install mdbook
 
     # 安装 mdbook-mermaid
     echo "安装 mdbook-mermaid..."
     cargo binstall mdbook-mermaid || cargo install mdbook-mermaid
 
     # 安装 mdbook-katex
-    echo "安装 mdbook-katex..."
-    cargo install mdbook-katex --version 0.10.0-alpha
+    echo "安装 mdbook-katex... (warn: 0.10.0-alpha)"
+    cargo binstall mdbook-katex --version 0.10.0-alpha || cargo install mdbook-katex --version 0.10.0-alpha
 }
 
 # 克隆或更新仓库
