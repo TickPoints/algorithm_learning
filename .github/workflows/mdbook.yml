@@ -6,6 +6,7 @@ on:
     paths:
       - 'book.toml'
       - 'src/**'
+      - '.github/workflows/**'
   workflow_dispatch:
 
 permissions:
