@@ -260,7 +260,7 @@ $$
 用`\$`而正常显示\$
 
 ### 引用和警告
-我们采用[mdbook-alerts](https://crates.io/crates/mdbook-alerts)来添加[Github Markdown扩展的警告功能](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts)支持. 同时利用**mdbook**自带的引用功能.
+我们利用**mdbook**自带的引用和警告功能.
 
 一般格式类似于:
 ```md
@@ -274,8 +274,6 @@ $$
 ```
 基于引用行还支持警告功能:
 ```md
-请注意, 由于mdbook-alerts的BUG, 下面内容可能会被转译为html, html的形式在本书中不应该出现, 如果需要继续阅读这个代码块可以进入编辑页面查看原始代码.
-
 > [!NOTE]
 > 注意信息(常用).
 
