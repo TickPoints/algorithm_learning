@@ -28,10 +28,30 @@ $$
 o(g(n)) = \{ f(n) | \forall c > 0, n_0 \in \mathbb{N} : \forall n \geq n_0, |f(n)| < c \cdot |g(n)| \}
 $$
 
-我们来看它为什么“严格”, 首先是量词出现了变化, 我们改用了全称量词. 另外, 我们把小于等于号改成了小于号. 从这两点我们就可以得到$f(n)$增长严格慢于$g(n)$. 而它也被称为“非紧”, 同样是这个原因, 因为现在它不能达到等于了.
+与 $O$ 主要区别在于: 在 $f(n) = O(g(n))$ 中, 界 $0 \leq f(n) \leq cg(n)$ 对某个常量 $c > 0$ 成立, 在 $f(n) = o(g(n))$ 中, 界 $0 \leq f(n) < cg(n)$ 对所有常量 $c > 0$ 成立. 这也就是说，在 $o$ 记号中, 当 $n$ 趋向于无穷大时,  $f(n)$ 对于 $g(n)$ 就微不足道了, 即:
+$$
+\lim_{n \to \infty} \frac{f(n)}{g(n)} = 0
+$$
+
+关于非紧界这个描述, 是因为 $O$ 包含同阶函数而 $o$ 反之. 如, $f(n) = O(n)$ 但 $f(n) \neq o(n)$. 同理, 可以推出 $f(n) = o(g(n)) Rightarrow f(n) = O(g(n))$. 在本章节的[练习与回答](#练习与回答)中, 也可以通过这种方法判断正误.
 
 > [!WARNING]
 > 该章节仍在编写, 欢迎在 [GitHub仓库](https://github.com/TickPoints/algorithm_learning) 提交PR贡献内容.
+
+---
+## 练习与回答
+1. 判断陈述是否正确.
+    - $3n^2 + 5n = O(n^2)$
+    - $3n^2 + 5n = o(n^2)$
+    - $\sqrt{n} = o(n)$
+    - $\log n = O(n)$
+    - $\log n = o(n)$
+
+$3n^2 + 5n = o(n^2)$ 错误, 正确的应该是 $3n^2 + 5n = O(n^2)$ 或 $3n^2 + 5n = o(n^3)$. 其余四个均正确.
+
+> [!WARNING]
+> 该章节仍在编写, 欢迎在 [GitHub仓库](https://github.com/TickPoints/algorithm_learning) 提交PR贡献内容.
+
 
 [^note1]: 事实上为: 最坏情况(Worst-case)、最好情况(Best-case)、平均情况(Average-case)、摊还情况(Amortized)
 
