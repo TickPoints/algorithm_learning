@@ -25,7 +25,7 @@ $$f(n) = \Theta(g(n)) \quad \text{当且仅当} \quad f(n) = O(g(n)) \quad \text
 
 我们来看 $o$ 符号的定义:
 $$
-o(g(n)) = \{ f(n) | \forall c > 0, \exists n_0 \in \mathbb{N}, \forall n \geq n_0 : |f(n)| < c \cdot |g(n)| \}
+o(g(n)) = \{ f(n) | \forall c > 0, n_0 \in \mathbb{N} : \forall n \geq n_0, |f(n)| < c \cdot |g(n)| \}
 $$
 
 与 $O$ 主要区别在于: 在 $f(n) = O(g(n))$ 中, 界 $0 \leq f(n) \leq cg(n)$ 对某个常量 $c > 0$ 成立, 在 $f(n) = o(g(n))$ 中, 界 $0 \leq f(n) < cg(n)$ 对所有常量 $c > 0$ 成立. 这也就是说，在 $o$ 记号中, 当 $n$ 趋向于无穷大时,  $f(n)$ 对于 $g(n)$ 就微不足道了, 即:
@@ -33,21 +33,7 @@ $$
 \lim_{n \to \infty} \frac{f(n)}{g(n)} = 0
 $$
 
-关于非紧界这个描述, 是因为 $O$ 包含同阶函数而 $o$ 反之. 如, $f(n) = O(n)$ 但 $f(n) \neq o(n)$. 同理, 可以推出 $f(n) = o(g(n)) \Rightarrow f(n) = O(g(n))$. 在本章节的[练习与回答](#练习与回答)中, 也可以通过这种方法判断正误.
-
-## $\omega$ 符号
-不严谨地说，它与 $o$ 符号相反. 我们可以利用 $o$ 来定义它, 下面这个定义同样是它的一个性质:
-$$
-f(n) \in w(g(n)) \quad \text{当且仅当} \quad g(n) \in o(f(n))
-$$
-形式化的定义是:
-$$
-\omega(g(n)) = \{ f(n) | \forall c > 0, \exists n_0 \in \mathbb{N}, \forall n \geq n_0 : |f(n)| > c \cdot |g(n)| \}
-$$
-
-同样地, 我们有 $f(n) = \omega(g(n)) \Rightarrow f(n) = \Omega(g(n))$. 例如, $n^2 = \omega(n)$ 但 $n^2 \neq \omega(n^2)$ 不过 $n^2 = \Omega(n^2)$.
-
-同时还要注意, 我们使用的是 $\Rightarrow$, 这意味着关于 Big-O 和 little-o, Big-Omega 和 little-omega 上面这两个结论都不可逆.
+关于非紧界这个描述, 是因为 $O$ 包含同阶函数而 $o$ 反之. 如, $f(n) = O(n)$ 但 $f(n) \neq o(n)$. 同理, 可以推出 $f(n) = o(g(n)) Rightarrow f(n) = O(g(n))$. 在本章节的[练习与回答](#练习与回答)中, 也可以通过这种方法判断正误.
 
 另外我们同样有个极限表达:
 $$
