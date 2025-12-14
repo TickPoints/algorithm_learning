@@ -49,12 +49,17 @@ $$
 
 同时还要注意, 我们使用的是 $\Rightarrow$, 这意味着关于 Big-O 和 little-o, Big-Omega 和 little-omega 上面这两个结论都不可逆.
 
+另外我们同样有个极限表达:
+$$
+\lim_{n \to \infty} \frac{f(n)}{g(n)} = \infty
+$$
+
 > [!WARNING]
 > 该章节仍在编写, 欢迎在 [GitHub仓库](https://github.com/TickPoints/algorithm_learning) 提交PR贡献内容.
 
 ---
 ## 练习与回答
-1. 判断陈述是否正确.
+1. 判断下列关于 Big-O 和 little-o 的陈述是否正确.
     - $3n^2 + 5n = O(n^2)$
     - $3n^2 + 5n = o(n^2)$
     - $\sqrt{n} = o(n)$
@@ -62,6 +67,19 @@ $$
     - $\log n = o(n)$
 
 $3n^2 + 5n = o(n^2)$ 错误, 正确的应该是 $3n^2 + 5n = O(n^2)$ 或 $3n^2 + 5n = o(n^3)$. 其余四个均正确.
+
+2. 根据已知内容, 判断下列关于 Big-Omega 和 little-omega 陈述是否正确.
+
+已知：
+- 若 $\lim_{n\to\infty} \frac{f(n)}{g(n)} = \infty$, 则 $f(n) = \omega(g(n))$
+- 若 $\lim_{n\to\infty} \frac{f(n)}{g(n)} = c > 0$, 则 $f(n) = \Theta(g(n)) \subseteq \Omega(g(n))$, 但不是 $\omega$
+
+则判断:
+- $f(n) = n^3$, $g(n) = n^2$ 是否满足 $f(n) = \omega(g(n))$
+- $f(n) = 5n \log n$, $g(n) = 4n \log n$ 是否满足 $f(n) = \omega(g(n))$
+- $f(n) = n \log n$, $g(n) = n$ 是否满足 $f(n) = \omega(g(n))$ 又满足 $f(n) = \Omega(g(n))$
+
+对于上面已知内容, 可以在下一节具体学习. 以上除第2题以外都正确, 通过极限法证明即可.
 
 > [!WARNING]
 > 该章节仍在编写, 欢迎在 [GitHub仓库](https://github.com/TickPoints/algorithm_learning) 提交PR贡献内容.
@@ -72,3 +90,4 @@ $3n^2 + 5n = o(n^2)$ 错误, 正确的应该是 $3n^2 + 5n = O(n^2)$ 或 $3n^2 +
 [^note2]: 对于算法的最坏情况, 一般使用$O$；对于算法的平均情况, 一般使用$\Theta$；对于算法的最好情况, 一般使用$\Omega$.
 
 [^note3]: $o$(little-o) 是 $O$(Big-O) 的小记号. $\omega$(little-omega) 是 $\Omega$(Big-Omega) 的小记号.
+当然可以！下面我们先简要回顾一下这四个渐近符号的定义，然后设计一系列由浅入深的练习题，帮助你清晰地区分 Big-Omega (Ω)、little-omega (ω)、Big-O (O) 和 little-o (o)。
