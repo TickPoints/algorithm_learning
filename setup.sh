@@ -18,7 +18,7 @@ install_tools() {
 
     # 安装 mdbook-katex
     echo "安装 mdbook-katex..."
-    cargo binstall mdbook-katex || cargo install mdbook-katex
+    cargo binstall mdbook-katex --version 0.10.0-alpha || cargo install mdbook-katex --version 0.10.0-alpha
 
     # 安装 mdbook-plotly
     echo "安装 mdbook-plotly..."

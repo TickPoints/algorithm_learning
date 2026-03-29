@@ -38,7 +38,7 @@ cargo binstall mdbook-mermaid
 ```
 3. 安装 [mdbook-katex插件](https://github.com/lzanini/mdbook-katex):
 ```bash
-cargo binstall mdbook-katex
+cargo binstall mdbook-katex --version 0.10.0-alpha  # 注意: 目前必须使用此版本
 ```
 4. 安装 [mdbook-plotly插件](https://github.com/TickPoints/mdbook-plotly):
 ```bash
