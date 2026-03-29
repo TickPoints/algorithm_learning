@@ -34,14 +34,15 @@ cargo install --git https://github.com/rust-lang/mdBook.git mdbook
 ```
 2. 安装 [mdbook-mermaid插件](https://github.com/badboy/mdbook-mermaid):
 ```bash
-# 默认方式
-cargo install mdbook-mermaid
-# binstall
 cargo binstall mdbook-mermaid
 ```
 3. 安装 [mdbook-katex插件](https://github.com/lzanini/mdbook-katex):
 ```bash
-cargo install mdbook-katex
+cargo binstall mdbook-katex
+```
+4. 安装 [mdbook-plotly插件](https://github.com/TickPoints/mdbook-plotly):
+```bash
+cargo binstall mdbook-plotly
 ```
 
 ### 克隆仓库
