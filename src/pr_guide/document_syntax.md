@@ -321,7 +321,7 @@ $$
 我们采用[mdbook-mermaid](https://crates.io/crates/mdbook-mermaid)来添加添加[mermaid.js](https://mermaid.js.org/#/)支持. 使用Mermaid来渲染好的图表, 帮助理解.
 
 一般格式类似于[跨行代码](#代码), 在代码框内采用Mermaid的格式:
-~~~md
+~~~markdown
 ```mermaid
 graph TD;
     A-->B;
@@ -337,6 +337,42 @@ graph TD;
     A-->C;
     B-->D;
     C-->D;
+```
+
+### plotly
+我们采用[mdbook-plotly](https://github.com/TickPoints/mdbook-plotly)来添加对**plotly**的相关支持, 它是另外一个用来绘制图表的优秀方案. 在绘制不同的图表时, 通常考虑流程图使用**mermaid**, 科学绘图使用**plotly**.
+
+一般格式类似于[跨行代码](#代码), 在代码框中采用[`mdbook-plotly`所提供的特殊解析格式](https://github.com/TickPoints/mdbook-plotly/blob/main/docs/USAGE-zh_CN.md):
+~~~markdown
+```plot
+{
+    layout: {
+        title: "测试图表",
+    },
+    data: [{
+        type: "pie",
+        values: [10, 20, 30, 40],
+    }],
+    config: {
+        static_plot: true,
+    }
+}
+```
+~~~
+#### 渲染
+```plot
+{
+    layout: {
+        title: "测试图表",
+    },
+    data: [{
+        type: "pie",
+        values: [10, 20, 30, 40],
+    }],
+    config: {
+        static_plot: true,
+    }
+}
 ```
 
 ## 注意

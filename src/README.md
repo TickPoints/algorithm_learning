@@ -29,7 +29,10 @@
 采用**Jan-Erik Rediger**提供的[**mdbook-mermaid**](https://github.com/badboy/mdbook-mermaid)插件, 许可证是**MPL**. 本书以**保留原 MPL 文件的版权声明和许可证文本**进行兼容.
 
 #### `mdbook-katex`
-采用**Lucas Zanini**提供的[**mdbook-katex**](https://github.com/lzanini/mdbook-katex)插件, 许可证同样是**MIT**.
+采用**Lucas Zanini**提供的[**mdbook-katex**](https://github.com/lzanini/mdbook-katex)插件, 许可证是**MIT**.
+
+#### `mdbook-plotly`
+采用**TickPoints**提供的[**mdbook-plotly**](https://github.com/TickPoints/mdbook-plotly)插件, 许可证同样是**MIT**.
 
 ### 字体
 采用[**monaspace**](https://github.com/githubnext/monaspace), 许可证是[**SIL OFL**](https://github.com/githubnext/monaspace/blob/main/LICENSE). 本书以**保留原 OFL 文件的版权声明和许可证文本**进行兼容.
@@ -38,5 +41,4 @@
 本书参考《算法导论》编写.
 
 ## 特殊
-### 关于近期更改
-由于 **`mdbook`** 升级到`v0.5`导致的破坏性更新, 部分插件已不再可以正常工作. 我们已做了一些更新, 更多相关内容可以查看[#2](https://github.com/TickPoints/algorithm_learning/issues/2). 现在可以使用**mdbook**最新版, 并推荐使用[`setup.sh`](https://github.com/TickPoints/algorithm_learning/blob/main/setup.sh)给出的插件版本.
+无.
