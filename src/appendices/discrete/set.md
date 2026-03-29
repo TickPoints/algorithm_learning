@@ -4,7 +4,7 @@
 ## 集合的表示
 一个集合有多种表示方法, 常见的有枚举出所有的元素, 如: $S = \{1, 2, 3, 4\}$. 在枚举过程中, 如果集合的元素排列有规律则可以通过$\dots$来省略, 甚至构造无限集合: $S = \{2, 4, 6, 8, 10, \dots\}$.
 
-我们还有描述法, 现在比较公认的描述法是$\{x | P(x)\}$[^note2], 其中$P(x)$是元素应该满足的条件, 如: $\{x | x \text{是偶数 且 } 0 < x < 10\}$(这个集合用枚举法表示出来是$\{2, 4, 6, 8\}$).
+我们还有描述法, 现在比较公认的描述法是$\{x | P(x)\}$[^note2], 其中$P(x)$是元素应该满足的条件, 如: $\{x | x \text{是偶数 且} 0 < x < 10\}$(这个集合用枚举法表示出来是$\{2, 4, 6, 8\}$).
 
 有时也可以用区间表示: $S = (1, +\infty)$ 表示大于$1$的所有实数.
 
@@ -15,7 +15,7 @@
 - $\mathbb{N}$: **自然数集**.
 - $\mathbb{Z}$: **整数集**.
 - $\mathbb{Q}$: **有理数集**.
-- $\mathbb{R}^+$: **正数集**.
+- $\mathbb{R}^+$: **正实数集**.
 - $\mathbb{R}$: **实数集**.
 - $\mathbb{C}$: **复数集**.
 
@@ -38,6 +38,186 @@
 4. 交集、并集、补集、差集 等属于集合运算, 但也可反映集合之间的关系.
 
 示意图:
+```plot
+{
+  "map": {
+    "xA": {"type": "g-number-list", "begin": 0, "end": 240, "expr": "3.0 + 1.4*cos(2*3.14159*i/239)"},
+    "yA": {"type": "g-number-list", "begin": 0, "end": 240, "expr": "2.5 + 1.4*sin(2*3.14159*i/239)"},
+    "xB": {"type": "g-number-list", "begin": 0, "end": 240, "expr": "3.4 + 1.4*cos(2*3.14159*i/239)"},
+    "yB": {"type": "g-number-list", "begin": 0, "end": 240, "expr": "2.5 + 1.4*sin(2*3.14159*i/239)"}
+ },
+  "layout": {
+    "title": "子集关系",
+    "show_legend": false,
+    "width": 560,
+    "height": 360,
+    "plot_background_color": {rgb_color: "rgb(255, 255, 255)"},
+    "margin": {"pad": 20}
+ },
+  "data": [
+    {"type": "scatter", "x": "map.xA", "y": "map.yA", "mode": "none", "fill": "toself", "fill_color": {rgba_color: "rgba(52, 152, 219, 0.7)"}},
+    {"type": "scatter", "x": "map.xB", "y": "map.yB", "mode": "none", "fill": "toself", "fill_color": {rgba_color: "rgba(230, 126, 34, 0.7)"}},
+    {"type": "scatter", "x": "map.xA", "y": "map.yA", "mode": "lines"},
+    {"type": "scatter", "x": "map.xB", "y": "map.yB", "mode": "lines"},
+    {"type": "scatter", "x": [2.8], "y": [2.5], "mode": "text", "text": "A"},
+    {"type": "scatter", "x": [4.2], "y": [2.5], "mode": "text", "text": "B"},
+    {"type": "scatter", "x": [3.7], "y": [4.2], "mode": "text", "text": "A ⊂ B"}
+  ],
+  "config": {"static_plot": true, "display_logo": false}
+}
+```
+```plot
+{
+  "map": {
+    "xAB": {"type": "g-number-list", "begin": 0, "end": 240, "expr": "3.2 + 1.4*cos(2*3.14159*i/239)"},
+    "yAB": {"type": "g-number-list", "begin": 0, "end": 240, "expr": "2.5 + 1.4*sin(2*3.14159*i/239)"}
+ },
+  "layout": {
+    "title": "完全相等",
+    "show_legend": false,
+    "width": 560,
+    "height": 360,
+    "plot_background_color": {rgb_color: "rgb(255, 255, 255)"},
+    "margin": {"pad": 20}
+ },
+  "data": [
+    {"type": "scatter", "x": "map.xAB", "y": "map.yAB", "mode": "none", "fill": "toself", "fill_color": {rgba_color: "rgba(155, 89, 182, 0.75)"}},
+    {"type": "scatter", "x": "map.xAB", "y": "map.yAB", "mode": "lines"},
+    {"type": "scatter", "x": [3.2], "y": [2.5], "mode": "text", "text": "A = B"}
+  ],
+  "config": {"static_plot": true, "display_logo": false}
+}
+```
+```plot
+{
+  "map": {
+    "xA": {"type": "g-number-list", "begin": 0, "end": 240, "expr": "2.9 + 1.4*cos(2*3.14159*i/239)"},
+    "yA": {"type": "g-number-list", "begin": 0, "end": 240, "expr": "2.5 + 1.4*sin(2*3.14159*i/239)"},
+    "xB": {"type": "g-number-list", "begin": 0, "end": 240, "expr": "4.0 + 1.4*cos(2*3.14159*i/239)"},
+    "yB": {"type": "g-number-list", "begin": 0, "end": 240, "expr": "2.5 + 1.4*sin(2*3.14159*i/239)"},
+    "xI1": {"type": "g-number-list", "begin": 0, "end": 160, "expr": "2.9 + 1.4*cos(1.18 - 2.36*i/159)"},
+    "yI1": {"type": "g-number-list", "begin": 0, "end": 160, "expr": "2.5 + 1.4*sin(1.18 - 2.36*i/159)"},
+    "xI2": {"type": "g-number-list", "begin": 0, "end": 160, "expr": "4.0 + 1.4*cos(1.96 + 2.36*i/159)"},
+    "yI2": {"type": "g-number-list", "begin": 0, "end": 160, "expr": "2.5 + 1.4*sin(1.96 + 2.36*i/159)"}
+ },
+  "layout": {
+    "title": "交集",
+    "show_legend": false,
+    "width": 560,
+    "height": 360,
+    "plot_background_color": {rgb_color: "rgb(255, 255, 255)"},
+    "margin": {"pad": 20}
+ },
+  "data": [
+    {"type": "scatter", "x": "map.xA", "y": "map.yA", "mode": "lines"},
+    {"type": "scatter", "x": "map.xB", "y": "map.yB", "mode": "lines"},
+    {"type": "scatter", "x": "map.xI1", "y": "map.yI1", "mode": "lines"},
+    {"type": "scatter", "x": "map.xI2", "y": "map.yI2", "mode": "lines", "fill": "tonext",},
+    {"type": "scatter", "x": "map.xI1", "y": "map.yI1", "mode": "lines"},
+    {"type": "scatter", "x": "map.xI2", "y": "map.yI2", "mode": "lines", "fill": "tonext", "fill_color": {rgba_color: "rgba(52, 152, 219, 0.65)"}},
+    {"type": "scatter", "x": [2.3], "y": [2.5], "mode": "text", "text": "A"},
+    {"type": "scatter", "x": [4.7], "y": [2.5], "mode": "text", "text": "B"},
+    {"type": "scatter", "x": [3.45], "y": [2.5], "mode": "text", "text": "A ∩ B"}
+  ],
+  "config": {"static_plot": true, "display_logo": false}
+}
+```
+```plot
+{
+  "map": {
+    "xA": {"type": "g-number-list", "begin": 0, "end": 240, "expr": "2.9 + 1.4*cos(2*3.14159*i/239)"},
+    "yA": {"type": "g-number-list", "begin": 0, "end": 240, "expr": "2.5 + 1.4*sin(2*3.14159*i/239)"},
+    "xB": {"type": "g-number-list", "begin": 0, "end": 240, "expr": "4.0 + 1.4*cos(2*3.14159*i/239)"},
+    "yB": {"type": "g-number-list", "begin": 0, "end": 240, "expr": "2.5 + 1.4*sin(2*3.14159*i/239)"}
+ },
+  "layout": {
+    "title": "并集",
+    "show_legend": false,
+    "width": 560,
+    "height": 360,
+    "plot_background_color": {rgb_color: "rgb(255, 255, 255)"},
+    "margin": {"pad": 20}
+ },
+  "data": [
+    {"type": "scatter", "x": "map.xA", "y": "map.yA", "mode": "none", "fill": "toself", "fill_color": {rgba_color: "rgba(46, 204, 113, 0.75)"}},
+    {"type": "scatter", "x": "map.xB", "y": "map.yB", "mode": "none", "fill": "toself", "fill_color": {rgba_color: "rgba(46, 204, 113, 0.75)"}},
+    {"type": "scatter", "x": "map.xA", "y": "map.yA", "mode": "lines"},
+    {"type": "scatter", "x": "map.xB", "y": "map.yB", "mode": "lines"},
+    {"type": "scatter", "x": [2.3], "y": [2.5], "mode": "text", "text": "A"},
+    {"type": "scatter", "x": [4.7], "y": [2.5], "mode": "text", "text": "B"},
+    {"type": "scatter", "x": [3.45], "y": [4.35], "mode": "text", "text": "A ∪ B"}
+  ],
+  "config": {"static_plot": true, "display_logo": false}
+}
+```
+```plot
+{
+  "map": {
+    "uX": {"type": "raw", "data": [0.6, 6.4, 6.4, 0.6, 0.6]},
+    "uY": {"type": "raw", "data": [0.6, 0.6, 4.8, 4.8, 0.6]},
+    "xA": {"type": "g-number-list", "begin": 0, "end": 240, "expr": "3.2 + 1.4*cos(2*3.14159*i/239)"},
+    "yA": {"type": "g-number-list", "begin": 0, "end": 240, "expr": "2.7 + 1.4*sin(2*3.14159*i/239)"}
+ },
+  "layout": {
+    "title": "补集: A (相对全集 U)",
+    "show_legend": false,
+    "width": 560,
+    "height": 360,
+    "plot_background_color": {rgb_color: "rgb(255, 255, 255)"},
+    "margin": {"pad": 20}
+ },
+  "data": [
+    {"type": "scatter", "x": "map.uX", "y": "map.uY", "mode": "none", "fill": "toself", "fill_color": {rgba_color: "rgba(149, 165, 166, 0.5)"}},
+    {"type": "scatter", "x": "map.xA", "y": "map.yA", "mode": "none", "fill": "toself", "fill_color": {rgba_color: "rgba(255, 255, 255, 1.0)"}},
+    {"type": "scatter", "x": "map.uX", "y": "map.uY", "mode": "lines"},
+    {"type": "scatter", "x": "map.xA", "y": "map.yA", "mode": "lines"},
+    {"type": "scatter", "x": [6.1], "y": [4.5], "mode": "text", "text": "U"},
+    {"type": "scatter", "x": [3.2], "y": [2.7], "mode": "text", "text": "A"},
+    {"type": "scatter", "x": [5.2], "y": [2.7], "mode": "text", "text": "A¯"}
+  ],
+  "config": {"static_plot": true, "display_logo": false}
+}
+```
+```plot
+{
+  "map": {
+    xA: {type: "g-number-list", begin: 0, end: 240, expr: "2.9 + 1.4*cos(2*3.14159*i/239)"},
+    yA: {type: "g-number-list", begin: 0, end: 240, expr: "2.5 + 1.4*sin(2*3.14159*i/239)"},
+
+    xB: {type: "g-number-list", begin: 0, end: 240, expr: "4.0 + 1.4*cos(2*3.14159*i/239)"},
+    yB: {type: "g-number-list", begin: 0, end: 240, expr: "2.5 + 1.4*sin(2*3.14159*i/239)"},
+
+    xI_A: {type: "g-number-list", begin: 0, end: 200, expr: "2.9 + 1.4*cos(1.166 - (2*1.166)*i/199)"},
+    yI_A: {type: "g-number-list", begin: 0, end: 200, expr: "2.5 + 1.4*sin(1.166 - (2*1.166)*i/199)"},
+
+    xI_B: {type: "g-number-list", begin: 0, end: 200, expr: "4.0 + 1.4*cos((3.14159 - 1.166) + (2*1.166)*i/199)"},
+    yI_B: {type: "g-number-list", begin: 0, end: 200, expr: "2.5 + 1.4*sin((3.14159 - 1.166) + (2*1.166)*i/199)"}
+ },
+  "layout": {
+    "title": "差集及对称差",
+    "show_legend": false,
+    "width": 560,
+    "height": 360,
+    "plot_background_color": {rgb_color: "rgb(255, 255, 255)"},
+    "margin": {"pad": 20}
+ },
+  "data": [
+    {type: "scatter", x: "map.xA", y: "map.yA", mode: "none", fill: "toself", fill_color: {rgba_color: "rgba(52, 152, 219, 0.75)"}},
+    {type: "scatter", x: "map.xB", y: "map.yB", mode: "none", fill: "toself", fill_color: {rgba_color: "rgba(230, 126, 34, 0.75)"}},
+
+    {type: "scatter", x: "map.xI_A", y: "map.yI_A", mode: "lines", fill: "none"},
+    {type: "scatter", x: "map.xI_B", y: "map.yI_B", mode: "lines", fill: "tonext", fill_color: {rgba_color: "rgba(255,255,255,1.0)"}},
+
+    {type: "scatter", x: "map.xA", y: "map.yA", mode: "lines"},
+    {type: "scatter", x: "map.xB", y: "map.yB", mode: "lines"},
+
+    {type: "scatter", x: [2.3], y: [2.5], mode: "text", text: "A−B"},
+    {type: "scatter", x: [4.8], y: [2.5], mode: "text", text: "B−A"},
+    {type: "scatter", x: [3.55], y: [4.25], mode: "text", text: "A △ B"}
+  ],
+  "config": {"static_plot": true, "display_logo": false}
+}
+```
 
 ## 集合运算及其基本定律
 设 $U$ 为全集, $A$, $B$, $C$ 为 $U$ 的子集.
