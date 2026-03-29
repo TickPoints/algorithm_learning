@@ -21,3 +21,7 @@ after = ["links"]
 [preprocessor.mermaid]
 # 使用mermaid
 command = "mdbook-mermaid"
+
+[preprocessor.plotly]
+# 使用plotly
+after = ["links"]

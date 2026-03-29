@@ -31,9 +31,11 @@ jobs:
       - name: Install mdbook
         run: cargo binstall mdbook --no-confirm
       - name: Install mdbook-katex plugin
-        run: cargo binstall mdbook-katex --no-confirm --version 0.10.0-alpha
+        run: cargo binstall mdbook-katex --no-confirm
       - name: Install mdbook-mermaid plugin
         run: cargo binstall mdbook-mermaid --no-confirm
+      - name: Install mdbook-plotly plugin
+        run: cargo binstall mdbook-plotly --no-confirm
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
