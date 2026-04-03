@@ -36,11 +36,11 @@ cargo install --git https://github.com/rust-lang/mdBook.git mdbook
 ```bash
 cargo binstall mdbook-mermaid
 ```
-3. 安装 [mdbook-katex插件](https://github.com/lzanini/mdbook-katex):
+3. 安装 [mdbook-katex 插件](https://github.com/lzanini/mdbook-katex):
 ```bash
 cargo binstall mdbook-katex --version 0.10.0-alpha  # 注意: 目前必须使用此版本
 ```
-4. 安装 [mdbook-plotly插件](https://github.com/TickPoints/mdbook-plotly):
+4. 安装 [mdbook-plotly 插件](https://github.com/TickPoints/mdbook-plotly):
 ```bash
 cargo binstall mdbook-plotly
 ```
@@ -53,7 +53,7 @@ cd algorithm_learning
 
 ### 构建或启用服务
 ```bash
-mdbook build # serve 也会默认调用 build
+mdbook build
 mdbook serve # 在 localhost:3000 查看实时预览
 ```
 
