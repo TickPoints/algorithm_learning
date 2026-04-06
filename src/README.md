@@ -35,7 +35,14 @@
 采用**TickPoints**提供的[**mdbook-plotly**](https://github.com/TickPoints/mdbook-plotly)插件, 许可证同样是**MIT**.
 
 ### 字体
-采用[**monaspace**](https://github.com/githubnext/monaspace), 许可证是[**SIL OFL**](https://github.com/githubnext/monaspace/blob/main/LICENSE). 本书以**保留原 OFL 文件的版权声明和许可证文本**进行兼容.
+#### 思源宋体
+采用[**思源宋体**](https://github.com/adobe-fonts/source-han-serif), 许可证是**SIL OFL**. 本书以**保留原 OFL 文件的版权声明和许可证文本**进行兼容.
+
+#### 霞鹜文楷
+采用[**霞鹜文楷**](https://github.com/lxgw/LxgwWenKai), 许可证是**SIL OFL**. 本书以**保留原 OFL 文件的版权声明和许可证文本**进行兼容.
+
+#### JetBrains Mono
+采用[**JetBrains Mono**](https://github.com/JetBrains/JetBrainsMono), 许可证是**SIL OFL**. 本书以**保留原 OFL 文件的版权声明和许可证文本**进行兼容.
 
 ### 参考书
 本书参考《算法导论》编写.

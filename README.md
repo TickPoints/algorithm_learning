@@ -32,7 +32,7 @@ cargo binstall mdbook
 # 安装托管的最新版本
 cargo install --git https://github.com/rust-lang/mdBook.git mdbook
 ```
-2. 安装 [mdbook-mermaid插件](https://github.com/badboy/mdbook-mermaid):
+2. 安装 [mdbook-mermaid 插件](https://github.com/badboy/mdbook-mermaid):
 ```bash
 cargo binstall mdbook-mermaid
 ```
