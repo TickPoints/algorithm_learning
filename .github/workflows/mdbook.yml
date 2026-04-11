@@ -31,7 +31,7 @@ jobs:
       - name: Install mdbook
         run: cargo binstall mdbook --no-confirm
       - name: Install mdbook-katex plugin
-        run: cargo binstall mdbook-katex --no-confirm --version 0.10.0-alpha --pkg-url="https://github.com/lzanini/mdbook-katex/releases/download/{ version }-binaries/{ name }-{ version }-{ target }.{ archive-format }"
+        run: cargo binstall mdbook-katex --no-confirm --version 0.10.0-alpha --pkg-url="https://github.com/lzanini/mdbook-katex/releases/download/{ version }-binaries/{ name }-v{ version }-{ target }.{ archive-format }"
       - name: Install mdbook-mermaid plugin
         run: cargo binstall mdbook-mermaid --no-confirm
       - name: Install mdbook-plotly plugin
