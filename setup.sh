@@ -5,7 +5,7 @@ install_tools() {
     # 安装 cargo-binstall(如果未安装)
     if ! command -v cargo-binstall &>/dev/null; then
         echo "安装 cargo-binstall..."
-        cargo install cargo-binstall
+        curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
     fi
 
     # 安装 mdBook
@@ -18,7 +18,7 @@ install_tools() {
 
     # 安装 mdbook-katex
     echo "安装 mdbook-katex..."
-    cargo binstall mdbook-katex --version 0.10.0-alpha || cargo install mdbook-katex --version 0.10.0-alpha
+    cargo binstall mdbook-katex --version 0.10.0-alpha --pkg-url="https://github.com/lzanini/mdbook-katex/releases/download/{ version }-binaries/{ name }-v{ version }-{ target }.{ archive-format }" || cargo install mdbook-katex --version 0.10.0-alpha
 
     # 安装 mdbook-plotly
     echo "安装 mdbook-plotly..."
