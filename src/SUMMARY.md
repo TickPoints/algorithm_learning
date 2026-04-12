@@ -19,6 +19,9 @@
     - [思考与提高](foundation/asymptotics/improve.md)
     - [后记](foundation/asymptotics/postscript.md)
 
+- [分治策略](foundation/dac_strategy/README.md)
+    - [递归式](foundation/dac_strategy/recurrence.md)
+
 # 附录: 数学知识
 - [连续数学中的运算工具](appendices/operations/README.md)
     - [求和与求积](appendices/operations/summation/README.md)
