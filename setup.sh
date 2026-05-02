@@ -40,12 +40,13 @@ setup_repo() {
 }
 
 main() {
-    set -e  # 遇到错误立即退出
+    set -e
 
     install_tools
     setup_repo
 
     cd algorithm_learning
+    chmod +x ./local-tools/*
     echo "已启动文档服务，请访问地址：http://localhost:3000"
     mdbook serve
 }
