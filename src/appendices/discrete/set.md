@@ -51,12 +51,12 @@
     "show_legend": false,
     "width": 560,
     "height": 360,
-    "plot_background_color": {rgb_color: "rgb(255, 255, 255)"},
+    "plot_background_color": "rgb(255, 255, 255)",
     "margin": {"pad": 20}
  },
   "data": [
-    {"type": "scatter", "x": "map.xA", "y": "map.yA", "mode": "none", "fill": "toself", "fill_color": {rgba_color: "rgba(52, 152, 219, 0.7)"}},
-    {"type": "scatter", "x": "map.xB", "y": "map.yB", "mode": "none", "fill": "toself", "fill_color": {rgba_color: "rgba(230, 126, 34, 0.7)"}},
+    {"type": "scatter", "x": "map.xA", "y": "map.yA", "mode": "none", "fill": "toself", "fill_color": "rgba(52, 152, 219, 0.7)"},
+    {"type": "scatter", "x": "map.xB", "y": "map.yB", "mode": "none", "fill": "toself", "fill_color": "rgba(230, 126, 34, 0.7)"},
     {"type": "scatter", "x": "map.xA", "y": "map.yA", "mode": "lines"},
     {"type": "scatter", "x": "map.xB", "y": "map.yB", "mode": "lines"},
     {"type": "scatter", "x": [2.8], "y": [2.5], "mode": "text", "text": "A"},
@@ -77,11 +77,11 @@
     "show_legend": false,
     "width": 560,
     "height": 360,
-    "plot_background_color": {rgb_color: "rgb(255, 255, 255)"},
+    "plot_background_color": "rgb(255, 255, 255)",
     "margin": {"pad": 20}
  },
   "data": [
-    {"type": "scatter", "x": "map.xAB", "y": "map.yAB", "mode": "none", "fill": "toself", "fill_color": {rgba_color: "rgba(155, 89, 182, 0.75)"}},
+    {"type": "scatter", "x": "map.xAB", "y": "map.yAB", "mode": "none", "fill": "toself", "fill_color": "rgba(155, 89, 182, 0.75)"},
     {"type": "scatter", "x": "map.xAB", "y": "map.yAB", "mode": "lines"},
     {"type": "scatter", "x": [3.2], "y": [2.5], "mode": "text", "text": "A = B"}
   ],
@@ -105,7 +105,7 @@
     "show_legend": false,
     "width": 560,
     "height": 360,
-    "plot_background_color": {rgb_color: "rgb(255, 255, 255)"},
+    "plot_background_color": "rgb(255, 255, 255)",
     "margin": {"pad": 20}
  },
   "data": [
@@ -114,7 +114,7 @@
     {"type": "scatter", "x": "map.xI1", "y": "map.yI1", "mode": "lines"},
     {"type": "scatter", "x": "map.xI2", "y": "map.yI2", "mode": "lines", "fill": "tonext",},
     {"type": "scatter", "x": "map.xI1", "y": "map.yI1", "mode": "lines"},
-    {"type": "scatter", "x": "map.xI2", "y": "map.yI2", "mode": "lines", "fill": "tonext", "fill_color": {rgba_color: "rgba(52, 152, 219, 0.65)"}},
+    {"type": "scatter", "x": "map.xI2", "y": "map.yI2", "mode": "lines", "fill": "tonext", "fill_color": "rgba(52, 152, 219, 0.65)"},
     {"type": "scatter", "x": [2.3], "y": [2.5], "mode": "text", "text": "A"},
     {"type": "scatter", "x": [4.7], "y": [2.5], "mode": "text", "text": "B"},
     {"type": "scatter", "x": [3.45], "y": [2.5], "mode": "text", "text": "A ∩ B"}
@@ -135,12 +135,12 @@
     "show_legend": false,
     "width": 560,
     "height": 360,
-    "plot_background_color": {rgb_color: "rgb(255, 255, 255)"},
+    "plot_background_color": "rgb(255, 255, 255)",
     "margin": {"pad": 20}
  },
   "data": [
-    {"type": "scatter", "x": "map.xA", "y": "map.yA", "mode": "none", "fill": "toself", "fill_color": {rgba_color: "rgba(46, 204, 113, 0.75)"}},
-    {"type": "scatter", "x": "map.xB", "y": "map.yB", "mode": "none", "fill": "toself", "fill_color": {rgba_color: "rgba(46, 204, 113, 0.75)"}},
+    {"type": "scatter", "x": "map.xA", "y": "map.yA", "mode": "none", "fill": "toself", "fill_color": "rgba(46, 204, 113, 0.75)"},
+    {"type": "scatter", "x": "map.xB", "y": "map.yB", "mode": "none", "fill": "toself", "fill_color": "rgba(46, 204, 113, 0.75)"},
     {"type": "scatter", "x": "map.xA", "y": "map.yA", "mode": "lines"},
     {"type": "scatter", "x": "map.xB", "y": "map.yB", "mode": "lines"},
     {"type": "scatter", "x": [2.3], "y": [2.5], "mode": "text", "text": "A"},
@@ -163,12 +163,12 @@
     "show_legend": false,
     "width": 560,
     "height": 360,
-    "plot_background_color": {rgb_color: "rgb(255, 255, 255)"},
+    "plot_background_color": "rgb(255, 255, 255)",
     "margin": {"pad": 20}
  },
   "data": [
-    {"type": "scatter", "x": "map.uX", "y": "map.uY", "mode": "none", "fill": "toself", "fill_color": {rgba_color: "rgba(149, 165, 166, 0.5)"}},
-    {"type": "scatter", "x": "map.xA", "y": "map.yA", "mode": "none", "fill": "toself", "fill_color": {rgba_color: "rgba(255, 255, 255, 1.0)"}},
+    {"type": "scatter", "x": "map.uX", "y": "map.uY", "mode": "none", "fill": "toself", "fill_color": "rgba(149, 165, 166, 0.5)"},
+    {"type": "scatter", "x": "map.xA", "y": "map.yA", "mode": "none", "fill": "toself", "fill_color": "rgba(255, 255, 255, 1.0)"},
     {"type": "scatter", "x": "map.uX", "y": "map.uY", "mode": "lines"},
     {"type": "scatter", "x": "map.xA", "y": "map.yA", "mode": "lines"},
     {"type": "scatter", "x": [6.1], "y": [4.5], "mode": "text", "text": "U"},
@@ -198,15 +198,15 @@
     "show_legend": false,
     "width": 560,
     "height": 360,
-    "plot_background_color": {rgb_color: "rgb(255, 255, 255)"},
+    "plot_background_color": "rgb(255, 255, 255)",
     "margin": {"pad": 20}
  },
   "data": [
-    {type: "scatter", x: "map.xA", y: "map.yA", mode: "none", fill: "toself", fill_color: {rgba_color: "rgba(52, 152, 219, 0.75)"}},
-    {type: "scatter", x: "map.xB", y: "map.yB", mode: "none", fill: "toself", fill_color: {rgba_color: "rgba(230, 126, 34, 0.75)"}},
+    {type: "scatter", x: "map.xA", y: "map.yA", mode: "none", fill: "toself", fill_color: "rgba(52, 152, 219, 0.75)"},
+    {type: "scatter", x: "map.xB", y: "map.yB", mode: "none", fill: "toself", fill_color: "rgba(230, 126, 34, 0.75)"},
 
     {type: "scatter", x: "map.xI_A", y: "map.yI_A", mode: "lines", fill: "none"},
-    {type: "scatter", x: "map.xI_B", y: "map.yI_B", mode: "lines", fill: "tonext", fill_color: {rgba_color: "rgba(255,255,255,1.0)"}},
+    {type: "scatter", x: "map.xI_B", y: "map.yI_B", mode: "lines", fill: "tonext", fill_color: "rgba(255,255,255,1.0)"},
 
     {type: "scatter", x: "map.xA", y: "map.yA", mode: "lines"},
     {type: "scatter", x: "map.xB", y: "map.yB", mode: "lines"},
