@@ -1,4 +1,5 @@
 # 二分查找
+
 考虑以下**查找问题**:
 
 **输入**: $n$ 个数的数组 $[a_1, a_2, \dots, a_n]$ 和一个值 $v$
@@ -9,7 +10,8 @@
 
 注意到, 如果序列`A`已排好序, 就可以将该序列的中点与`v`进行比较. 根据比较的结果, 原序列中有一半就可以不用再做进一步的考虑了, 这种在 **有序数组中高效查找特定元素的算法** 被称为 **二分查找(Binary Search)**.
 
-### BINARY-SEARCH
+## BINARY-SEARCH
+
 ```rust
 use std::cmp::Ordering;
 
@@ -29,6 +31,7 @@ pub fn binary_search<T: Ord>(arr: &[T], v: &T) -> Option<usize> {
     None
 }
 ```
+
 > [!NOTE]
 > 在这里[`checked_sub`](https://rustwiki.org/zh-CN/std/primitive.isize.html#method.checked_sub)用于检查整数减法, 计算 `self - rhs`, 如果发生溢出则返回 `None`. 并使用[`Ordering`](https://rustwiki.org/zh-CN/std/cmp/enum.Ordering.html)方便用`match`进行匹配.
 
@@ -56,6 +59,7 @@ $$
 这个循环不变式比较简单, 留给读者自证. 从上面的过程, 我们不难证得$T(n) = \Theta(\log n)$.
 
 我们增高难度, 在现有的基础上, 我们不再保证有且仅有一个`i`, 即`A`数组中可能存在多个`v`, 要求给出最小的`i`. 这是一个常见的求左边界的二分算法, 我们用Rust实现:
+
 ```rust
 pub fn find_left_boundary<T: Ord>(arr: &[T], v: &T) -> Option<usize> {
     let mut low = 0;
@@ -77,9 +81,11 @@ pub fn find_left_boundary<T: Ord>(arr: &[T], v: &T) -> Option<usize> {
     }
 }
 ```
+
 这里主要逻辑改写在比较部分: 当`arr[mid] < *v`时, 目标值必然在右侧, 所以移动`low`；当`arr[mid] >= v`目标值可能出现在左侧或当前位置(`arr[mid] == v`), 所以移动`high`到`mid`(不是`mid - 1`). 重点在`low >= high`说明所有的`v`都已出现(这里就是上面`low < high`不使用等号的原因), 那么`low`必然在最小`v`的位置上. 当然这个算法有个问题, 不存在时会误报, 所以要二次判断.
 
 同理, 不难写出寻找最大`i`的二分算法:
+
 ```rust
 pub fn find_right_boundary<T: Ord>(arr: &[T], v: &T) -> Option<usize> {
     let mut low = 0;
@@ -101,28 +107,34 @@ pub fn find_right_boundary<T: Ord>(arr: &[T], v: &T) -> Option<usize> {
     }
 }
 ```
+
 可以发现, 比较逻辑的改写比较复杂, 在比较微小的地方出错就会导致算法进入死循环或错估, 所以循环不变式在判断二分算法的正确性上非常重要.
 
 在向我们刚刚的数组切片或有序数组中, [`std`](https://www.rustwiki.org.cn/zh-CN/std/primitive.slice.html)标准库提供了一系列方法:
+
 ```rust
 let v = vec![1, 3, 5, 7, 9];
 assert_eq!(v.binary_search(&5), Ok(2));
 assert_eq!(v.binary_search(&4), Err(2));    // 插入后为 [1, 3, 4, 5, 7, 9]
 ```
+
 上面这个例子中[`binary_search`](https://www.rustwiki.org.cn/zh-CN/std/primitive.slice.html#method.binary_search)返回`Result<usize, usize>`, `Ok(index)` 中 `index` 为元素所在位置, `Err(index)` 中则为未找到元素时, 如果将元素插入到数组, 保持有序的位置. [`binary_search_by`](https://www.rustwiki.org.cn/zh-CN/std/primitive.slice.html#method.binary_search_by)允许通过函数来设置查找规则, [`binary_search_by_key`](https://www.rustwiki.org.cn/zh-CN/std/primitive.slice.html#method.binary_search_by_key)允许通过键(如结构体字段)查找.
 
 > [!NOTE]
 > 上面的这些方法和实现都要确保数组已经排序, 否则返回的结果无意义. [`binary_search_by`](https://www.rustwiki.org.cn/zh-CN/std/primitive.slice.html#method.binary_search_by)之类的, 通常来说与上面的手写性能相差不大, 但更具有扩展性.
 
 在较新的版本(`Rust 1.52+`)中, [`partition_point`](https://www.rustwiki.org.cn/zh-CN/std/primitive.slice.html#method.partition_point) 可以用来返回满足条件的第一个元素的位置:
+
 ```rust
 let v = vec![1, 2, 2, 3, 3, 4, 5];
 println!("{}", v.partition_point(|&x| x < 4));  // 第一个不小于4的元素位置
 ```
+
 > [!NOTE]
 > 该函数底层是`self.binary_search_by(|x| if pred(x) { Less } else { Greater }).unwrap_or_else(|i| i)`这种写法使得`binary_search`永远找不到等于的位置, 所以就会返回插入之后仍然有序的位置, 也就是第一个不满足`pred`函数的位置. (其中`pred`是调用者的输入)
 
 我们重新来看[插入排序](./insert_sort.md):
+
 ```rs
 pub fn insert_sort<T: Ord>(arr: &mut [T]) {
     for i in 1..arr.len() {
@@ -134,14 +146,18 @@ pub fn insert_sort<T: Ord>(arr: &mut [T]) {
     }
 }
 ```
+
 其中
+
 ```rs
 while j > 0 && arr[j] < arr[j - 1] {
     arr.swap(j, j - 1);
     j -= 1;
 }
 ```
+
 这个部分是将需要排序的元素在有序数组中移动找到适合的位置, 在有序数组中查找, 完全可以利用二分:
+
 ```rust
 pub fn insert_sort_by_binary_search<T: Ord>(arr: &mut [T]) {
     for i in 1..arr.len() {
@@ -152,9 +168,11 @@ pub fn insert_sort_by_binary_search<T: Ord>(arr: &mut [T]) {
     }
 }
 ```
+
 上面这个优化仅仅改变了比较次数, 不影响总体的时间复杂度. 对于大规模数据和操作代价较高的会有一定优化, 其他情况下还是使用线性更优.
 
 ## 两数之和
+
 考虑下面这道题:
 
 **输入**: $n$ 个整数的数组 $[a_1, a_2, \dots, a_n]$ 和一个整数 $x$
@@ -167,6 +185,7 @@ pub fn insert_sort_by_binary_search<T: Ord>(arr: &mut [T]) {
 我们将用**增量法**, **分治法**和一**特殊方法**解决此问题.
 
 增量法最简单, 我们可以用两层循环:
+
 ```rust
 pub fn incremental(arr: &[i32], x: i32) -> Option<(usize, usize)> {
     for i in 0..arr.len() {
@@ -179,9 +198,11 @@ pub fn incremental(arr: &[i32], x: i32) -> Option<(usize, usize)> {
     None
 }
 ```
+
 但复杂度将达到$\Theta(n ^ 2)$.
 
 分治法则不难想到二分查找:
+
 ```rust
 pub fn divide_and_conquer(arr: &[i32], x: i32) -> Option<(usize, usize)> {
     // 先对数组进行排序 (保留原索引)
@@ -207,6 +228,7 @@ pub fn divide_and_conquer(arr: &[i32], x: i32) -> Option<(usize, usize)> {
     None
 }
 ```
+
 该方案虽然使用了排序, 但按照归并排序的时间复杂度(标准库的排序实现更为复杂, 这里简单的以归并排序为例), 该实现仍然是$\Theta(n \log n)$.
 
 最后一种方法非常特殊, 在后面的课程中我们会具体讲到, 这里简单介绍一下:
@@ -235,11 +257,15 @@ pub fn search_by_hash_map(arr: &[i32], x: i32) -> Option<(usize, usize)> {
     None
 }
 ```
+
 该算法是单循环的, 又因为哈希表的读取运算是常数时间, 所以这个实现时间复杂度为$\Theta(n)$.
 
 ---
+
 ## 练习与回答
+
 1. 我们作以下考虑: 虽然归并排序的最坏情况运行时间为$\Theta(n \log n)$, 而插入排序的最坏情况运行时间为$\Theta(n ^ 2)$, 但是插入排序中的常量因子可能使得它在$n$较小时, 在许多机器上实际运行得更快. 因此, 在归并排序中当子问题变得足够小时, 采用插入排序来使递归的叶**变粗是有意义的**. 考虑对归并排序的一种修改, 使用插入排序来排序长度为$k$的$n/k$个子表, 然后使用标准的合并机制来合并这些子表, 这里$k$是一个待定的值.
+
 ```rust
 pub fn merge_sort_by_insert(arr: &mut [i32], k: usize) {
     let n = arr.len();
@@ -288,6 +314,7 @@ fn merge(arr: &mut [i32], mid: usize) {
     }
 }
 ```
+
 这种实现与 **Timsort**[^note3] 的核心思想一致, 结合了归并与插入的优点, 接下来我们深入讨论:
 
 在上述算法中, 插入排序可以在$\Theta(n k)$时间内排序每个长度为$k$的$n / k$个子表(每个子表排序的时间复杂度为$\Theta(k ^ 2)$, 故$T(n) = \Theta(k ^ 2) \cdot (n / k) = \Theta(n k)$). 同样不难看出, 合并子表的时间复杂度是$\Theta(n \log (n / k))$, 综上就有该算法最坏情况下的时间复杂度为$\Theta(n k + n \log (n / k))$. 为了确保任何$k$的取值不能使修改后算法时间复杂度高于原算法, $k = O(\log n)$[^note4].

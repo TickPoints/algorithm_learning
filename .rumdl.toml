@@ -1,0 +1,2 @@
+# 禁用 MD048：允许混用 backtick 和 tilde
+disable = ["MD048"]
