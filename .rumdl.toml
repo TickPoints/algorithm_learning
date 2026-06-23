@@ -1,3 +1,4 @@
 # 禁用 MD013: 允许长行
+# 禁用 MD041
 # 禁用 MD048: 允许混用 backtick 和 tilde
-disable = ["MD013", "MD048"]
+disable = ["MD013", "MD041", "MD048"]
