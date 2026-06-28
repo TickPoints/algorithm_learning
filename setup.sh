@@ -17,7 +17,7 @@ install_tools() {
     cargo binstall mdbook-mermaid || cargo install mdbook-mermaid
 
     # 安装 mdbook-katex
-    echo "安装 mdbook-katex..."
+    echo "安装 mdbook-katex-fork..."
     cargo binstall mdbook-katex-fork || cargo install mdbook-katex-fork
 
     # 安装 mdbook-plotly

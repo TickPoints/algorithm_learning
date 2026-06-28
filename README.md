@@ -49,10 +49,10 @@ cargo install --git https://github.com/rust-lang/mdBook.git mdbook
 cargo binstall mdbook-mermaid
 ```
 
-3. 安装 [mdbook-katex 插件](https://github.com/lzanini/mdbook-katex):
+3. 安装 [mdbook-katex-fork 插件](https://github.com/TickPoints/mdbook-katex-fork):
 
 ```bash
-cargo binstall mdbook-katex --version 0.10.0-alpha  # 注意: 目前必须使用此版本
+cargo binstall mdbook-katex-fork
 ```
 
 4. 安装 [mdbook-plotly 插件](https://github.com/TickPoints/mdbook-plotly):

@@ -15,7 +15,7 @@ git-repository-icon = "fab-github"
 input-404 = "not-found.md"
 
 [preprocessor.katex-fork]
-# 使用katex
+# 使用katex-fork
 after = ["links"]
 
 [preprocessor.mermaid]

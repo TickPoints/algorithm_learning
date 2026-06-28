@@ -36,13 +36,16 @@
 
 采用**Jan-Erik Rediger**提供的[**mdbook-mermaid**](https://github.com/badboy/mdbook-mermaid)插件, 许可证是**MPL**. 本书以**保留原 MPL 文件的版权声明和许可证文本**进行兼容.
 
-#### `mdbook-katex`
+#### `mdbook-katex-fork`
 
-采用**Lucas Zanini**提供的[**mdbook-katex**](https://github.com/lzanini/mdbook-katex)插件, 许可证是**MIT**.
+采用**TickPoints**提供的[**mdbook-katex-fork**](https://github.com/TickPoints/mdbook-katex-fork)插件, 许可证是**MIT**.
+
+> [!NOTE]
+> 原作为**Lucas Zanini**提供的[**mdbook-katex**](https://github.com/lzanini/mdbook-katex)插件, 许可证是**MIT**.
 
 #### `mdbook-plotly`
 
-采用**TickPoints**提供的[**mdbook-plotly**](https://github.com/TickPoints/mdbook-plotly)插件, 许可证同样是**MIT**.
+采用**TickPoints**提供的[**mdbook-plotly**](https://github.com/TickPoints/mdbook-plotly)插件, 许可证是**MIT**.
 
 ### 字体
 
